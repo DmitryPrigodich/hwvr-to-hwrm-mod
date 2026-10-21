@@ -41,6 +41,10 @@ def main():
     count=0
     for i,section in enumerate(sections):
         en_ru+=['## '+section['title'],''];chunks.append(f'<section id="chapter{i}"><h2>{html.escape(section["title"])}</h2>')
+        if i==0:
+            note='В текущей HWRM-адаптации M0 строительство убрано: один отряд проходит маршрут через W; вход в опасную зону возвращает его к началу попытки. Инструкции VR-телепортации, постройки/утилизации и нескольких групп не исполняются. Ниже сохранён полный исходный текст для сравнения; актуальная схема и статус сборки — в разборе M0.'
+            en_ru += ['*'+note+'*','']
+            chunks.append('<p class="note">'+html.escape(note)+' <a href="../docs/missions/T01_Training.md">Разбор M0</a>.</p>')
         image=previews[i]['image']
         if image:chunks.append('<img class="cover" src="'+image['path']+'" alt="Исходное изображение главы">')
         for kind,value in section['items']:

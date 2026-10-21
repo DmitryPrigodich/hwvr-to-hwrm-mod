@@ -38,10 +38,12 @@ class Engine:
         self.zoom=1000
         self.selected=set()
         self.abilities={}
+        self.invulnerable={}
+        self.current_orders={}
         self.build_restrictions=set()
         self.ru=0
         self.lua.execute('getn=table.getn')
-        for name in ['AB_Move','AB_Attack','AB_Custom','ONEKEY','TWOKEY','OffensiveROE','PassiveROE','AggressiveStance','OT_Primary','OT_Secondary','OS_Complete','OS_Failed','MUS_Ambient']:
+        for name in ['AB_Move','AB_Attack','AB_Custom','AB_Builder','AB_Retire','AB_Scuttle','COMMAND_Idle','COMMAND_Move','COMMAND_WaypointMove','ONEKEY','TWOKEY','OffensiveROE','PassiveROE','AggressiveStance','OT_Primary','OT_Secondary','OS_Complete','OS_Failed','MUS_Ambient']:
             self.g[name]=name
         functions={
             'dofilepath':self.load,'print':lambda *a:None,'addSquadron':self.add,
@@ -73,6 +75,7 @@ class Engine:
             'SobGroup_Count':lambda n:len(self.members(n)), 'FOW_RevealGroup':self.noop,
             'SobGroup_SetROE':self.noop,'SobGroup_SetStance':self.noop,'SobGroup_Attack':self.order,
             'SobGroup_Move':self.order,'SobGroup_SetHealth':self.health,'SobGroup_SetMaxSpeed':self.noop,
+            'SobGroup_Stop':self.stop,'SobGroup_GetCurrentOrder':self.get_order,'SobGroup_SetInvulnerability':self.invulnerability,
             'SobGroup_SwitchOwner':self.owner,'Player_FillShipsByType':self.fill_type,
             'Player_GetNumberOfSquadronsOfTypeAwakeOrSleeping':self.count_type,
             'SobGroup_IsInVolume':self.in_volume,'SobGroup_FillProximitySobGroup':self.proximity,
@@ -111,6 +114,14 @@ class Engine:
     def order(self,*args):self.orders.append(args)
     def ability(self,group,ability,enabled):
         for name in self.members(group):self.abilities[name,ability]=enabled
+    def invulnerability(self,group,enabled):
+        for name in self.members(group):self.invulnerable[name]=enabled
+    def stop(self,player,group):
+        self.orders.append(('stop',player,group))
+        for name in self.members(group):self.current_orders[name]='COMMAND_Idle'
+    def get_order(self,group):
+        names=self.members(group)
+        return self.current_orders.get(names[0],'COMMAND_Idle') if names else 'COMMAND_Idle'
     def load(self,path):
         path=path.removeprefix('data:')
         if path.lower()=='scripts/scar/scar_util.lua':return
@@ -229,27 +240,60 @@ def tests():
     # A target killed during its briefing waits for the last line instead of dropping it.
     e.kill('VRC_TrainingA');e.tick();e.assert_stage(6)
     e.tick(150);e.assert_stage(7)
-    assert 'kus_scout' not in e.build_restrictions
-    e.add_player('kus_interceptor');e.tick(180);e.assert_stage(7)
-    new_scout=e.add_player('kus_scout');e.tick();e.assert_stage(8)
-    assert e.abilities[new_scout,'AB_Custom']==0
+    assert 'kus_scout' in e.build_restrictions and e.ru==0
+    assert e.abilities['VRC_Mothership','AB_Builder']==0
     assert e.abilities['VRC_Player_1','AB_Custom']==0
+    assert e.invulnerable['VRC_Player_1']==1
+    assert e.ships['VRC_Platform']['pos']==[0,0,12000]
+    assert e.volumes['VRC_RoutePoint'][0]==[0,0,24000]
+    assert e.volumes['VRC_RouteStart'][0]==[0,0,3000]
+    # Straight movement and regular move orders cannot fake the waypoint drill.
+    e.move_type('kus_scout','VRC_RoutePoint');e.tick();e.assert_stage(7)
+    assert e.g.VRC_RouteRetries==1 and e.ships['VRC_Player_1']['pos']==[0,0,3000]
+    e.current_orders['VRC_Player_1']='COMMAND_Move'
+    e.move_type('kus_scout','VRC_RouteA');e.tick()
+    e.move_type('kus_scout','VRC_RouteB');e.tick()
+    assert e.g.VRC_RouteProgress==0
+    e.move_type('kus_scout','VRC_RoutePoint');e.tick();e.assert_stage(7)
+    assert e.g.VRC_RouteRetries==2
+    # Entering the gun sphere restores health/position and clears order/progress.
+    before=len(e.played_lines)
+    e.current_orders['VRC_Player_1']='COMMAND_WaypointMove'
+    e.move_type('kus_scout','VRC_RouteA');e.tick();assert e.g.VRC_RouteProgress==1
+    e.health('VRC_Player_1',.2)
+    e.move_type('kus_scout','VRC_GunZone');e.tick();e.assert_stage(7)
+    assert e.g.VRC_RouteRetries==3 and e.g.VRC_RouteProgress==0
+    assert e.ships['VRC_Player_1']['health']==1 and e.ships['VRC_Player_1']['pos']==[0,0,3000]
+    assert e.current_orders['VRC_Player_1']=='COMMAND_Idle'
+    assert len(e.played_lines)==before,'Reset must not replay story dialogue'
+    # A single waypoint at the finish or visiting B before A is insufficient.
+    e.current_orders['VRC_Player_1']='COMMAND_WaypointMove'
+    e.move_type('kus_scout','VRC_RouteB');e.tick();assert e.g.VRC_RouteProgress==0
+    e.move_type('kus_scout','VRC_RoutePoint');e.tick();assert e.g.VRC_RouteRetries==4
     assert not e.members('VRC_TrainingB') and not e.members('VRC_TrainingC')
-    e.tick(240);e.assert_stage(8)
-    e.move_type('kus_scout','VRC_RoutePoint',1);e.tick();e.assert_stage(8)
-    e.move_type('kus_scout','VRC_RoutePoint');e.tick();e.assert_stage(9)
+    e.current_orders['VRC_Player_1']='COMMAND_WaypointMove'
+    e.move_type('kus_scout','VRC_RouteA');e.tick();assert e.g.VRC_RouteProgress==1
+    e.move_type('kus_scout','VRC_RouteB');e.tick();assert e.g.VRC_RouteProgress==2
+    # Native command may already be idle at the final arrival tick.
+    e.current_orders['VRC_Player_1']='COMMAND_Idle'
+    e.move_type('kus_scout','VRC_RoutePoint');e.tick();e.assert_stage(8)
+    assert e.invulnerable['VRC_Player_1']==0 and e.abilities['VRC_Player_1','AB_Attack']==1
+    assert e.abilities['VRC_Platform','AB_Attack']==0
+    assert len([v for v in e.ships.values() if v['owner']==0 and v['type']=='kus_scout'])==1
     assert len(e.music_orders)==2 and e.music_orders[-1][0]=='data:sound/music/battle/B01_TuranicRaidersLong'
-    e.kill('VRC_TrainingB');e.tick(10);e.assert_stage(9)
+    e.kill('VRC_TrainingB');e.tick(10);e.assert_stage(8)
     e.kill('VRC_TrainingC');e.tick();e.assert_stage(99)
     assert e.members('VRC_Platform'),'Avoiding the platform must be enough to win'
     assert not e.results,'Hyperspace story must finish before victory'
     e.tick(400);assert e.results==[1],e.results
-    wanted={k for k in e.g.VRC_Text if re.fullmatch(r'T01_\d{3}_\d{3}_[A-Z]+',k)}-{'T01_030_020_FI'}
+    wanted={k for k in e.g.VRC_Text if re.fullmatch(r'T01_\d{3}_\d{3}_[A-Z]+',k)}-{'T01_030_020_FI','T01_040_030_FI','T01_050_010_FI','T01_050_020_FI'}
     actual=[e.g.VRC_Text[k] for k in e.played_lines if k.startswith('T01_')]
-    assert len(wanted)==37 and len(actual)==37 and set(actual)=={e.g.VRC_Text[k] for k in wanted},(len(wanted),len(actual),e.played_lines)
+    assert len(wanted)==34 and len(actual)==34 and set(actual)=={e.g.VRC_Text[k] for k in wanted},(len(wanted),len(actual),e.played_lines)
     assert actual[-6:]==[e.g.VRC_Text[k] for k in ['T01_070_010_KS','T01_070_020_KS','T01_070_030_TS','T01_070_040_KS','T01_070_050_TS','T01_070_060_TS']]
     assert len(e.camera_orders)==camera_count,'Later lessons must never resume the automatic orbit'
-    passed.append('M0 has one full starting batch; input-gated camera/selection/move lessons, distant passive scout, construction, two-squadron detour, Turanic attack, 37 serial spoken lines and victory with platform alive.')
+    passed.append('M0 has one starting batch, no construction, collinear Mothership/platform/rally, real waypoint orders at A/B, repeatable safe reset, 34 serial spoken lines and victory with platform alive.')
+    e=Engine('T01_Training');e.kill('VRC_Player_1');e.tick();assert e.results==[0]
+    passed.append('Loss of the only training squadron fails explicitly instead of leaving an impossible objective.')
     e=Engine('M01_ProvingGrounds')
     e.tick();e.assert_stage(1)
     e.ru=200;e.tick();e.assert_stage(2)

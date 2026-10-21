@@ -1,15 +1,17 @@
 dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/T01_Training/VRC_Setup.lua")
 dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/VRC_Common.lua")
 dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/T01_Training/VRC_TrainingPresentation.lua")
+dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/T01_Training/VRC_TrainingRoute.lua")
 
 function OnInit()
-    VRC_Init({"Kus_Scout"})
+    VRC_Init({})
     VRC_IntroLock = 1
     VRC_TrainingPhase = 1
     VRC_SensorsSeen = 0
     VRC_TrainingIntroductionStarted = 0
     -- Stock Speed Burst is a CustomCommand. It is not part of this systems test.
     Player_RestrictBuildOption(0,"Kus_Scout")
+    SobGroup_AbilityActivate("VRC_Mothership",AB_Builder,0)
     VRC_TrainingNoBurst()
     VRC_Lines({"T01_010_010_TS","T01_010_020_KS","T01_010_030_TS","T01_010_040_KS"})
 end
@@ -17,10 +19,13 @@ end
 function VRC_TrainingNoBurst()
     Player_FillShipsByType("VRC_Scouts",0,"Kus_Scout")
     SobGroup_AbilityActivate("VRC_Scouts",AB_Custom,0)
+    SobGroup_AbilityActivate("VRC_Scouts",AB_Retire,0)
+    SobGroup_AbilityActivate("VRC_Scouts",AB_Scuttle,0)
 end
 
 function VRC_Update()
     VRC_TrainingNoBurst()
+    if not VRC_Alive("VRC_Scouts") then VRC_Fail("t_fighters_lost") return end
     -- Let the prologue and first connection finish before exercise progression.
     if VRC_IntroLock == 1 then
         if VRC_TrainingIntroductionStarted == 0 then VRC_TrainingBegin() end
@@ -85,24 +90,16 @@ function VRC_Update()
         end
     elseif VRC_State == 6 then
         if VRC_QueueDone() ~= 0 and not VRC_Alive("VRC_TrainingA") then
-            VRC_Lines({"T01_040_060_KS","T01_040_070_TS","T01_040_080_KS","T01_050_010_FI","T01_050_020_FI"})
-            Player_UnrestrictBuildOption(0,"Kus_Scout")
-            VRC_NewObjective("t_build","VRC_HomeCamera")
+            -- Construction, retirement and multiple-group drills are omitted.
+            -- Keep the story conversation about bonding with ships and losses.
+            VRC_Lines({"T01_040_060_KS","T01_040_070_TS","T01_040_080_KS","T01_050_040_KS","T01_050_050_TS","T01_050_060_KS","T01_060_010_FI","T01_060_020_FI"})
+            VRC_TrainingRouteBegin()
         end
     elseif VRC_State == 7 then
-        -- Pause/retire are optional: paused simulation cannot run a wait rule.
-        -- Count squadron entries here, not visible physical hulls within a batch.
-        if VRC_QueueDone() ~= 0 and SobGroup_Count("VRC_Scouts") >= 2 then
-            VRC_Lines({"T01_050_040_KS","T01_050_050_TS","T01_050_060_KS","T01_040_030_FI","T01_060_010_FI","T01_060_020_FI"})
-            VRC_Show("VRC_Platform")
-            SobGroup_AbilityActivate("VRC_Platform",AB_Attack,0)
-            VRC_NewObjective("t_route","VRC_RoutePoint_Camera")
-        end
-    elseif VRC_State == 8 then
-        if VRC_QueueDone() == 0 then return end
-        SobGroup_AbilityActivate("VRC_Platform",AB_Attack,1)
-        SobGroup_FillSobGroupInVolume("VRC_InVolume","VRC_Scouts","VRC_RoutePoint")
-        if SobGroup_Count("VRC_InVolume") >= 2 then
+        if VRC_QueueDone() ~= 0 then SobGroup_AbilityActivate("VRC_Platform",AB_Attack,1) end
+        local arrived = VRC_TrainingRouteUpdate()
+        if arrived ~= 0 and VRC_QueueDone() ~= 0 then
+            VRC_TrainingRouteEnd()
             VRC_Show("VRC_TrainingB")
             VRC_Show("VRC_TrainingC")
             Sound_MusicPlayType("data:sound/music/battle/B01_TuranicRaidersLong",MUS_Ambient)
@@ -110,7 +107,7 @@ function VRC_Update()
             VRC_Attack("VRC_TrainingC","VRC_Scouts")
             VRC_NewObjective("t_final","VRC_BattlePoint_Camera")
         end
-    elseif VRC_State == 9 then
+    elseif VRC_State == 8 then
         if not VRC_Alive("VRC_TrainingB") and not VRC_Alive("VRC_TrainingC") then
             Sound_MusicPlayType("data:sound/music/battle/A01_mission1and16",MUS_Ambient)
             VRC_Lines({"T01_060_030_FI","T01_070_010_KS","T01_070_020_KS","T01_070_030_TS","T01_070_040_KS","T01_070_050_TS","T01_070_060_TS"})

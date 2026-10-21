@@ -1,5 +1,7 @@
 """Validate native speech resources and blocked/serial subtitle flow without HWRM."""
 import json
+import array
+import math
 import re
 import subprocess
 import wave
@@ -14,12 +16,21 @@ def verify(scripts_only=False):
     report=json.loads((speech.WORK/'integration.json').read_text(encoding='utf8'))
     source=Path(report['source'])
     training={row['key'] for row in report['mission_lines'] if row['key'].startswith('T01_')}
-    assert len(training)==37 and 'T01_070_060_TS' in training and 'T01_030_020_FI' not in training
+    omitted={'T01_030_020_FI','T01_040_030_FI','T01_050_010_FI','T01_050_020_FI'}
+    assert len(training)==34 and 'T01_070_060_TS' in training and not training & omitted
     for line in report['mission_lines']:
         path=source/line['path']
         with wave.open(str(path)) as w:
             assert (w.getnchannels(),w.getframerate(),w.getsampwidth())==(1,44100,2)
             assert abs(w.getnframes()/44100-line['duration'])<.001
+            if line['character']=='Character_Tyrra':
+                samples=array.array('h',w.readframes(w.getnframes()))
+                peak=max(abs(value) for value in samples)
+                gain=line['voice_gain']
+                assert gain['requested_gain_db']==10 and 0<gain['applied_gain_db']<=10.000001
+                assert peak==gain['result_peak'] and peak<=round(32767*10**(-1/20))
+                assert abs(20*math.log10(peak/gain['source_peak'])-gain['applied_gain_db'])<.01
+            else:assert not line['voice_gain']
         assert path.stem==line['text'][1:]
         vm=LuaRuntime();vm.execute(path.with_suffix('.lua').read_text());assert vm.globals().version==4 and vm.globals().compression==0
     themes={};vm=LuaRuntime();vm.globals().addTheme=lambda *args:themes.__setitem__(args[0],args)

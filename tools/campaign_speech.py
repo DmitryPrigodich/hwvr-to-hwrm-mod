@@ -4,8 +4,10 @@ Uses the shipped ui/subtitle.lua, SCAR_Util.lua and A00_speech.lua conventions.
 Does not launch or install HWRM. Original audio/video sources remain untouched.
 """
 import concurrent.futures
+import array
 import hashlib
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -39,11 +41,22 @@ def save(path,value):
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def pcm(source,target):
+def pcm(source,target,gain_db=0,audit=None):
     target.parent.mkdir(parents=True,exist_ok=True)
     subprocess.run([str(FFMPEG),'-y','-hide_banner','-loglevel','error','-i',str(source),'-map_metadata','-1','-ac','1','-ar','44100','-c:a','pcm_s16le',str(target)],check=True)
     # Keep a plain PCM RIFF header, avoiding modern encoder metadata chunks.
     with wave.open(str(target)) as w:frames=w.readframes(w.getnframes())
+    if gain_db:
+        samples=array.array('h',frames)
+        peak=max(abs(value) for value in samples)
+        # Start from the original media each time: rebuilds never compound gain.
+        # Cap the linear gain per clip at -1 dBFS, preserving dynamics and duration.
+        gain=min(10**(gain_db/20),32767*10**(-1/20)/peak) if peak else 1
+        samples=array.array('h',(round(value*gain) for value in samples))
+        frames=samples.tobytes()
+        if audit is not None:
+            audit.update(requested_gain_db=gain_db,applied_gain_db=20*math.log10(gain),
+                         source_peak=peak,result_peak=max(abs(value) for value in samples),ceiling_dbfs=-1)
     with wave.open(str(target),'wb') as w:
         w.setnchannels(1);w.setsampwidth(2);w.setframerate(44100);w.writeframes(frames)
     target.with_suffix('.lua').write_text('version=4\ncompression=0\nvolume=0.85\nrandSampContainer=0\n',encoding='ascii')
@@ -160,9 +173,19 @@ def prepare(seed=None,convert_movies=True):
         row=rows[key];assert len(row['character_ids'])==1,(key,row['character_ids'])
         char=row['character_ids'][0];actor,_=ACTORS[char];audio=row['english_audio'];assert audio,key
         target=RESOURCES/f'sound/speech/missions/VRC/{texts[key][1:]}.wav'
-        duration=pcm(ROOT/'campaign-export'/audio['wav'],target)
+        gain={}
+        duration=pcm(ROOT/'campaign-export'/audio['wav'],target,gain_db=10 if char=='Character_Tyrra' else 0,audit=gain)
         lines[key]={'actor':actor,'duration':round(duration+.25,6)}
-        report.append({'key':key,'text':texts[key],'character':char,'actor':actor,'duration':duration,'path':target.relative_to(RESOURCES).as_posix()})
+        report.append({'key':key,'text':texts[key],'character':char,'actor':actor,'duration':duration,'path':target.relative_to(RESOURCES).as_posix(),'voice_gain':gain})
+    keep={texts[key][1:] for key in lines}
+    # These numbered files are generated from originals; remove retired lesson
+    # audio from preparation copies, retaining the untouched source media.
+    for target in (RESOURCES,SOURCE,ROOT/'minicampaign',ROOT/'campaign-export/data'):
+        folder=target/'sound/speech/missions/VRC'
+        if folder.exists():
+            for path in folder.iterdir():
+                if path.suffix in ('.wav','.lua') and re.fullmatch(r'995\d+',path.stem) and path.stem not in keep:
+                    path.unlink()
     lua='{'+','.join('['+json.dumps(k)+']={actor='+str(v['actor'])+',duration='+str(v['duration'])+'}' for k,v in sorted(lines.items()))+'}'
     runtime=RUNTIME.replace('__LINES__',lua)
     (base/'VRC_Speech.lua').write_text(runtime,encoding='ascii')

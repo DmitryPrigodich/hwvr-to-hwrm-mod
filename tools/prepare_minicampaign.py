@@ -59,9 +59,17 @@ EXERCISE_TEXT = {
     "t_move_desc": ("Order your squadron into the marked area. Key 2 shows the destination. Reaching it reveals the first simulated enemy.", "Отправьте отряд в отмеченную область. Клавиша 2 показывает цель. После прибытия появится первый учебный противник."),
     "t_attack_desc": ("Attack the Vaygr scout beyond the first marker. This simulated target cannot fire back. Key 2 shows it.", "Атакуйте разведчик вэйгров за первой точкой. Эта учебная цель не стреляет в ответ. Клавиша 2 показывает её."),
     "t_build_desc": ("Select the Mothership, press B and build one light fighter squadron. You need two squadrons. Pause and retirement are optional; no research is required.", "Выберите Материнский корабль, нажмите B и постройте отряд лёгких истребителей. Нужны два отряда. Пауза и утилизация необязательны; исследования не нужны."),
-    "t_route": ("Move both squadrons", "Проведите оба отряда"),
-    "t_route_desc": ("Select both light fighter squadrons and send them to the marked detour, keeping away from the gun platform. You may queue waypoints. Key 2 shows the safe area.", "Выделите оба отряда лёгких истребителей и проведите их к отметке в обход орудийной платформы. Можно задать маршрут через точки. Клавиша 2 показывает безопасную область."),
+    "t_route": ("Plot a waypoint route", "Задайте маршрут точками"),
+    "t_route_desc": ("Your squadron is back near the Mothership (key 1). Press W and plot a route through A and B to the rally point (key 2). Stay over 3500 m from the platform; entering its exclusion zone resets the attempt.", "Отряд возвращён к Материнскому кораблю (клавиша 1). Через W проложите маршрут по A и B к точке сбора (клавиша 2). Держитесь дальше 3500 м от платформы: вход в опасную зону сбрасывает попытку."),
     "t_final_desc": ("Destroy the two attacking Vaygr fighters. You do not have to destroy the gun platform. Listen to Karan and Tyrra before the chapter ends.", "Уничтожьте два атакующих истребителя вэйгров. Платформу уничтожать не требуется. После боя выслушайте Каран и Тирру до конца."),
+}
+ROUTE_TEXT = {
+    "t_route_a": ("Waypoint A", "Точка маршрута A"),
+    "t_route_b": ("Waypoint B", "Точка маршрута B"),
+    "t_route_danger": ("Platform exclusion zone", "Опасная зона платформы"),
+    "t_route_retry": ("Inside the gun zone. Your squadron has been restored near the Mothership. Plot a new route with W through A and B.", "Отряд вошёл в зону огня и возвращён к Материнскому кораблю. Задайте новый маршрут клавишей W через A и B."),
+    "t_route_required": ("Use waypoint mode (W) through A and B. The exercise has been reset; direct move orders do not complete it.", "Нужен маршрут в режиме W через A и B. Упражнение сброшено: обычные приказы перемещения его не завершают."),
+    "t_fighters_lost": ("Training fighter squadron lost. Restart the mission.", "Учебный отряд истребителей потерян. Начните миссию заново."),
 }
 
 
@@ -96,6 +104,8 @@ def prepare():
     assert max(ids.values()) < 9951000
     ids.update({key:9951000+i for i,key in enumerate(sorted(EXERCISE_TEXT))})
     texts.update(EXERCISE_TEXT)
+    ids.update({key:9951100+i for i,key in enumerate(sorted(ROUTE_TEXT))})
+    texts.update(ROUTE_TEXT)
     for lang, column in (("English", 0), ("Russian", 1)):
         path = ROOT / "locale" / lang / "vrcampaign.ucs"
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -160,9 +170,9 @@ def prepare():
             # Deliberate PC lesson layout; source placements remain in the audit data.
             for name,ship,pt in [
                 ('VRC_TrainingA','VRC_VaygrScout',[500,500,10000]),
-                ('VRC_TrainingB','Ship_Rad_AssaultCraft',[-4500,500,18500]),
-                ('VRC_TrainingC','Ship_Rad_AssaultCraft',[-2000,500,19500]),
-                ('VRC_Platform','Ship_Rad_GunPlatform',[4500,500,14000]),
+                ('VRC_TrainingB','Ship_Rad_AssaultCraft',[-2000,500,30000]),
+                ('VRC_TrainingC','Ship_Rad_AssaultCraft',[2000,500,31000]),
+                ('VRC_Platform','Ship_Rad_GunPlatform',[0,0,12000]),
             ]:
                 pos=[origin[0]-pt[0]/100,origin[1]+pt[1]/100,origin[2]+pt[2]/100]
                 spawn(name,ship,pos,1)
@@ -216,7 +226,11 @@ def prepare():
     make('level1','T01_Training','training',[],
         [('Ship_Kus_Scout',[.02,0,-18.33])],
         [('VRC_MovePoint',[4.52,-10.4,42.88],1400),('VRC_TargetPoint',[-15.46,2.59,81.38],1200),
-         ('VRC_RoutePoint',[39.54,2.59,116.38],1800),('VRC_BattlePoint',[22.04,2.59,171.38],2000)],5000)
+         # World positions relative to the source Mothership (-10.46,-2.41,-18.62).
+         ('VRC_RouteStart',[-10.46,-2.41,11.38],500),
+         ('VRC_RouteA',[49.54,-2.41,61.38],1500),('VRC_RouteB',[49.54,-2.41,141.38],1500),
+         ('VRC_GunZone',[-10.46,-2.41,101.38],3500),
+         ('VRC_RoutePoint',[-10.46,-2.41,221.38],1500),('VRC_BattlePoint',[-10.46,2.59,286.38],2000)],0)
     # Actual LoadoutSpawner transforms (not the prefab's zero-position defaults).
     starts=[[-102.42908,-33.09749,-24.03379],[-116.33143,-33.09749,-26.27154],[-130.23378,-33.09749,-28.50929]]
     fleet=[]
