@@ -3,6 +3,7 @@ import html
 import json
 import re
 from pathlib import Path
+from campaign_text_review import REVIEW, review_label
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'campaign-export'
@@ -34,6 +35,9 @@ def main():
     '<style>body{margin:0;background:#10151b;color:#e0e6e9;font:18px/1.6 system-ui,sans-serif}nav{position:fixed;inset:0 auto 0 0;width:230px;padding:24px;overflow:auto;background:#18212a;box-sizing:border-box}nav a{display:block;margin:12px 0;color:#a8d1d6;text-decoration:none;font-size:14px}main{max-width:900px;margin:0 auto 0 260px;padding:38px}h1,h2,h3{line-height:1.25;color:#fff}h2{padding-top:35px;border-top:1px solid #43515c}h3{color:#acced6;margin-top:38px}.line{position:relative;padding:15px 0;border-bottom:1px solid #28333e;min-height:50px}.head{width:64px;height:64px;object-fit:contain;float:left;margin:5px 16px 5px 0}.speaker{color:#d3bc94;font-size:15px}.ru{margin:6px 0 12px}.key{font:12px monospace;color:#8295a4}details{color:#91a8ba;font-size:15px;clear:both}summary{cursor:pointer}audio{height:32px;max-width:100%;width:350px;margin-top:8px}.cover{width:100%;height:auto;border-radius:4px}.note{padding:12px;border-left:3px solid #b08a4f;background:#29261f;font-size:15px}a{color:#9bd4df}@media(max-width:800px){nav{position:relative;width:auto}nav a{display:inline-block;margin:4px 10px 4px 0}main{margin:0;padding:20px}}</style><nav><strong>Vast Reaches</strong>']
     for i,section in enumerate(sections):chunks.append(f'<a href="#chapter{i}">{html.escape(section["title"].split(" / ")[0])}</a>')
     chunks+=['</nav><main><h1>'+title+'</h1><p>Новый русский перевод. EN раскрывается под репликой; аудио — исходная английская озвучка. Воспроизведение только по нажатию.</p><p class="note">Это сценарий для чтения и сверки. Условные ветви не составляют одну обязательную последовательность. Кнопки звука здесь не означают, что озвучка уже подключена в HWRM.</p>']
+    chunks.append('<p class="note">Перевод синхронизирован '+html.escape(REVIEW['date_label'])+'. '
+                  '<a href="../docs/TRANSLATION_REVIEW.md">Уже внесённые правки</a>. '
+                  'Исправленные реплики отмечены датой; старые RU доступны в архиве для сравнения.</p>')
     count=0
     for i,section in enumerate(sections):
         en_ru+=['## '+section['title'],''];chunks.append(f'<section id="chapter{i}"><h2>{html.escape(section["title"])}</h2>')
@@ -49,9 +53,12 @@ def main():
                 if line and len(line['character_ids'])==1:char=characters[line['character_ids'][0]]
                 speaker=char['ru'] if char else 'Задача'
                 en_ru += [f'**{speaker}**', '', entry['ru'],'','<details><summary>EN · '+key+'</summary>','', '> '+entry['en'].replace('\n','\n> '),'','</details>','']
+                label=review_label(key,entry['ru'])
+                if label:en_ru+=['*'+label+'*','']
                 chunks.append('<article class="line">')
                 if char and char['portrait']:chunks.append('<img class="head" alt="" src="'+char['portrait']['path']+'">')
                 chunks += ['<div class="speaker">'+html.escape(speaker)+'</div>','<p class="ru">'+html.escape(entry['ru']).replace('\n','<br>')+'</p>','<details><summary>EN · <span class="key">'+html.escape(key)+'</span></summary><p>'+html.escape(entry['en'])+'</p></details>']
+                if label:chunks.append('<p class="note">'+html.escape(label)+'</p>')
                 if line and line['english_audio']:chunks.append('<audio controls preload="none" src="'+line['english_audio']['wav']+'"></audio>')
                 elif line:chunks.append('<div class="key">Звук для этой строки не найден в каталогах Quest/Steam.</div>')
                 chunks.append('</article>');count+=1

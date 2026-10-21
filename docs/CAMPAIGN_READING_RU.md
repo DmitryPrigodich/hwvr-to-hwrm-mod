@@ -1,5 +1,9 @@
 # Vast Reaches: сценарий для чтения
 
+<!-- translation-sync:start -->
+Актуальный перевод: сверка 21 октября 2026. [Что уже исправлено](TRANSLATION_REVIEW.md). Блоки «Старый русский» и архив RAW сохраняют исходный перевод для сравнения.
+<!-- translation-sync:end -->
+
 Новый русский перевод, английский оригинал для сверки. Порядок: **пролог → обучение → M1 → M7 → M3 → M4 → M5 → M6 → M9 → M10 → M11 → M8 → M13 → эпилог**. Внутренние номера сохранены из игры.
 
 Развилки и общие тревоги условны: напечатанные рядом строки не обязательно звучат подряд. Подробные условия, ID узлов и исходные ссылки — в [QUEST_SCENARIOS.md](QUEST_SCENARIOS.md); составы флота — в [QUEST_PROGRESSION.md](QUEST_PROGRESSION.md).
@@ -38,6 +42,8 @@
 
 </details>
 
+*Внесена правка пользователя · 21 октября 2026*
+
 **Рассказчик**
 
 Радаа считали, что долгий мир делает нас всё уязвимее. Их предводительница, Коммандер Амма, предупреждала: осколки Таииданской империи, превратившиеся во владения военных вождей, снова вооружаются, и возникновение новой империи вполне возможно. В обмен на разрешение строить и добывать ресурсы в системе Хиигары Коммандер Амма предложила помочь нашему флоту вступить в новую эпоху развития и перевооружения.
@@ -47,6 +53,8 @@
 > The Radaa believed that the longer we were at peace, the more vulnerable we became. Their leader, Commander Amma, warned that former Taiidani bandit kingdoms were re-arming and a new Empire was a real possibility.  In exchange for permission to build and mine in the Hiigaran star system, Commander Amma offered to shepherd the Hiigaran Fleet through a new era of modernization and growth.
 
 </details>
+
+*Внесена правка пользователя · 21 октября 2026*
 
 **Рассказчик**
 
@@ -78,6 +86,8 @@
 
 </details>
 
+*Внесена правка пользователя · 21 октября 2026*
+
 **Рассказчик**
 
 Чтобы принять командование Материнским кораблём и флотом, Тирра прошла ту же процедуру, что и Каран С’Джет за несколько десятилетий до неё. Она была опытным бойцом, и всем было понятно, что Материнский Корабль теперь — боевое судно без всяких оговорок. Тирра Собан стала второй Освобождённой среди нашего народа.
@@ -87,6 +97,8 @@
 > To take command of the Mothership and the Fleet, she underwent the same process that Karan S'jet had decades before. She was a trained warrior and that would make it clear to anyone that the Mothership was now a warship, pure and direct.Tyrra Soban was only the second of our people to become unbound.
 
 </details>
+
+*Внесена правка пользователя · 21 октября 2026*
 
 ### Задачи, подключённые к графу
 
@@ -711,6 +723,8 @@
 > Greetings, Hiigaran Command, this is Radaa Admiral Giitan. Our Commander Amma relays her wishes for our long and fruitful partnership with the Hiigaran people.
 
 </details>
+
+*Внесена правка пользователя · 21 октября 2026*
 
 **Гиитан Радаа**
 

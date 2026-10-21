@@ -82,11 +82,11 @@ VREX_Common.lua выполняет OnInit, отключает самостоят
 | `Ship_Rad_ShatterStation_SectionWing` | VR Shatter Station section hull and per-section shield/damage linkage required. |
 | `Ship_Rad_ShatterStation_SectionConsole` | VR Shatter Station console hull and finale linkage required. |
 
-Уникальные объекты имеют пустую SOB-группу и геометрическую отметку места. Нет подмены станции «Раскол» случайной штатной станцией и ложного «готового» финала. Конкретные отсутствующие экземпляры, роли native_mapping, полные составы и исходные ссылки находятся в [placements.json](</C:/Users/Dmitry/Documents/ChatGPT/Homeworld Vast Reaches/campaign-export/manifests/placements.json>).
+Уникальные объекты имеют пустую SOB-группу и геометрическую отметку места. Нет подмены станции «Раскол» случайной штатной станцией и ложного «готового» финала. Конкретные отсутствующие экземпляры, роли native_mapping, полные составы и исходные ссылки находятся в [placements.json](<C:/Users/Dmitry/Documents/ChatGPT/Homeworld Vast Reaches/campaign-export/manifests/placements.json>).
 
 ## Проверка и продолжение
 
-Генератор: [prepare_campaign_export.py](</C:/Users/Dmitry/Documents/ChatGPT/Homeworld Vast Reaches/tools/prepare_campaign_export.py>). Запуск: `.\.venv\Scripts\python.exe -X utf8 tools/prepare_campaign_export.py`. Он использует существующие local/quest-campaign, local/quest-audit и helpers write_quest_progression; нового извлечения или установки нет.
+Генератор: [prepare_campaign_export.py](<C:/Users/Dmitry/Documents/ChatGPT/Homeworld Vast Reaches/tools/prepare_campaign_export.py>). Запуск: `.\.venv\Scripts\python.exe -X utf8 tools/prepare_campaign_export.py`. Он использует существующие local/quest-campaign, local/quest-audit и helpers write_quest_progression; нового извлечения или установки нет.
 
 В этой подготовке проверяются порядок/число глав, существование каждого нативного .ship, точное разворачивание SquadronCount, разделение initial/deferred, ссылки спавнеров и структура карт. Отдельно выполняется проверка синтаксиса Lua и OnInit в заглушках API; она не заменяет тест движка.
 

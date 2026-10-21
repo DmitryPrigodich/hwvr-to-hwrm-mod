@@ -10,6 +10,7 @@ import collections
 import json
 import sys
 from pathlib import Path
+from campaign_text_review import review_label
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "local/campaign"
@@ -77,6 +78,9 @@ EN_NOTES = {
 def quote(key: str, speaker: str | None = None) -> list[str]:
     speaker = speaker or SPEAKERS.get(key.rsplit("_", 1)[-1], "Разведка флота")
     lines = [f"**{speaker}** — `{key}`", ""] + bilingual(key)
+    if not LITERAL:
+        label=review_label(key,RU.get(key,''))
+        if label:lines += ['*'+label+'*','']
     if LITERAL and key in EN_NOTES:
         lines += ["*Примечание к переводу.* " + EN_NOTES[key], ""]
     return lines
@@ -437,8 +441,9 @@ def main() -> None:
     docs = ROOT / "docs"
     docs.mkdir(exist_ok=True)
     if not LITERAL:
-        content=[line.replace('У каждой реплики и задачи отдельно приведены **буквальный EN** и **буквальный RU из исходной локализации**. Перевод местами ошибочный: «разрушитель» означает эсминец, «поезд с Радаа» — учения с Радаа; род говорящих иногда неверен. В наиболее существенных местах добавлено пояснение. Отсутствующий русский текст явно отмечен и не подменён сочинённой «оригинальной» репликой.', 'Реплики кампании и обучения заново переведены с английского с учётом сюжета и говорящих. EN сохранён для сверки. Буквальная старая локализация — в [DEMO_SCENARIOS_RAW.md](DEMO_SCENARIOS_RAW.md). Бонус C1 пока дан в исходной локализации и не включён в экспорт кампании.').replace('**Русские строки 040–080 не соответствуют английскому диалогу**: они сдвинуты или повторяют предыдущие фразы. Для переноса нужно исправить текст; ниже ошибка сохранена для сверки.', 'Русский текст исправлен по английскому диалогу; сдвинутые и повторные строки исходного перевода сохранены в RAW-версии.') for line in content]
-    output = docs / ("DEMO_SCENARIOS_RAW.md" if LITERAL else "DEMO_SCENARIOS.md")
+        content=[line.replace('У каждой реплики и задачи отдельно приведены **буквальный EN** и **буквальный RU из исходной локализации**. Перевод местами ошибочный: «разрушитель» означает эсминец, «поезд с Радаа» — учения с Радаа; род говорящих иногда неверен. В наиболее существенных местах добавлено пояснение. Отсутствующий русский текст явно отмечен и не подменён сочинённой «оригинальной» репликой.', 'Реплики кампании и обучения заново переведены с английского с учётом сюжета и говорящих. EN сохранён для сверки. Буквальная старая локализация — в [DEMO_SCENARIOS_RAW.md](archive/source-localization/DEMO_SCENARIOS_RAW.md). Бонус C1 пока дан в исходной локализации и не включён в экспорт кампании.').replace('**Русские строки 040–080 не соответствуют английскому диалогу**: они сдвинуты или повторяют предыдущие фразы. Для переноса нужно исправить текст; ниже ошибка сохранена для сверки.', 'Русский текст исправлен по английскому диалогу; сдвинутые и повторные строки исходного перевода сохранены в RAW-версии.') for line in content]
+    output = docs / ("archive/source-localization/DEMO_SCENARIOS_RAW.md" if LITERAL else "DEMO_SCENARIOS.md")
+    output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text("\n".join(content), encoding="utf-8")
     if not LITERAL:write_progression(progression)
     (DATA / "scenario-order.json").write_text(json.dumps({"method": "authored chapters from control edges, objective/event transitions; intro clips by Timeline start", "missions": mission_order, "intros": {"M1": intro1, "M4": timeline_dialogues("sharedassets8.assets.json")}}, ensure_ascii=False, indent=2), encoding="utf-8")

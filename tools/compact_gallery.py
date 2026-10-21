@@ -244,4 +244,4 @@ def write_docs(entries,groups,factions):
             for index in group['entries']:
                 e=entries[index-1];text+=f'| {index} | {e["ru"]} | {e["native"] or "—"} |\n'
             text+='\n'
-    Path('GALLERY.md').write_text(text,encoding='utf-8')
+    Path('docs/reference/vr-import/GALLERY.md').write_text(text,encoding='utf-8')
