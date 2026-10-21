@@ -27,14 +27,21 @@ class Engine:
         self.camera_orders=[]
         self.music_orders=[]
         self.speech_calls=[]
+        self.played_lines=[]
         self.sensors_active=0
         self.letterbox=0
         self.camera_control=1
         self.player_orders=1
         self.sensors_toggle=1
+        self.rotated=0
+        self.panned=0
+        self.zoom=1000
+        self.selected=set()
+        self.abilities={}
+        self.build_restrictions=set()
         self.ru=0
         self.lua.execute('getn=table.getn')
-        for name in ['AB_Move','AB_Attack','ONEKEY','TWOKEY','OffensiveROE','AggressiveStance','OT_Primary','OT_Secondary','OS_Complete','OS_Failed','MUS_Ambient']:
+        for name in ['AB_Move','AB_Attack','AB_Custom','ONEKEY','TWOKEY','OffensiveROE','PassiveROE','AggressiveStance','OT_Primary','OT_Secondary','OS_Complete','OS_Failed','MUS_Ambient']:
             self.g[name]=name
         functions={
             'dofilepath':self.load,'print':lambda *a:None,'addSquadron':self.add,
@@ -42,10 +49,11 @@ class Engine:
             'addSphere':self.sphere,'addCamera':self.noop,'setWorldBoundsInner':self.noop,
             'loadBackground':self.noop,'setSensorsManagerCameraDistances':self.noop,'addAsteroid':self.noop,
             'CPU_Enable':self.noop,'SetAlliance':self.noop,'SobGroup_Despawn':self.despawn,'SobGroup_Spawn':self.spawn,
-            'Player_RestrictBuildOption':self.noop,'Player_UnrestrictBuildOption':self.noop,
+            'Player_RestrictBuildOption':lambda player,hull:self.build_restrictions.add(hull.lower()),
+            'Player_UnrestrictBuildOption':lambda player,hull:self.build_restrictions.discard(hull.lower()),
             'Player_RestrictResearchOption':self.noop,'Player_GrantResearchOption':self.noop,
             'Player_UnrestrictResearchOption':self.noop,
-            'SobGroup_AbilityActivate':self.noop,'UI_BindKeyEvent':self.noop,'Camera_Interpolate':lambda *a:self.camera_orders.append(a),
+            'SobGroup_AbilityActivate':self.ability,'UI_BindKeyEvent':self.noop,'Camera_Interpolate':lambda *a:self.camera_orders.append(a),
             'Rule_AddInterval':self.noop,'Rule_Remove':self.noop,'Subtitle_Message':self.noop,
             'Sound_SpeechSubtitlePath':self.noop,'Subtitle_Add':self.subtitle_add,'Subtitle_IsDone':self.subtitle_done,
             'Sound_MusicPlayType':lambda *a:self.music_orders.append(a),'fogSetActive':self.noop,'setGlareIntensity':self.noop,'setLevelShadowColour':self.noop,
@@ -55,7 +63,12 @@ class Engine:
             'Sensors_EnableToggle':lambda state:setattr(self,'sensors_toggle',state),
             'Sensors_EnableCameraZoom':self.noop,'Universe_EnableSkip':self.noop,
             'Sensors_ManagerIsActive':lambda:self.sensors_active,
+            'Camera_ResetRotated':lambda:setattr(self,'rotated',0),'Camera_PlayerHasRotated':lambda threshold:self.rotated,
+            'Camera_ResetPanned':lambda:setattr(self,'panned',0),'Camera_PlayerHasPanned':lambda threshold:self.panned,
+            'Camera_GetLastZoomAmount':lambda:self.zoom,'Camera_UsePanning':self.noop,
+            'SobGroup_Selected':lambda group:int(bool(set(self.members(group)) & self.selected)),
             'Objective_Add':self.objective,'Objective_SetState':self.objective_state,
+            'Objective_AddDescription':lambda ident,text:self.objectives[ident].__setitem__('description',text),
             'Ping_Remove':self.noop,'Ping_AddPoint':lambda *a:1,'Ping_AddSobGroup':lambda *a:1,
             'SobGroup_Count':lambda n:len(self.members(n)), 'FOW_RevealGroup':self.noop,
             'SobGroup_SetROE':self.noop,'SobGroup_SetStance':self.noop,'SobGroup_Attack':self.order,
@@ -74,9 +87,14 @@ class Engine:
         self.g.DetermChunk()
         self.g.NonDetermChunk()
         self.lua.execute((BASE/chapter/(chapter+'.lua')).read_text())
+        self.original_play_line=self.g.VRC_PlayLine
+        self.g.VRC_PlayLine=self.play_line
         self.g.OnInit()
 
     def noop(self,*args):pass
+    def play_line(self,key,duration):
+        self.played_lines.append(key)
+        return self.original_play_line(key,duration)
     def await_completion(self):
         # Native speech can legitimately exceed the former fixed 20s window.
         for _ in range(180):
@@ -91,6 +109,8 @@ class Engine:
     def subtitle_done(self,actor):
         return int(self.g.VRC_Time>=getattr(self,'subtitle_until',{}).get(actor,0))
     def order(self,*args):self.orders.append(args)
+    def ability(self,group,ability,enabled):
+        for name in self.members(group):self.abilities[name,ability]=enabled
     def load(self,path):
         path=path.removeprefix('data:')
         if path.lower()=='scripts/scar/scar_util.lua':return
@@ -152,6 +172,7 @@ class Engine:
     def add_player(self,hull):
         i='mock_new_'+str(len(self.ships))
         self.ships[i]={'type':hull.lower(),'pos':[0,0,0],'owner':0,'active':True,'health':1}
+        return i
     def assert_stage(self,value):assert self.g.VRC_State==value,(self.g.VRC_Mission,self.g.VRC_State,value)
 
 
@@ -172,7 +193,7 @@ def tests():
     passed.append('All Lua/level/campaign files parse in Lua 5.1; source uses Lua 4-compatible subset.')
     e=Engine('T01_Training')
     starting_fighters=[v for v in e.ships.values() if v['owner']==0 and v['type']=='kus_scout']
-    assert len(starting_fighters)==3 and all(v['spawn_size']==0 for v in starting_fighters),'M0 must request three full native batches'
+    assert len(starting_fighters)==1 and starting_fighters[0]['spawn_size']==0,'M0 must request one full native batch'
     assert not any(v['owner']==0 and v['type']=='kus_interceptor' for v in e.ships.values())
     e.tick(10);e.assert_stage(0)
     assert e.g.VRC_IntroLock==1 and len(e.music_orders)==1
@@ -182,21 +203,53 @@ def tests():
     assert e.g.VRC_TrainingPhase==2 and e.g.VRC_IntroLock==1
     assert e.letterbox==0 and e.camera_control==1 and e.player_orders==1 and e.sensors_toggle==1
     assert len([call for call in e.speech_calls if call[0]==29])==2,'FI must introduce sensors before waiting for the player'
-    assert not e.objectives,'Movement marker must wait for the actual sensors lesson'
+    assert len(e.objectives)==1 and e.objectives[e.g.VRC_Objective]['description']==e.g.VRC_Text['t_sensors_desc']
+    assert not e.members('VRC_TrainingA'),'First target must not exist before reaching the movement point'
     camera_count=len(e.camera_orders);e.tick(12)
     assert len(e.camera_orders)==camera_count,'Camera must be released after opening dialogue'
     e.sensors_active=1;e.tick(240);e.assert_stage(1)
     assert e.g.VRC_IntroLock==0
     expected=['T01_010_010_TS','T01_010_020_KS','T01_010_030_TS','T01_010_040_KS','T01_020_010_FI','T01_020_020_FI','T01_020_030_FI','T01_020_040_FI','T01_020_050_TS','T01_020_060_KS']
-    assert [call[1] for call in e.speech_calls]==[e.g.VRC_Text[key] for key in expected]
-    e.move_type('kus_scout','VRC_MovePoint',1);e.tick();e.assert_stage(2)
-    e.kill('VRC_TrainingA');e.tick();e.assert_stage(3)
-    e.tick(5);e.assert_stage(3)
-    e.add_player('kus_interceptor');e.tick();e.assert_stage(3)
-    e.add_player('kus_scout');e.tick();e.assert_stage(4)
-    for group in ['VRC_TrainingB','VRC_TrainingC','VRC_Platform']:e.kill(group)
-    e.tick(20);e.await_completion();assert e.results==[1],e.results
-    passed.append('M0 restores HUD/controls after four opening lines, plays all T01_020 in order and waits for sensors before movement/build/combat; wins once.')
+    # Camera lessons use actual input queries; waiting must not pass them.
+    assert [call[1] for call in e.speech_calls[:10]]==[e.g.VRC_Text[key] for key in expected]
+    e.tick(100);e.assert_stage(1)
+    e.rotated=1;e.tick();e.assert_stage(2)
+    e.tick(100);e.assert_stage(2)
+    e.zoom=900;e.tick();e.assert_stage(3)
+    e.tick(100);e.assert_stage(3)
+    e.panned=1;e.tick();e.assert_stage(4)
+    e.tick(180);e.assert_stage(4)
+    e.selected={'VRC_Player_1'};e.tick();e.assert_stage(5)
+    e.tick(90);e.assert_stage(5)
+    e.move_type('kus_scout','VRC_MovePoint',1);e.tick();e.assert_stage(6)
+    assert e.ships['VRC_TrainingA']['type']=='vgr_scout'
+    assert math.dist(e.ships['VRC_TrainingA']['pos'],e.volumes['VRC_MovePoint'][0])>3500
+    assert e.abilities['VRC_TrainingA','AB_Attack']==0
+    assert e.abilities['VRC_TrainingA','AB_Move']==0
+    # A target killed during its briefing waits for the last line instead of dropping it.
+    e.kill('VRC_TrainingA');e.tick();e.assert_stage(6)
+    e.tick(150);e.assert_stage(7)
+    assert 'kus_scout' not in e.build_restrictions
+    e.add_player('kus_interceptor');e.tick(180);e.assert_stage(7)
+    new_scout=e.add_player('kus_scout');e.tick();e.assert_stage(8)
+    assert e.abilities[new_scout,'AB_Custom']==0
+    assert e.abilities['VRC_Player_1','AB_Custom']==0
+    assert not e.members('VRC_TrainingB') and not e.members('VRC_TrainingC')
+    e.tick(240);e.assert_stage(8)
+    e.move_type('kus_scout','VRC_RoutePoint',1);e.tick();e.assert_stage(8)
+    e.move_type('kus_scout','VRC_RoutePoint');e.tick();e.assert_stage(9)
+    assert len(e.music_orders)==2 and e.music_orders[-1][0]=='data:sound/music/battle/B01_TuranicRaidersLong'
+    e.kill('VRC_TrainingB');e.tick(10);e.assert_stage(9)
+    e.kill('VRC_TrainingC');e.tick();e.assert_stage(99)
+    assert e.members('VRC_Platform'),'Avoiding the platform must be enough to win'
+    assert not e.results,'Hyperspace story must finish before victory'
+    e.tick(400);assert e.results==[1],e.results
+    wanted={k for k in e.g.VRC_Text if re.fullmatch(r'T01_\d{3}_\d{3}_[A-Z]+',k)}-{'T01_030_020_FI'}
+    actual=[e.g.VRC_Text[k] for k in e.played_lines if k.startswith('T01_')]
+    assert len(wanted)==37 and len(actual)==37 and set(actual)=={e.g.VRC_Text[k] for k in wanted},(len(wanted),len(actual),e.played_lines)
+    assert actual[-6:]==[e.g.VRC_Text[k] for k in ['T01_070_010_KS','T01_070_020_KS','T01_070_030_TS','T01_070_040_KS','T01_070_050_TS','T01_070_060_TS']]
+    assert len(e.camera_orders)==camera_count,'Later lessons must never resume the automatic orbit'
+    passed.append('M0 has one full starting batch; input-gated camera/selection/move lessons, distant passive scout, construction, two-squadron detour, Turanic attack, 37 serial spoken lines and victory with platform alive.')
     e=Engine('M01_ProvingGrounds')
     e.tick();e.assert_stage(1)
     e.ru=200;e.tick();e.assert_stage(2)

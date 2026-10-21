@@ -1,5 +1,6 @@
 """Build a separate, stock-hull HWRM campaign scaffold from the extracted demo."""
 import json
+import math
 import re
 from pathlib import Path
 
@@ -10,6 +11,7 @@ CAMPAIGN = ROOT / "leveldata/campaign/VastReachesMiniCampaign"
 MAP = {
     "Ship_Hgn_Mothership": "kus_mothership", "Ship_Kus_Scout": "kus_scout",
     "Ship_Kus_Interceptor": "kus_interceptor", "Ship_Kus_AttackBomber": "kus_attackbomber",
+    "VRC_VaygrScout": "vgr_scout",
     "Ship_Hgn_HeavyCorvette": "kus_heavycorvette", "Ship_Hgn_EngineerCraft": "kus_salvagecorvette",
     "Ship_Hgn_ResourceCollector": "kus_resourcecollector", "Ship_Rad_AssaultCraft": "vgr_interceptor",
     "Ship_Rad_AttackBomber": "vgr_bomber", "Ship_Rad_LanceFighter": "vgr_lancefighter",
@@ -23,16 +25,16 @@ CUSTOM = {
     "campaign": ("Vast Reaches Campaign Demo", "Vast Reaches Campaign Demo"),
     "choose": ("Choose chapter", "Выбрать главу"),
     "training": ("M0. Tutorial", "M0. Обучение"),
-    "proving": ("M1: Hiigara Proving Grounds", "M1: Испытательный полигон Хиигары"),
+    "proving": ("M01. Hiigara Proving Grounds", "M01. Хиигара"),
     "destroyer": ("M4: The Lost Destroyer", "M4: Потерянный эсминец"),
     "training_desc": ("Campaign prologue, first connection and fleet controls.", "Пролог кампании, первое подключение и управление флотом."),
     "proving_desc": ("Harvest, scout, three live-fire patrols, betrayal and escape.", "Добыча, разведка, три учебных боя, предательство и отход."),
     "destroyer_desc": ("Find the destroyer. Bring three salvage corvettes. Return it OR destroy the gate.", "Найдите эсминец. Подведите три абордажных корвета. Доставьте эсминец ИЛИ уничтожьте врата."),
     "prototype": ("Vast Reaches Campaign Demo. 1: Mothership; 2: current objective.", "Vast Reaches Campaign Demo. 1: Материнский корабль; 2: текущая цель."),
-    "t_move": ("Move a light fighter squadron into the marked area (camera 2).", "Переместите отряд лёгких истребителей в отмеченную область (камера 2)."),
-    "t_attack": ("Destroy the first target group.", "Уничтожьте первую группу целей."),
-    "t_build": ("Build one additional light fighter squadron at the Mothership.", "Постройте ещё один отряд лёгких истребителей на Материнском корабле."),
-    "t_final": ("Destroy the remaining training enemies.", "Уничтожьте оставшиеся учебные цели."),
+    "t_move": ("Reach the first marker", "Достигните первой точки"),
+    "t_attack": ("Destroy the scout", "Уничтожьте разведчик"),
+    "t_build": ("Build a second squadron", "Постройте второй отряд"),
+    "t_final": ("Repel the attack", "Отразите нападение"),
     "t_done": ("Fleet controls exercise complete. Proceed to the proving grounds.", "Обучение управлению флотом завершено. Переходим к полигону."),
     "scan": ("Send a Scout to the marked patrol search area.", "Отправьте разведчик к отметке патруля."),
     "engineers": ("Keep THREE salvage corvettes within 1200 m of the destroyer for 10 seconds.", "Удерживайте ТРИ абордажных корвета в радиусе 1200 м от эсминца в течение 10 секунд."),
@@ -40,6 +42,26 @@ CUSTOM = {
     "escape": ("Emergency jump charging: protect the Mothership for 20 seconds.", "Аварийный прыжок: защищайте материнский корабль ещё 20 секунд."),
     "win": ("Chapter complete.", "Глава завершена."),
     "loss": ("Mothership lost. Mission failed.", "Материнский корабль потерян. Задание провалено."),
+}
+
+# Separate range keeps existing dialogue/audio IDs stable when lessons grow.
+EXERCISE_TEXT = {
+    "t_sensors": ("Open Sensors Manager", "Откройте сенсоры"),
+    "t_sensors_desc": ("Press Space to open Sensors Manager. Listen to Fleet Intelligence.", "Нажмите Пробел, чтобы открыть обзор сенсоров. Выслушайте Разведку флота."),
+    "t_rotate": ("Rotate the camera", "Поверните камеру"),
+    "t_rotate_desc": ("Return from Sensors Manager with Space. Hold the right mouse button and move the mouse to orbit the view.", "Выйдите из обзора сенсоров по Пробелу. Удерживая правую кнопку мыши, поверните камеру."),
+    "t_zoom": ("Zoom the view", "Измените приближение"),
+    "t_zoom_desc": ("Scroll the mouse wheel to zoom in or out.", "Прокрутите колесо мыши, чтобы приблизить или отдалить вид."),
+    "t_pan": ("Pan the camera", "Сдвиньте камеру"),
+    "t_pan_desc": ("Move the pointer to a screen edge to pan the view. Key 1 returns the camera to the Mothership.", "Подведите указатель к краю экрана, чтобы сдвинуть камеру. Клавиша 1 возвращает вид к Материнскому кораблю."),
+    "t_select": ("Select your fighters", "Выделите истребители"),
+    "t_select_desc": ("Select the light fighter squadron with a click or selection box. Key 1 shows the Mothership and nearby fighters.", "Выделите отряд лёгких истребителей щелчком или рамкой. Клавиша 1 показывает Материнский корабль и истребители рядом."),
+    "t_move_desc": ("Order your squadron into the marked area. Key 2 shows the destination. Reaching it reveals the first simulated enemy.", "Отправьте отряд в отмеченную область. Клавиша 2 показывает цель. После прибытия появится первый учебный противник."),
+    "t_attack_desc": ("Attack the Vaygr scout beyond the first marker. This simulated target cannot fire back. Key 2 shows it.", "Атакуйте разведчик вэйгров за первой точкой. Эта учебная цель не стреляет в ответ. Клавиша 2 показывает её."),
+    "t_build_desc": ("Select the Mothership, press B and build one light fighter squadron. You need two squadrons. Pause and retirement are optional; no research is required.", "Выберите Материнский корабль, нажмите B и постройте отряд лёгких истребителей. Нужны два отряда. Пауза и утилизация необязательны; исследования не нужны."),
+    "t_route": ("Move both squadrons", "Проведите оба отряда"),
+    "t_route_desc": ("Select both light fighter squadrons and send them to the marked detour, keeping away from the gun platform. You may queue waypoints. Key 2 shows the safe area.", "Выделите оба отряда лёгких истребителей и проведите их к отметке в обход орудийной платформы. Можно задать маршрут через точки. Клавиша 2 показывает безопасную область."),
+    "t_final_desc": ("Destroy the two attacking Vaygr fighters. You do not have to destroy the gun platform. Listen to Karan and Tyrra before the chapter ends.", "Уничтожьте два атакующих истребителя вэйгров. Платформу уничтожать не требуется. После боя выслушайте Каран и Тирру до конца."),
 }
 
 
@@ -71,6 +93,9 @@ def prepare():
         speaker=speakers.get(key.rsplit('_',1)[-1])
         if speaker:texts[key]=tuple(speaker[i]+': '+value[i] for i in range(2))
     ids = {key: 9950000+i for i, key in enumerate(sorted(texts))}
+    assert max(ids.values()) < 9951000
+    ids.update({key:9951000+i for i,key in enumerate(sorted(EXERCISE_TEXT))})
+    texts.update(EXERCISE_TEXT)
     for lang, column in (("English", 0), ("Russian", 1)):
         path = ROOT / "locale" / lang / "vrcampaign.ucs"
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -81,6 +106,7 @@ def prepare():
     lines = ["-- Generated IDs. Reviewed Russian translation; literal original is in docs/*_RAW.md.", "VRC_Text = {}", "VRC_Duration = {}"]
     lines += [f'VRC_Text["{k}"] = "${v}"' for k,v in ids.items()]
     lines += [f'VRC_Duration["{k}"] = {max(8,min(40,len(texts[k][1])//15+3))}' for k in ids]
+    lines += ['VRC_ObjectiveDescriptions = {'+','.join(f'["{key[:-5]}"]="{key}"' for key in EXERCISE_TEXT if key.endswith('_desc'))+'}']
     all_builds = re.findall(r'ThingToBuild\s*=\s*"([^"]+)"', (PROJECT/"local/hwrm-base/scripts/races/kushan/scripts/def_build.lua").read_text())
     lines += ["VRC_AllBuilds = {" + ",".join(json.dumps(n) for n in all_builds) + "}"]
     all_research = set()
@@ -130,6 +156,18 @@ def prepare():
             if hidden_flag:
                 hidden.append(name)
                 lev.append(f'    addSphere("{name}_Spawn",{vector(convert(src["world_position"],origin))},500)')
+        if directory=='T01_Training':
+            # Deliberate PC lesson layout; source placements remain in the audit data.
+            for name,ship,pt in [
+                ('VRC_TrainingA','VRC_VaygrScout',[500,500,10000]),
+                ('VRC_TrainingB','Ship_Rad_AssaultCraft',[-4500,500,18500]),
+                ('VRC_TrainingC','Ship_Rad_AssaultCraft',[-2000,500,19500]),
+                ('VRC_Platform','Ship_Rad_GunPlatform',[4500,500,14000]),
+            ]:
+                pos=[origin[0]-pt[0]/100,origin[1]+pt[1]/100,origin[2]+pt[2]/100]
+                spawn(name,ship,pos,1)
+                hidden.append(name)
+                lev.append(f'    addSphere("{name}_Spawn",{vector(pt)},500)')
         for name,pos,radius in volumes:
             pt=convert(pos,origin)
             positions.append(pt)
@@ -147,12 +185,15 @@ def prepare():
             record['resources'].append({"source_path_id":x['path_id'],"source_ru":d.get('ContainedRu'),"native_ru_multiplier":multiplier,"position":pt})
         lev += ['    addCamera("VRC_HomeCamera",{0,0,0},{3500,1800,-4000})']
         if directory=='T01_Training':
-            # Eight gentle arcs keep the origin-centred Mothership in view.
-            for i,eye in enumerate(((3500,1000,-3500),(4950,1000,0),(3500,1000,3500),(0,1000,4950),(-3500,1000,3500),(-4950,1000,0),(-3500,1000,-3500),(0,1000,-4950)),1):
+            # Small consecutive arcs start beside HomeCamera, avoiding a long opening swing.
+            for i in range(1,33):
+                angle=math.atan2(-4000,3500)+i*2*math.pi/32
+                eye=(math.sqrt(3500**2+4000**2)*math.cos(angle),1800,math.sqrt(3500**2+4000**2)*math.sin(angle))
                 lev.append(f'    addCamera("VRC_IntroOrbit_{i}",{{0,0,0}},{vector(eye)})')
         half=[max(abs(p[j]) for p in positions)+5000 for j in range(3)]
-        background='ez16' if directory=='T01_Training' else 'm01'
-        environment=['    fogSetActive(0)','    setGlareIntensity(0.0)','    setLevelShadowColour(0,0,0,1)'] if directory=='T01_Training' else []
+        background={'T01_Training':'ez16','M01_ProvingGrounds':'ez15'}.get(directory,'m01')
+        environment=['    fogSetActive(0)','    setGlareIntensity(0.0)','    setLevelShadowColour(0,0,0,1)'] if directory in ('T01_Training','M01_ProvingGrounds') else []
+        record['background']=background
         lev += [f'    setWorldBoundsInner({{0,0,0}},{vector(half)})','end','function NonDetermChunk()',*environment,f'    loadBackground("{background}")','    setSensorsManagerCameraDistances(100,70000)','end',f'levelDesc="${ids[title]}"','maxPlayers=3','player={}',f'player[0]={{id=0,name="",resources={ru_amount},raceName="Kushan",startPos=0}}','player[1]={id=1,name="",resources=0,raceName="Vaygr",startPos=0}','player[2]={id=2,name="",resources=0,raceName="Vaygr",startPos=0}']
         (folder/(directory+'.level')).write_text('\n'.join(lev)+'\n',encoding='ascii')
         previews={'T01_Training':'Mission_T1','M01_ProvingGrounds':'Mission_M1','M04_LostDestroyer':'Mission_M4'}
@@ -172,10 +213,10 @@ def prepare():
         campaign.append(f'Mission[{number}]={{postload=function() end,directory="{directory}",level="{directory}.level",postlevel=function() postLevelComplete() end,displayName="${ids[title]}",description="${ids[title+"_desc"]}"}}')
         audit['missions'].append(record)
 
-    make('level1','T01_Training','training',[
-        ('VRC_TrainingA',271,1,1),('VRC_TrainingB',257,1,1),('VRC_TrainingC',318,1,1),('VRC_Platform',260,1,1)],
-        [('Ship_Kus_Scout',[.02+i*4.5,0,-18.33]) for i in range(3)],
-        [('VRC_MovePoint',[4.52,-10.4,42.88],1400),('VRC_TargetPoint',[-11.3,2.9,11.4],2000)],5000)
+    make('level1','T01_Training','training',[],
+        [('Ship_Kus_Scout',[.02,0,-18.33])],
+        [('VRC_MovePoint',[4.52,-10.4,42.88],1400),('VRC_TargetPoint',[-15.46,2.59,81.38],1200),
+         ('VRC_RoutePoint',[39.54,2.59,116.38],1800),('VRC_BattlePoint',[22.04,2.59,171.38],2000)],5000)
     # Actual LoadoutSpawner transforms (not the prefab's zero-position defaults).
     starts=[[-102.42908,-33.09749,-24.03379],[-116.33143,-33.09749,-26.27154],[-130.23378,-33.09749,-28.50929]]
     fleet=[]

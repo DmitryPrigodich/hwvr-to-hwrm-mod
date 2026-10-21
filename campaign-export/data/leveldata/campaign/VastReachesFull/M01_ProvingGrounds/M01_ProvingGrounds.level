@@ -1479,7 +1479,7 @@ function DetermChunk()
     setWorldBoundsInner({0,0,0},{21795.955205,15550.999713,33193.570012})
 end
 function NonDetermChunk()
-    loadBackground("m01")
+    loadBackground("ez15")
     setSensorsManagerCameraDistances(100,150000)
 end
 levelDesc="$9960074"

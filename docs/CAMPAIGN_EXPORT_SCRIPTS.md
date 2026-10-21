@@ -4,6 +4,8 @@
 
 ## Состав и порядок
 
+Окружение по текущим правкам: M0 — финальная Хиигара HW1 (`ez16`); M01 «Хиигара / Hiigara Proving Grounds» — Chapel Perilous (`ez15`); M02 «Тёмная сторона Ангельской Луны / Dark Side of Angel Moon» — HW2M02 (`m02`). M02 сохраняет технические Mission_M7/M07_AngelMoon. Это замена фона, а не перенос сценариев штатных уровней. M02 остаётся отдельной подготовкой и не добавлена в игровой релиз M0/M1/M4.
+
 | № | Глава | Сцена Quest | Группы / корпуса-запросы | Астероиды и объекты ресурсов | Отсутствующие уникальные экземпляры |
 |---|---|---|---|---|---|
 | 1 | `T01_Training` | `level23` | 11 / 103 | 44 | 0 |
@@ -82,11 +84,11 @@ VREX_Common.lua выполняет OnInit, отключает самостоят
 | `Ship_Rad_ShatterStation_SectionWing` | VR Shatter Station section hull and per-section shield/damage linkage required. |
 | `Ship_Rad_ShatterStation_SectionConsole` | VR Shatter Station console hull and finale linkage required. |
 
-Уникальные объекты имеют пустую SOB-группу и геометрическую отметку места. Нет подмены станции «Раскол» случайной штатной станцией и ложного «готового» финала. Конкретные отсутствующие экземпляры, роли native_mapping, полные составы и исходные ссылки находятся в [placements.json](<C:/Users/Dmitry/Documents/ChatGPT/Homeworld Vast Reaches/campaign-export/manifests/placements.json>).
+Уникальные объекты имеют пустую SOB-группу и геометрическую отметку места. Нет подмены станции «Раскол» случайной штатной станцией и ложного «готового» финала. Конкретные отсутствующие экземпляры, роли native_mapping, полные составы и исходные ссылки находятся в [placements.json](</C:/Users/Dmitry/Documents/ChatGPT/Homeworld Vast Reaches/campaign-export/manifests/placements.json>).
 
 ## Проверка и продолжение
 
-Генератор: [prepare_campaign_export.py](<C:/Users/Dmitry/Documents/ChatGPT/Homeworld Vast Reaches/tools/prepare_campaign_export.py>). Запуск: `.\.venv\Scripts\python.exe -X utf8 tools/prepare_campaign_export.py`. Он использует существующие local/quest-campaign, local/quest-audit и helpers write_quest_progression; нового извлечения или установки нет.
+Генератор: [prepare_campaign_export.py](</C:/Users/Dmitry/Documents/ChatGPT/Homeworld Vast Reaches/tools/prepare_campaign_export.py>). Запуск: `.\.venv\Scripts\python.exe -X utf8 tools/prepare_campaign_export.py`. Он использует существующие local/quest-campaign, local/quest-audit и helpers write_quest_progression; нового извлечения или установки нет.
 
 В этой подготовке проверяются порядок/число глав, существование каждого нативного .ship, точное разворачивание SquadronCount, разделение initial/deferred, ссылки спавнеров и структура карт. Отдельно выполняется проверка синтаксиса Lua и OnInit в заглушках API; она не заменяет тест движка.
 

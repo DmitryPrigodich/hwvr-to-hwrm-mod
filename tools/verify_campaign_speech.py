@@ -13,6 +13,8 @@ import verify_minicampaign as mini
 def verify(scripts_only=False):
     report=json.loads((speech.WORK/'integration.json').read_text(encoding='utf8'))
     source=Path(report['source'])
+    training={row['key'] for row in report['mission_lines'] if row['key'].startswith('T01_')}
+    assert len(training)==37 and 'T01_070_060_TS' in training and 'T01_030_020_FI' not in training
     for line in report['mission_lines']:
         path=source/line['path']
         with wave.open(str(path)) as w:

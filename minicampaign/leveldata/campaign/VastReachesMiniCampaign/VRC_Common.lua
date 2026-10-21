@@ -76,11 +76,12 @@ function VRC_Lines(keys)
     for i=1,getn(keys) do VRC_Line(keys[i]) end
 end
 
-function VRC_NewObjective(key,focus)
+function VRC_SetObjective(key,focus)
     if VRC_Objective ~= -1 then Objective_SetState(VRC_Objective,OS_Complete) end
     VRC_Objective = Objective_Add(VRC_Text[key],OT_Primary)
-    VRC_State = VRC_State+1
-    VRC_StageTime = VRC_Time
+    if VRC_ObjectiveDescriptions[key] ~= nil then
+        Objective_AddDescription(VRC_Objective,VRC_Text[VRC_ObjectiveDescriptions[key]])
+    end
     if focus ~= nil then VRC_Focus = focus end
     if VRC_Ping ~= -1 then Ping_Remove(VRC_Ping) end
     if VRC_FocusPoints[VRC_Focus] ~= nil then
@@ -88,7 +89,14 @@ function VRC_NewObjective(key,focus)
     else
         VRC_Ping=Ping_AddSobGroup(VRC_Text[key],"anomaly","VRC_Mothership")
     end
-    print("VRC_MINI: stage="..VRC_State.." objective="..key)
+    print("VRC_MINI: objective="..key)
+end
+
+function VRC_NewObjective(key,focus)
+    VRC_SetObjective(key,focus)
+    VRC_State = VRC_State+1
+    VRC_StageTime = VRC_Time
+    print("VRC_MINI: stage="..VRC_State)
 end
 
 function VRC_Alive(name)

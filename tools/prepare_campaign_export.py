@@ -267,7 +267,7 @@ def graph_bindings(info, groups_by_ref):
             entry = dict(id=prefix+ident, source_graph=label, source_id=ident, kind=kind, status=status,
                          connected=connected, source_args=args, resolved_objects=node.get('resolved_objects', {}),
                          editor_group=q.group_label(graph, node), previous=q.nearby_context(graph, node) if connected else '',
-                         outgoing=edges, expressions={key: expression(graph, node, key) for key in set(args) | {'input', '_enable', 'seconds', 'Tag', 'ActiveState'}})
+                         outgoing=edges, expressions={key: expression(graph, node, key) for key in sorted(set(args) | {'input', '_enable', 'seconds', 'Tag', 'ActiveState'})})
             entry['original_node']=node
             if kind == 'PlayDialogue':
                 detail = q.dialogue_ref(graph, node)
@@ -722,9 +722,13 @@ def prepare_mission(mission, locale):
         record['areas'].append(dict(name=key, source_ref=ref(source), class_name=source['class_name'], position=point,
                                     radius=radius, source_settings=d, state='Geometry only; detection/vision event adapter pending.'))
     max_half = [max([abs(p[i]) for p in all_positions]+[10000])+5000 for i in range(3)]
+    # Public M02 is source Mission_M7; keep the technical directory stable.
+    background = {'T1':'ez16','M1':'ez15','M7':'m02'}.get(code,'m01')
+    record['background'] = background
+    record['public_chapter'] = {'T1':'M0','M1':'M01','M7':'M02'}.get(code,code)
     lines += ['    addCamera("VREX_HomeCamera",{0,0,0},{3500,2000,-4500})',
               '    setWorldBoundsInner({0,0,0},'+lua(max_half)+')','end','function NonDetermChunk()',
-              '    loadBackground("m01")','    setSensorsManagerCameraDistances(100,150000)','end',
+              '    loadBackground('+lua(background)+')','    setSensorsManagerCameraDistances(100,150000)','end',
               'levelDesc='+lua('$'+str(locale[info['raw']['data']['_missionNameKey']]['id'])),
               'maxPlayers=4','player={}',
               'player[0]={id=0,name="",resources='+str(mission['starting_ru'])+',raceName="Kushan",startPos=0}',
@@ -796,6 +800,12 @@ def main():
                             'Missing condition adapter blocks its branch.','Pending instant source commands are logged and recorded without claimed implementation.',
                             'Carryover saves, adaptive fleet value, original balance and repeated dynamic waves pending.'])
     save(MANIFEST,manifest)
+    integration=ROOT/'local/cinematic-update/integration.json'
+    if integration.exists() and read(integration).get('release_enabled') is True:
+        from apply_campaign_movies import add_wrappers, bind_full
+        scenes=read(ROOT/'campaign-export/cinematics/index.json')['scenes']
+        add_wrappers(ROOT/'campaign-export/data',scenes)
+        bind_full(ROOT/'campaign-export/data',scenes)
     write_document(manifest)
     print(json.dumps(dict(missions=len(records),order=manifest['mission_order'],groups=sum(len(r['groups']) for r in records),
                           requested_bodies=sum(len(g['units']) for r in records for g in r['groups']),
@@ -807,6 +817,7 @@ def write_document(manifest):
     lines = ['# Скриптовая подготовка полной кампании Quest для HWRM','',
              'Экспорт содержит 12 настоящих карт `.level`, стартовые `.lua`, размещения и реестр исходных графов. Обучение T1 идёт первым, затем сохранён порядок MissionDatabase Quest. Это база для ручной проверки и дальнейшего переноса условий; игра и лаунчер не запускались.','',
              '## Состав и порядок','',
+              'Окружение по текущим правкам: M0 — финальная Хиигара HW1 (`ez16`); M01 «Хиигара / Hiigara Proving Grounds» — Chapel Perilous (`ez15`); M02 «Тёмная сторона Ангельской Луны / Dark Side of Angel Moon» — HW2M02 (`m02`). M02 сохраняет технические Mission_M7/M07_AngelMoon. Это замена фона, а не перенос сценариев штатных уровней. M02 остаётся отдельной подготовкой и не добавлена в игровой релиз M0/M1/M4.','',
              '| № | Глава | Сцена Quest | Группы / корпуса-запросы | Астероиды и объекты ресурсов | Отсутствующие уникальные экземпляры |',
              '|---|---|---|---|---|---|']
     for i,r in enumerate(manifest['missions'],1):

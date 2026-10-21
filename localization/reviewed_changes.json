@@ -1,11 +1,21 @@
 {
-  "updated_on": "2026-10-21",
-  "date_label": "21 октября 2026",
+  "updated_on": "2026-10-22",
+  "date_label": "22 октября 2026",
   "chapter_labels": {
     "Mission_T1": {
       "ru": "M0. Обучение",
       "en": "M0. Tutorial",
       "internal_id": "T01_Training"
+    },
+    "Mission_M1": {
+      "ru": "M01. Хиигара",
+      "en": "M01. Hiigara Proving Grounds",
+      "internal_id": "M01_ProvingGrounds"
+    },
+    "Mission_M7": {
+      "ru": "M02. Тёмная сторона Ангельской Луны",
+      "en": "M02. Dark Side of Angel Moon",
+      "internal_id": "M07_AngelMoon"
     }
   },
   "lines": {

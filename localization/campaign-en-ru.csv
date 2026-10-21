@@ -73,7 +73,7 @@ M01_120_010_FI,"Damage to the Mothership from the hull breach is substantial, ou
 M01_130_010_FI,Mothership damage nearing critical levels.,Повреждения Материнского корабля приближаются к критическому уровню.
 M01_130_020_KS,They'll take the Mothership if we can't end this fast.,"Если мы не покончим с этим немедленно, они захватят Материнский корабль."
 M01_Description,Train with the Radaa.,Примите участие в совместных учениях с Радаа.
-M01_Name,Hiigara Proving Grounds,Испытательный полигон Хиигары
+M01_Name,Hiigara Proving Grounds,Хиигара
 M01_Objective_00,Harvest RU from asteroids to a total of 200.,"Добывайте ресурсы на астероидах, пока их запас не достигнет 200 ед."
 M01_Objective_00a,Use your RU to Build a Scout.,Постройте разведчик на собранные ресурсы.
 M01_Objective_00b,Locate the Radaa patrol using Scout Sensor Sweep Ability.,Найдите патруль Радаа с помощью активного сканирования разведчика.
