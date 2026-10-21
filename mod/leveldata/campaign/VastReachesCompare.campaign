@@ -1,0 +1,16 @@
+displayName = "Vast Reaches - eight comparison pairs"
+contentType = 0
+contentName = "VastReachesCompare"
+contentOrdered = 1
+contentChooseText = "Eight ship comparisons"
+contentRules = "SinglePlayer"
+ExtFilter = "campaign_ascension,campaign_gbx,campaign_gbx_ascension"
+Mission = {}
+Mission[1] = {
+    postload = function () end,
+    directory = "Compare",
+    level = "Compare.level",
+    postlevel = function () postLevelComplete() end,
+    displayName = "VR and Remastered: eight pairs",
+    description = "Eight pairs under the same lighting. Left: VR. Right: native. Camera shortcuts: 1-8.",
+}

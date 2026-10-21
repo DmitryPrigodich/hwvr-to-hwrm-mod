@@ -1,0 +1,22 @@
+{
+  "FI_MothershipAttacked_01": "The Mothership is under attack.",
+  "FI_MothershipAttacked_03": "Enemy has targeted Mothership.",
+  "FI_MothershipCriticalDamage_01": "Mothership has sustained critical damage.",
+  "FI_MothershipHeavyDamage_01": "Mothership has taken heavy damage.",
+  "FI_MothershipHeavyDamage_03": "Damage to Mothership is intensifying.",
+  "FI_MothershipLost_01": "Mothership damage is massive, life support systems unsustainable. All personnel to the escape pods.",
+  "FI_MothershipLost_03": "We have lost the Mothership.",
+  "FI_MothershipLost_05": "Catastrophic damage to Mothership. All hands to the escape pods.",
+  "FI_MothershipLost_06": "All systems critically compromised. Abandon the Mothership.",
+  "FI_MothershipLost_07": "Loss of structural integrity. Life support failing. Evacuate the Mothership at once.",
+  "FI_MothershipLost_08": "Complete systems failure. Mothership crew must abandon ship.",
+  "FI_UnlockAssaultFrigate": "With the technology transferred from the Shipyard, we can build a new ship: Assault Frigates. These heavy weapon craft are ideal for penetrating the Radaa defenses guarding the shield emitters.",
+  "FI_UnlockBalisticDestroyer": "The Weapons Architects had ship plans we have put into use: we can now build Ballistic Destroyers, whose advanced Missile Barrage will be needed against the heavy Radaa fleet present in this sector.",
+  "FI_UnlockBarricadeFrigate": "With the technology the Bentusi provided, our construction bays can now build Barricade Frigates. When activated, these can provide shields for nearby ships. They can also be used to protect the Bentusi.",
+  "FI_UnlockDestroyer": "Our ship construction capabilities have been upgraded to build a new ship: Destroyers. These capital class ships have weapon systems most effective against squadrons of strike craft.",
+  "FI_UnlockEngineerCraft": "Resources claimed from Gybbas allow us to build a new ship: the Engineer Craft, which has the ability to repair ships in their Strike Group. They are also key to capturing the Radaa Destroyer in this sector.",
+  "FI_UnlockHeavyCorvette": "Our ongoing repairs to the Mothership has added ship build capabilities: we can now build Heavy Corvettes. Their armor is ideal against heavy ballistics from the gun platforms we have detected in this sector.",
+  "FI_UnlockHeavyCruiser": "From the wreckage of the Radaa shipyards we recovered technology to build a new ship: Heavy Cruisers have advanced weapon systems optimal for destroying the Shatter Station wings, once their shields are disabled.",
+  "FI_UnlockIonFrigate": "The Bentusi also provided us the key components necessary to build a new ship class: Ion Frigates, which are ideal for long range attacks and cutting into the hulls of larger ships.",
+  "FI_UnlockMultiGunCorvette": "Our engineering team has added capability to our construction bays: Multi-Gun Corvettes. These are ideal for counter-attack against the Radaa's fast-moving threats to the shipyard."
+}

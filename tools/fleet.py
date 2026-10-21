@@ -1,0 +1,28 @@
+"""Authored HWRM archetype mappings; original geometry and rig come from the demo."""
+
+FLEET = [
+    dict(id="nku_scout", mesh="Kus_Scout", definition="Ship_Kus_Scout", archetype="hgn_scout",
+         race="novokushan", family="Fighter_Kus", ucs=9901030, ru="Разведчик VR", en="VR Scout",
+         weapons=["Hgn_Peashooter", "Hgn_Peashooter"], radius=0.48, scale=100.0, full_materials=True),
+    dict(id="nku_interceptor", mesh="Kus_Interceptor", definition="Ship_Kus_Interceptor", archetype="hgn_interceptor",
+         race="novokushan", family="Fighter_Kus", ucs=9901040, ru="Перехватчик VR", en="VR Interceptor",
+         weapons=["Hgn_KineticAutoGun"], radius=0.64, scale=100.0, full_materials=True),
+    dict(id="nku_attackbomber", mesh="Kus_AttackBomber", definition="Ship_Kus_AttackBomber", archetype="hgn_attackbomber",
+         race="novokushan", family="Fighter_Kus", ucs=9901010, ru="Ударный бомбардировщик VR", en="VR Attack Bomber",
+         weapons=["Hgn_BombLauncher"], radius=0.72, scale=100.0, full_materials=True),
+    dict(id="nku_ioncannonfrigate", mesh="Kus_IonCannonFrigate", definition="Ship_Hgn_IonCannonFrigate", archetype="hgn_ioncannonfrigate",
+         race="novokushan", family="Frigate_Kus", ucs=9901050, ru="Ионный фрегат VR", en="VR Ion Cannon Frigate",
+         weapons=["Hgn_IonCannon"], radius=2, scale=100.0, full_materials=True),
+    dict(id="rad_assaultcraft", mesh="Rad_AssaultCraft", definition="Ship_Rad_AssaultCraft", archetype="vgr_interceptor",
+         race="radaa", family="Fighter_Vgr", ucs=9901060, ru="Штурмовик VR", en="VR Assault Craft",
+         weapons=["Vgr_FlechetteCannon"], radius=0.72, scale=100.0, full_materials=True),
+    dict(id="rad_bomber", mesh="Rad_Bomber", definition="Ship_Rad_AttackBomber", archetype="vgr_bomber",
+         race="radaa", family="Fighter_Vgr", ucs=9901070, ru="Бомбардировщик VR", en="VR Bomber",
+         weapons=["Vgr_BombLauncher"], radius=0.72, scale=100.0, full_materials=True),
+    dict(id="rad_lancefighter", mesh="Rad_LanceFighter", definition="Ship_Rad_LanceFighter", archetype="vgr_lancefighter",
+         race="radaa", family="Fighter_Vgr", ucs=9901020, ru="Лучевой истребитель VR", en="VR Lance Fighter",
+         weapons=["Vgr_LightPlasmaLance"], radius=0.72, scale=100.0, full_materials=True),
+    dict(id="rad_lasercorvette", mesh="Rad_LaserCorvette", definition="Ship_Rad_LaserCorvette", archetype="vgr_lasercorvette",
+         race="radaa", family="Corvette_Vgr", ucs=9901080, ru="Лазерный корвет VR", en="VR Laser Corvette",
+         weapons=["Vgr_Laser", "Vgr_Laser"], radius=1.0, scale=100.0, full_materials=True),
+]

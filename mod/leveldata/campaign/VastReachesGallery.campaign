@@ -1,0 +1,16 @@
+displayName="Vast Reaches - complete model gallery"
+contentType=0
+contentName="VastReachesGallery"
+contentOrdered=1
+contentChooseText="Vast Reaches model gallery"
+contentRules="SinglePlayer"
+ExtFilter="campaign_ascension,campaign_gbx,campaign_gbx_ascension"
+Mission={}
+Mission[1]={
+    postload=function() end,
+    directory="Inspect",
+    level="Inspect.level",
+    postlevel=function() postLevelComplete() end,
+    displayName="Vast Reaches inspection gallery",
+    description="All imported hulls and scenery. N/P: next/previous. 1-8: comparison pairs. 9: new models. 0: overview.",
+}

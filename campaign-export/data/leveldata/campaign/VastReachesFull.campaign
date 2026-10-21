@@ -1,0 +1,20 @@
+displayName="$9960598"
+contentType=0
+contentName="VastReachesFull"
+contentOrdered=0
+contentChooseText="$9960599"
+contentRules="SinglePlayer"
+ExtFilter="campaign_ascension,campaign_gbx,campaign_gbx_ascension"
+Mission={}
+Mission[1]={postload=function() playAnimatic("locale:VRE_Prologue.lua",0,0) end,directory="T01_Training",level="T01_Training.level",postlevel=function() postLevelComplete() end,displayName="$9960559",description="$9960558"}
+Mission[2]={postload=function() end,directory="M01_ProvingGrounds",level="M01_ProvingGrounds.level",postlevel=function() postLevelComplete() end,displayName="$9960074",description="$9960073"}
+Mission[3]={postload=function() playAnimatic("locale:VRE_M7_intro.lua",0,0) end,directory="M07_AngelMoon",level="M07_AngelMoon.level",postlevel=function() postLevelComplete() end,displayName="$9960303",description="$9960302"}
+Mission[4]={postload=function() playAnimatic("locale:VRE_M3_intro.lua",0,0) end,directory="M03_GybbasRaid",level="M03_GybbasRaid.level",postlevel=function() postLevelComplete() end,displayName="$9960114",description="$9960113"}
+Mission[5]={postload=function() playAnimatic("locale:VRE_M4_intro.lua",0,0) end,directory="M04_LostDestroyer",level="M04_LostDestroyer.level",postlevel=function() postLevelComplete() end,displayName="$9960159",description="$9960158"}
+Mission[6]={postload=function() playAnimatic("locale:VRE_M5_intro.lua",0,0) end,directory="M05_HiigaraShipyard",level="M05_HiigaraShipyard.level",postlevel=function() postLevelComplete() end,displayName="$9960199",description="$9960198"}
+Mission[7]={postload=function() playAnimatic("locale:VRE_M6_intro.lua",0,0) end,directory="M06_Weapon",level="M06_Weapon.level",postlevel=function() postLevelComplete() end,displayName="$9960258",description="$9960257"}
+Mission[8]={postload=function() playAnimatic("locale:VRE_M9_intro.lua",0,0) end,directory="M09_Tenhauser",level="M09_Tenhauser.level",postlevel=function() postLevelComplete() end,displayName="$9960399",description="$9960398"}
+Mission[9]={postload=function() playAnimatic("locale:VRE_M10_intro.lua",0,0) end,directory="M10_OuterReef",level="M10_OuterReef.level",postlevel=function() postLevelComplete() end,displayName="$9960439",description="$9960438"}
+Mission[10]={postload=function() playAnimatic("locale:VRE_M11_intro.lua",0,0) end,directory="M11_WeaponArchitects",level="M11_WeaponArchitects.level",postlevel=function() postLevelComplete() end,displayName="$9960476",description="$9960475"}
+Mission[11]={postload=function() playAnimatic("locale:VRE_M8_intro.lua",0,0) end,directory="M08_GybbasOffensive",level="M08_GybbasOffensive.level",postlevel=function() postLevelComplete() end,displayName="$9960336",description="$9960335"}
+Mission[12]={postload=function() playAnimatic("locale:VRE_M13_intro.lua",0,0) end,directory="M13_ReturnToHiigara",level="M13_ReturnToHiigara.level",postlevel=function(bWin) if bWin==1 then playAnimatic("locale:VRE_M13_outro.lua",1,0) else postLevelComplete() end end,displayName="$9960543",description="$9960542"}

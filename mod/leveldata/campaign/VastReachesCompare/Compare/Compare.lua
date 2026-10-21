@@ -1,0 +1,73 @@
+dofilepath("data:scripts/SCAR/SCAR_Util.lua")
+Compare_Current = 1
+function OnInit()
+    print("VR_COMPARE8: init")
+    Rule_AddInterval("Compare_Ready", 1)
+end
+function Compare_Ready()
+    SobGroup_AbilityActivate("Compare_1_VR", AB_Attack, 0)
+    SobGroup_AbilityActivate("Compare_1_RM", AB_Attack, 0)
+    print("VR_COMPARE8: pair=1 vr=nku_scout count="..SobGroup_Count("Compare_1_VR").." rm=kus_scout count="..SobGroup_Count("Compare_1_RM"))
+    UI_BindKeyEvent(ONEKEY, "Compare_View1")
+    SobGroup_AbilityActivate("Compare_2_VR", AB_Attack, 0)
+    SobGroup_AbilityActivate("Compare_2_RM", AB_Attack, 0)
+    print("VR_COMPARE8: pair=2 vr=nku_interceptor count="..SobGroup_Count("Compare_2_VR").." rm=kus_interceptor count="..SobGroup_Count("Compare_2_RM"))
+    UI_BindKeyEvent(TWOKEY, "Compare_View2")
+    SobGroup_AbilityActivate("Compare_3_VR", AB_Attack, 0)
+    SobGroup_AbilityActivate("Compare_3_RM", AB_Attack, 0)
+    print("VR_COMPARE8: pair=3 vr=nku_attackbomber count="..SobGroup_Count("Compare_3_VR").." rm=kus_attackbomber count="..SobGroup_Count("Compare_3_RM"))
+    UI_BindKeyEvent(THREEKEY, "Compare_View3")
+    SobGroup_AbilityActivate("Compare_4_VR", AB_Attack, 0)
+    SobGroup_AbilityActivate("Compare_4_RM", AB_Attack, 0)
+    print("VR_COMPARE8: pair=4 vr=nku_ioncannonfrigate count="..SobGroup_Count("Compare_4_VR").." rm=kus_ioncannonfrigate count="..SobGroup_Count("Compare_4_RM"))
+    UI_BindKeyEvent(FOURKEY, "Compare_View4")
+    SobGroup_AbilityActivate("Compare_5_VR", AB_Attack, 0)
+    SobGroup_AbilityActivate("Compare_5_RM", AB_Attack, 0)
+    print("VR_COMPARE8: pair=5 vr=rad_assaultcraft count="..SobGroup_Count("Compare_5_VR").." rm=vgr_interceptor count="..SobGroup_Count("Compare_5_RM"))
+    UI_BindKeyEvent(FIVEKEY, "Compare_View5")
+    SobGroup_AbilityActivate("Compare_6_VR", AB_Attack, 0)
+    SobGroup_AbilityActivate("Compare_6_RM", AB_Attack, 0)
+    print("VR_COMPARE8: pair=6 vr=rad_bomber count="..SobGroup_Count("Compare_6_VR").." rm=vgr_bomber count="..SobGroup_Count("Compare_6_RM"))
+    UI_BindKeyEvent(SIXKEY, "Compare_View6")
+    SobGroup_AbilityActivate("Compare_7_VR", AB_Attack, 0)
+    SobGroup_AbilityActivate("Compare_7_RM", AB_Attack, 0)
+    print("VR_COMPARE8: pair=7 vr=rad_lancefighter count="..SobGroup_Count("Compare_7_VR").." rm=vgr_lancefighter count="..SobGroup_Count("Compare_7_RM"))
+    UI_BindKeyEvent(SEVENKEY, "Compare_View7")
+    SobGroup_AbilityActivate("Compare_8_VR", AB_Attack, 0)
+    SobGroup_AbilityActivate("Compare_8_RM", AB_Attack, 0)
+    print("VR_COMPARE8: pair=8 vr=rad_lasercorvette count="..SobGroup_Count("Compare_8_VR").." rm=vgr_lasercorvette count="..SobGroup_Count("Compare_8_RM"))
+    UI_BindKeyEvent(EIGHTKEY, "Compare_View8")
+    print("VR_COMPARE8: ready pairs=8 keys=1-8")
+    Compare_Show(1)
+    Rule_Remove("Compare_Ready")
+end
+function Compare_Show(index)
+    Compare_Current = index
+    Camera_Interpolate("here", "Compare_Camera"..index, 0)
+    Subtitle_Message("$"..(9901100+index), 900)
+    print("VR_COMPARE8: view="..index)
+end
+function Compare_View1()
+    Compare_Show(1)
+end
+function Compare_View2()
+    Compare_Show(2)
+end
+function Compare_View3()
+    Compare_Show(3)
+end
+function Compare_View4()
+    Compare_Show(4)
+end
+function Compare_View5()
+    Compare_Show(5)
+end
+function Compare_View6()
+    Compare_Show(6)
+end
+function Compare_View7()
+    Compare_Show(7)
+end
+function Compare_View8()
+    Compare_Show(8)
+end

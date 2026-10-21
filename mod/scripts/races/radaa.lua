@@ -1,0 +1,7 @@
+Path_Name = "Radaa"
+Symbolic_Name = "Radaa"
+Display_Name = "$9901001"
+Prefix = "RAD_"
+ExtFilter = "races_hwrm,races_dm,races_dm_hw1,races_dm_hw2,races_radaa"
+Tags = "race_hwrm,race_dm,race_dm_hw1,race_dm_hw2,race_radaa"
+SG_Pass_Tags = "sgf_common,sgf_vgr"

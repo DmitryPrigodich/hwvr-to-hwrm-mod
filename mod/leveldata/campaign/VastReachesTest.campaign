@@ -1,0 +1,17 @@
+displayName = "Vast Reaches - combat test"
+contentType = 0
+contentName = "VastReachesTest"
+contentOrdered = 1
+contentChooseText = "Choose test scene"
+contentRules = "SinglePlayer"
+ExtFilter = "campaign_ascension,campaign_gbx,campaign_gbx_ascension"
+
+Mission = {}
+Mission[1] = {
+    postload = function () end,
+    directory = "Probe",
+    level = "Probe.level",
+    postlevel = function () postLevelComplete() end,
+    displayName = "Eight imported ships - combat test",
+    description = "Isolated live weapon checks with targets that do not regenerate.",
+}

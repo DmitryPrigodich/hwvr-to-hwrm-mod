@@ -1,0 +1,7 @@
+Path_Name = "Novokushan"
+Symbolic_Name = "Novokushan"
+Display_Name = "$9901000"
+Prefix = "NKU_"
+ExtFilter = "races_hwrm,races_dm,races_dm_hw1,races_dm_hw2,races_novokushan"
+Tags = "race_hwrm,race_dm,race_dm_hw1,race_dm_hw2,race_novokushan"
+SG_Pass_Tags = "sgf_common,sgf_kus"

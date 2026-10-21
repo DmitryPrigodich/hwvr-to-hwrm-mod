@@ -1,0 +1,2396 @@
+[
+  {
+    "section": "Народы и имена",
+    "en": "Hiigara",
+    "ru": "Хиигара",
+    "note": "Сохранять двойное «ии».",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Hiigaran",
+    "ru": "хиигарянин / хиигаряне; хиигарский",
+    "note": "Сохранять двойное «ии».",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Kushan",
+    "ru": "кушане; кушанский",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Novokushan / Neo-Kushan",
+    "ru": "новокушане; новокушанский",
+    "note": "Рабочее название нашей игровой фракции.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Taiidan / Taiidani",
+    "ru": "Таиидан / таиидане; таииданский",
+    "note": "Сохранять двойное «ии».",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Radaa",
+    "ru": "Радаа; Радаа как определение",
+    "note": "Двойное «аа»; не склоняем.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Bentusi",
+    "ru": "бентуси",
+    "note": "Народ; с прописной в обращениях/подписи говорящего.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Tyrra Soban",
+    "ru": "Тирра Собан",
+    "note": "Женщина; двойное «рр».",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Karan S’jet",
+    "ru": "Каран С’Джет",
+    "note": "Женщина.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Amma of the Radaa",
+    "ru": "Амма Радаа",
+    "note": "Женщина, мать Гиитана; двойное «мм».",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Giitan of the Radaa",
+    "ru": "Гиитан Радаа",
+    "note": "Подтверждено Дмитрием: двойное «ии».",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Chief Engineer Hauk",
+    "ru": "Главный инженер Хаук",
+    "note": "Сын Тирры.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Narrator",
+    "ru": "Рассказчик",
+    "note": "HA во вступлении M1; HA в дальнейших беседах также Хаук — смотреть Character, не только суффикс.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Fleet Command",
+    "ru": "Командование флота",
+    "note": "Должность/канал; реплики могут принадлежать Тирре или Каран.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Fleet Intelligence",
+    "ru": "Разведка флота",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "The Beast / BeastWar",
+    "ru": "Тварь / война с Тварью",
+    "note": "Подтверждено Дмитрием; не «Зверь».",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Daiamid",
+    "ru": "Дайамид",
+    "note": "Правящий совет.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Progenitors",
+    "ru": "Предтечи",
+    "note": "Подтверждено Дмитрием: фанатский канон.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Sajuuk",
+    "ru": "Саджуук",
+    "note": "Каноническое имя; в используемом фрагменте не вводится как новый участник.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Vaygr",
+    "ru": "вэйгры; вэйгровский",
+    "note": "Рабочая форма проекта — вэйгры; окончательная форма на проверке. «Воягры» и производные — сленг Дмитрия, уточнение21 октября2026; не использовать как каноническое имя в интерфейсе.",
+    "status": "proposed_for_review",
+    "aliases": [
+      "Воягры",
+      "воягров",
+      "воягры"
+    ]
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "Homeworld",
+    "ru": "родной мир / Хиигара",
+    "note": "По контексту; название серии Homeworld не переводим.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "Hiigara Proving Grounds",
+    "ru": "Испытательный полигон Хиигары",
+    "note": "M1.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "Angel Moon",
+    "ru": "Ангельская Луна",
+    "note": "Предварительный вариант; можно уточнить по фанатскому канону.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "Gybbas",
+    "ru": "Гиббас",
+    "note": "Двойное «бб».",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "Tenhauser",
+    "ru": "Тенхаузер",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "Outer Reef",
+    "ru": "Внешний риф",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "Shatter Station",
+    "ru": "станция «Раскол»",
+    "note": "Рабочий перевод собственного имени, на согласование.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "Shatter Station wing",
+    "ru": "секция станции «Раскол»",
+    "note": "Не отдельный новый класс кораблей.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "The Tower",
+    "ru": "Башня",
+    "note": "Сюжетный объект Радаа.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "Weapon Architects",
+    "ru": "создатели оружия",
+    "note": "Люди/группа в сюжете, не обязательно название боевого класса.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "TR-3 Treaty",
+    "ru": "договор TR-3",
+    "note": "Буквы и номер сохранять.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Места и сюжетные объекты",
+    "en": "Akadet Ferin",
+    "ru": "Акадет Ферин",
+    "note": "Собственное обозначение; не приписывать выдуманное значение.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Fighter / strike craft",
+    "ru": "истребитель / ударный аппарат",
+    "note": "Общее обозначение strike craft не всегда только истребитель.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Strike Group",
+    "ru": "ударная группа",
+    "note": "Игровое объединение нескольких отрядов.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Squadron",
+    "ru": "эскадрилья / отряд",
+    "note": "В подсчётах «отряд»: может включать несколько физических корпусов.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Corvette",
+    "ru": "корвет",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Frigate",
+    "ru": "фрегат",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Destroyer",
+    "ru": "эсминец",
+    "note": "Не «разрушитель».",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Heavy Cruiser",
+    "ru": "тяжёлый крейсер",
+    "note": "Класс HW1.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Battlecruiser",
+    "ru": "линейный крейсер",
+    "note": "Класс HW2; не смешивать с тяжёлым крейсером.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Carrier",
+    "ru": "носитель",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Capital ship",
+    "ru": "крупный корабль",
+    "note": "«Капитал» допустим как наше сокращение в обсуждении, не обязательная подпись UI.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Shipyard",
+    "ru": "верфь",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Mothership",
+    "ru": "Материнский корабль",
+    "note": "Как имя единственного корабля в кампании.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Resource Units / RU",
+    "ru": "единицы ресурсов / RU",
+    "note": "В таблицах и UI числа RU сохраняем.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Research",
+    "ru": "исследование",
+    "note": "Не приписывать платную очередь простому сюжетному открытию.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Build unlock",
+    "ru": "открытие постройки / разрешение строительства",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Hyperspace Core",
+    "ru": "гиперпространственное ядро",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Progenitor Core",
+    "ru": "ядро Предтеч",
+    "note": "Термин «Предтечи» подтверждён Дмитрием.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Unbound",
+    "ru": "Освобождённые / Освобождённая",
+    "note": "Статус Каран/Тирры; рабочий перевод на согласование.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Sensor Sweep",
+    "ru": "активное сканирование сенсорами",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Sensors Manager",
+    "ru": "карта сенсоров",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Resonance silicon",
+    "ru": "резонансный кремний",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Salvage Corvette",
+    "ru": "абордажный корвет",
+    "note": "Название подтверждено Дмитрием. Штатный кушанский корпус HWRM; не полная реализация Engineer Craft.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Engineer Craft",
+    "ru": "инженерный корвет",
+    "note": "Исходная роль VR: ремонт/захват/сцепление требуют отдельных адаптеров.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Personnel Craft",
+    "ru": "транспорт с пленными",
+    "note": "Контекст M11; не выдумывать доступный игроку новый корпус.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Proximity Sensor",
+    "ru": "датчик приближения",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Asteroid / wreckage / container",
+    "ru": "астероид / обломки / контейнер",
+    "note": "",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Cruiser",
+    "ru": "крейсер",
+    "note": "Общий класс; Heavy Cruiser и Battlecruiser сохраняют отдельные названия.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Platform",
+    "ru": "платформа",
+    "note": "Платформа; общий класс. В текущей пробе пул Platform (4 отряда) включает Защитников, у Новотаиидан также защитный истребитель. Вкладка строительства Platform дополнительно содержит инженерные корветы с собственным лимитом20; генераторы/сенсорная батарея строятся в NonCombat и учитываются отдельно.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Utility",
+    "ru": "вспомогательные корабли",
+    "note": "Общая категория справочника; включает ресурсные, исследовательские и сенсорные типы.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Special capital ships",
+    "ru": "особые крупные корабли",
+    "note": "Категория сюжетных крупных кораблей в справочнике, не отдельная строительная ветка.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Flagship",
+    "ru": "флагман",
+    "note": "Категория флагманских кораблей; у Vaygr — Vaygr Flagship.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Station",
+    "ru": "станция",
+    "note": "Стационарный объект; не обязательно доступен для строительства.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Missile",
+    "ru": "ракета",
+    "note": "Категория ракет и сюжетного оружия; не самостоятельный корабельный корпус.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Engineering ships",
+    "ru": "инженерные корабли",
+    "note": "Категория Новокушан: абордажник и ремонтник, общий лимит 20. Название и лимит приняты Дмитрием 20 октября 2026.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Generators",
+    "ru": "генераторы",
+    "note": "Категория Новокушан: исследовательский корабль, стэлс-генератор, гравицапа, сенсорная батарея. Каждый тип ≤6, вместе ≤18; принято Дмитрием 20 октября 2026.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan"
+  },
+  {
+    "section": "Классы и механика",
+    "en": "Defender groups",
+    "ru": "защитники",
+    "note": "Защитники входят в отдельный пул «Платформы»: до4 отрядов по4 аппарата. У Новотаиидан в этот же общий пул входит защитный истребитель (3 аппарата в текущей пробе). Инженеры остаются в той же строительной вкладке, но имеют отдельный пул20. Платформы не входят в Fighter/Corvette/Generators. Уточнение Дмитрия от20октября2026. Защитникам назначена Стена2x2, их ТО — Hexagon.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Mothership",
+    "ru": "Материнский корабль",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 1,
+    "definition": "Ship_Hgn_Mothership",
+    "name_key": "Name_Kushan_Mothership"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Mining Platform",
+    "ru": "Добывающая платформа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 8,
+    "definition": "Ship_Hgn_MiningPlatform",
+    "name_key": "Name_MiningPlatform"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Assault Craft",
+    "ru": "Штурмовик Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 9,
+    "definition": "Ship_Rad_AssaultCraft",
+    "name_key": "Name_Raada_AssaultCraft"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Interceptor",
+    "ru": "Перехватчик",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 10,
+    "definition": "Ship_Kus_Interceptor",
+    "name_key": "Name_Kushan_Interceptor"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Battlecruiser",
+    "ru": "Линейный крейсер Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 11,
+    "definition": "Ship_Rad_Battlecruiser",
+    "name_key": "Name_Raada_Battlecruiser"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Attack Bomber",
+    "ru": "Ударный бомбардировщик",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 13,
+    "definition": "Ship_Kus_AttackBomber",
+    "name_key": "Name_Kushan_AttackBomber"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Heavy Corvette",
+    "ru": "Тяжёлый корвет",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 14,
+    "definition": "Ship_Hgn_HeavyCorvette",
+    "name_key": "Name_Kushan_HeavyCorvette"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Assault Frigate",
+    "ru": "Штурмовой фрегат Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 15,
+    "definition": "Ship_Rad_Frigate",
+    "name_key": "Name_Raada_Frigate"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Carrier",
+    "ru": "Носитель",
+    "note": "CUT: присутствует определение, это не подтверждение использования в кампании.",
+    "status": "proposed_for_review",
+    "ship_type": 16,
+    "definition": "CUT_Ship_Hgn_Carrier",
+    "name_key": "Name_Kushan_Carrier"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Assault Frigate",
+    "ru": "Штурмовой фрегат",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 18,
+    "definition": "Ship_Hgn_AssaultFrigate",
+    "name_key": "Name_Kushan_AssaultFrigate"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Mobile Refinery",
+    "ru": "Ресурсный контроллер",
+    "note": "По уточнению Дмитрия — кушанский ресурсный контроллер. Новокушан строим на базе кушан HWRM с отдельными поправками; характеристики уточним при разборе миссий.",
+    "status": "confirmed_by_user",
+    "ship_type": 19,
+    "definition": "Ship_Kus_MobileRefinery",
+    "name_key": "Name_Kushan_ResourceController"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Ion Cannon Frigate",
+    "ru": "Ионный фрегат",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 20,
+    "definition": "Ship_Hgn_IonCannonFrigate",
+    "name_key": "Name_Kushan_IonCannonFrigate"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Heavy Cruiser",
+    "ru": "Тяжёлый крейсер",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 21,
+    "definition": "Ship_Hgn_HeavyCruiser",
+    "name_key": "Name_Kushan_HeavyCruiser"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Barricade Frigate",
+    "ru": "Фрегат защитного поля (предварительно)",
+    "note": "CUT: наличие определения не подтверждает использование в кампании. Прежняя трактовка как фрегата поддержки снята: технический ID может отражать старую роль. По предположению Дмитрия — Defense Field Frigate; проверить свойства поля и сходство с защитными фрегатами таиидан/хиигарян. Отдельное определение Ship_Hgn_BarricadeFrigate (тип 45) не объединяем без проверки.",
+    "status": "proposed_for_review",
+    "ship_type": 22,
+    "definition": "CUT_Ship_Kus_SupportFrigate",
+    "name_key": "Name_Kushan_SupportFrigate"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Scout",
+    "ru": "Разведчик",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 23,
+    "definition": "Ship_Kus_Scout",
+    "name_key": "Name_Kushan_Scout"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Multi-Gun Corvette",
+    "ru": "Многопушечный корвет",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 24,
+    "definition": "Ship_Hgn_Multi-GunCorvette",
+    "name_key": "Name_Kushan_MultiGunCorvette"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Refinery",
+    "ru": "Мобильный переработчик Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 25,
+    "definition": "Ship_Rad_MobileRefinery",
+    "name_key": "Name_Raada_Refinery"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Engineer Craft",
+    "ru": "Инженерный корвет",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 26,
+    "definition": "Ship_Hgn_EngineerCraft",
+    "name_key": "Name_Kushan_UtilityCorvette"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Destroyer (damaged)",
+    "ru": "Повреждённый эсминец Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 27,
+    "definition": "Ship_Rad_Destroyer Damaged",
+    "name_key": "Name_Raada_DestroyerDamaged"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Gun Platform",
+    "ru": "Орудийная платформа Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 28,
+    "definition": "Ship_Rad_GunPlatform",
+    "name_key": "Name_Raada_GunPlatform"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Lance Fighter",
+    "ru": "Лучевой истребитель Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 29,
+    "definition": "Ship_Rad_LanceFighter",
+    "name_key": "Name_Raada_LanceFighter"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Destroyer",
+    "ru": "Эсминец",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 30,
+    "definition": "Ship_Hgn_Destroyer",
+    "name_key": "Name_Kushan_Destroyer"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Laser Corvette",
+    "ru": "Лазерный корвет Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 31,
+    "definition": "Ship_Rad_LaserCorvette",
+    "name_key": "Name_Raada_LaserCorvette"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Destroyer",
+    "ru": "Эсминец Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 32,
+    "definition": "Ship_Rad_Destroyer",
+    "name_key": "Name_Raada_Destroyer"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Command Corvette",
+    "ru": "Командный корвет Радаа",
+    "note": "CUT: присутствует определение, это не подтверждение использования в кампании.",
+    "status": "proposed_for_review",
+    "ship_type": 33,
+    "definition": "CUT_Ship_Rad_CommandCorvette",
+    "name_key": "Name_Raada_CommandCorvette"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Heavy Missile Frigate",
+    "ru": "Тяжёлый ракетный фрегат Радаа",
+    "note": "CUT: присутствует определение, это не подтверждение использования в кампании.",
+    "status": "proposed_for_review",
+    "ship_type": 34,
+    "definition": "CUT_Ship_Rad_HeavyMissileFrigate",
+    "name_key": "Name_Raada_HeavyMissileFrigate"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Attack Bomber",
+    "ru": "Бомбардировщик Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 35,
+    "definition": "Ship_Rad_AttackBomber",
+    "name_key": "Name_Raada_AttackBomber"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Hyperspace Gate",
+    "ru": "Гиперврата Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 36,
+    "definition": "Ship_Rad_HyperSpaceGate",
+    "name_key": "Name_Raada_HyperSpaceGate"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Missile Corvette",
+    "ru": "Ракетный корвет Радаа",
+    "note": "Название/ракетная роль VR сохранены отдельно от таииданского многопушечного визуального аналога.",
+    "status": "proposed_for_review",
+    "ship_type": 37,
+    "definition": "Ship_Rad_MissileCorvette",
+    "name_key": "Name_Raada_MissileCorvette"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Missile Frigate",
+    "ru": "Ракетный фрегат Радаа",
+    "note": "Внешний infiltrator-аналог не означает готовую способность захвата.",
+    "status": "proposed_for_review",
+    "ship_type": 38,
+    "definition": "Ship_Rad_MissileFrigate",
+    "name_key": "Name_Raada_Infiltration_Frigate"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Heavy Missile Platform",
+    "ru": "Тяжёлая ракетная платформа Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 39,
+    "definition": "Ship_Rad_HeavyMissilePlatform",
+    "name_key": "Name_Raada_HeavyMissilePlatform"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "CUT KUS Nav Beacon",
+    "ru": "Навигационный маяк",
+    "note": "CUT: присутствует определение, это не подтверждение использования в кампании.",
+    "status": "proposed_for_review",
+    "ship_type": 40,
+    "definition": "CUT_Ship_Hgn_NavBeacon",
+    "name_key": "Name_Kushan_NavBeacon"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Shipyard",
+    "ru": "Верфь Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 41,
+    "definition": "Ship_Rad_Shipyard",
+    "name_key": "Name_Raada_Shipyard"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Dummy Ship",
+    "ru": "Технический корабль-заглушка",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 42,
+    "definition": "Ship_DummyShip",
+    "name_key": "Dummy Ship"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Shipyard",
+    "ru": "Верфь",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 43,
+    "definition": "Ship_Hgn_Shipyard",
+    "name_key": "Name_Kushan_Shipyard"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Bentusi Exchange",
+    "ru": "Торговый корабль бентуси",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 44,
+    "definition": "Ship_Ben_Bentusi",
+    "name_key": "Name_Bentusi_Exchange"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Barricade Frigate",
+    "ru": "Баррикадный фрегат",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 45,
+    "definition": "Ship_Hgn_BarricadeFrigate",
+    "name_key": "Name_Kushan_SupportFrigate"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Ballistic Destroyer",
+    "ru": "Баллистический эсминец",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 46,
+    "definition": "Ship_Hgn_BallisticDestroyer",
+    "name_key": "Name_Hiigaran_Ballistic_Destroyer"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Shield Emitter",
+    "ru": "Генератор щита Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 47,
+    "definition": "Ship_Rad_Shield Emitter",
+    "name_key": "Name_Raada_MobileCommandCenter"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Radaa Tower",
+    "ru": "Башня Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 48,
+    "definition": "Ship_Rad_Tower",
+    "name_key": "Name_Raada_Tower"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Destroyer",
+    "ru": "Сдавшийся эсминец Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 49,
+    "definition": "Ship_Rad_Destroyer Surrendered",
+    "name_key": "Name_Raada_Destroyer"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Resource Collector",
+    "ru": "Сборщик ресурсов",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 50,
+    "definition": "Ship_Hgn_ResourceCollector",
+    "name_key": "Name_Kushan_ResourceCollector"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Shatter Station",
+    "ru": "Станция «Раскол»",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 51,
+    "definition": "Ship_Rad_ShatterStation_Whole",
+    "name_key": "Name_Radaa_ShatterStation"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Shatter Station",
+    "ru": "Секция станции «Раскол»",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 52,
+    "definition": "Ship_Rad_ShatterStation_SectionWing",
+    "name_key": "Name_Radaa_ShatterStation_Wing"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Shatter Station ",
+    "ru": "Управляющая секция станции «Раскол»",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 53,
+    "definition": "Ship_Rad_ShatterStation_SectionConsole",
+    "name_key": "Name_Radaa_ShatterStation_Console"
+  },
+  {
+    "section": "Корабли и определения VR",
+    "en": "Battlecruiser",
+    "ru": "Неподвижный линейный крейсер Радаа",
+    "note": "",
+    "status": "proposed_for_review",
+    "ship_type": 54,
+    "definition": "Ship_Rad_Battlecruiser Stationary",
+    "name_key": "Name_Raada_Battlecruiser"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Defender",
+    "ru": "Защитник",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_defender`. Название подтверждено Дмитрием 20 октября 2026 года.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Cloaked Fighter",
+    "ru": "Стэлс-истребитель",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_cloakedfighter`. Название подтверждено Дмитрием 20 октября 2026 года.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Light Corvette",
+    "ru": "Лёгкий корвет",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_lightcorvette`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Minelayer Corvette",
+    "ru": "Минный корвет",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_minelayercorvette`. Название подтверждено Дмитрием 20 октября 2026 года.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Repair Corvette",
+    "ru": "Ремонтный корвет",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_repaircorvette`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Support Frigate",
+    "ru": "Фрегат поддержки",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_supportfrigate`. Не отождествлять с VR CUT_Ship_Kus_SupportFrigate, роль которого ещё проверяется.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Drone Frigate",
+    "ru": "Дронный фрегат",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_dronefrigate`. Название подтверждено Дмитрием 20 октября 2026 года.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Missile Destroyer",
+    "ru": "Ракетный эсминец",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_missiledestroyer`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Resource Controller",
+    "ru": "Ресурсный контроллер",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_resourcecontroller`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Research Ship",
+    "ru": "Исследовательский корабль",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_researchship`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Probe",
+    "ru": "Зонд",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_probe`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Sensors Array",
+    "ru": "Сенсорный массив",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_sensorarray`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Gravwell Generator",
+    "ru": "Генератор гравитационного колодца",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_gravwellgenerator`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Cloak Generator",
+    "ru": "Генератор маскировочного поля",
+    "note": "Штатный кушанский тип HW1/HWRM. `kus_cloakgenerator`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Bomber",
+    "ru": "Бомбардировщик",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_attackbomber`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Gunship",
+    "ru": "Пушечный корвет",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_assaultcorvette`. Корвет; технический ID AssaultCorvette не меняет отображаемое имя.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Pulsar Gunship",
+    "ru": "Пульсарный корвет",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_pulsarcorvette`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Minelayer",
+    "ru": "Минный корвет",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_minelayercorvette`. Сокращённое отображаемое имя хиигарского минного корвета; та же русская форма, что для Minelayer Corvette. Название подтверждено Дмитрием 20 октября 2026 года.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Flak Frigate",
+    "ru": "Зенитный фрегат",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_assaultfrigate`. Зенитный фрегат; технический ID AssaultFrigate не делает его кушанским штурмовым фрегатом.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Torpedo Frigate",
+    "ru": "Торпедный фрегат",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_torpedofrigate`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Marine Frigate",
+    "ru": "Абордажный фрегат",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_marinefrigate`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Defense Field Frigate",
+    "ru": "Фрегат защитного поля",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_defensefieldfrigate`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Mothership / Pride of Hiigara",
+    "ru": "Материнский корабль «Гордость Хиигары»",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_mothership`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Gun Platform",
+    "ru": "Орудийная платформа",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_gunturret`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Ion Cannon Platform",
+    "ru": "Ионная платформа",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_ionturret`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Mobile Refinery",
+    "ru": "Мобильный переработчик",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_resourcecontroller`. Отдельный контекст от VR Ship_Kus_MobileRefinery, для которого принят перевод «Ресурсный контроллер».",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Sensors Distortion Probe",
+    "ru": "Зонд подавления сенсоров",
+    "note": "Штатный хиигарский тип HW2/HWRM. `hgn_ecmprobe`.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Elite Bomber",
+    "ru": "Элитный бомбардировщик",
+    "note": "Сюжетный вариант HW2: hgn_attackbomberelite.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Elite Gunship",
+    "ru": "Элитный пушечный корвет",
+    "note": "Сюжетный вариант HW2: hgn_assaultcorvetteelite.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Captain Soban",
+    "ru": "Фрегат капитана Собана",
+    "note": "Именной вариант Marine Frigate, hgn_marinefrigate_soban; название корабля, не запись о персонаже.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Dreadnaught",
+    "ru": "Дредноут",
+    "note": "Сюжетный крупный корабль HW2, hgn_dreadnaught.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Mover",
+    "ru": "Тягач",
+    "note": "Корабль Предтеч, kpr_mover; специальная кампанийная доступность в HW2. Название подтверждено Дмитрием 20 октября 2026 года.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Survey Scout",
+    "ru": "Разведчик",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_scout. Русское имя на проверке. В строительном списке — Survey Scout, на самом корабле — Scout.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Assault Craft",
+    "ru": "Штурмовик",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_interceptor. Русское имя на проверке.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Lance Fighter",
+    "ru": "Лучевой истребитель",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_lancefighter. Русское имя на проверке.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Missile Corvette",
+    "ru": "Ракетный корвет",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_missilecorvette. Русское имя на проверке.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Laser Corvette",
+    "ru": "Лазерный корвет",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_lasercorvette. Русское имя на проверке.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Command Corvette",
+    "ru": "Командный корвет",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_commandcorvette. Русское имя на проверке.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Heavy Missile Frigate",
+    "ru": "Тяжёлый ракетный фрегат",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_heavymissilefrigate. Русское имя на проверке.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Infiltrator Frigate",
+    "ru": "Фрегат проникновения",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_infiltratorfrigate. Русское имя на проверке. Штатный абордажный фрегат; это не доказательство роли похожего VR-корпуса Радаа.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Vaygr Flagship",
+    "ru": "Флагман вэйгров",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_mothership. Русское имя на проверке.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Heavy Missile Platform",
+    "ru": "Тяжёлая ракетная платформа",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_weaponplatform_missile. Русское имя на проверке.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Hyperspace Gate",
+    "ru": "Гиперврата",
+    "note": "Штатный тип Vaygr HW2/HWRM: vgr_hyperspace_platform. Русское имя на проверке.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Makaan",
+    "ru": "Флагман Макаана",
+    "note": "Именной сюжетный вариант Vaygr Flagship: vgr_mothership_makaan; имя корабля, не запись о персонаже.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Command Station",
+    "ru": "Командная станция",
+    "note": "Объект кампании HW2: vgr_commstation.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Command Station Thaddis Sabbah",
+    "ru": "Командная станция «Таддис Саббах»",
+    "note": "Сюжетная станция HW2: vgr_prisonstation.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Planet Killer",
+    "ru": "Уничтожитель планет",
+    "note": "Сюжетная единица HW2: vgr_planetkiller. То же имя используется в специальной строительной записи vgr_planetkillermissile; не обычный строительный тип флота.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Корабли HW1 / HW2",
+    "en": "Low Orbit Atmosphere Deprivation Weapon",
+    "ru": "Оружие уничтожения атмосферы с низкой орбиты",
+    "note": "Отображаемое имя сюжетного оружия vgr_planetkillermissile в определении корабля.",
+    "status": "proposed_for_review"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Scout",
+    "ru": "Лёгкий истребитель",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Истребители. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_scout`. Кушанский разведчик; многочисленный быстрый отряд, ориентир Assault Craft Vaygr. Уточнение Дмитрия от 20 октября: отряд из 5 аппаратов вместо 7; относится и к общей основе Новотаиидан. Текущая проба: 5 аппаратов, 450RU, 20HP на аппарат, множитель урона0.6.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_scout",
+    "category_ru": "Истребители"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Interceptor",
+    "ru": "Перехватчик",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Истребители. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_interceptor`. Кушанский корпус, боевой ориентир Hgn Interceptor. По указанию о тяжёлых истребителях: 5 аппаратов, 550RU; пробная настройка40HP и урон1.2. Название Перехватчик сохранено.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_interceptor",
+    "category_ru": "Истребители"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Attack Bomber",
+    "ru": "Штурмовой бомбардировщик",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Истребители. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_attackbomber`. Ориентир Hgn Bomber.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_attackbomber",
+    "category_ru": "Истребители"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Cloaked Fighter",
+    "ru": "Стэлс-истребитель",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Истребители. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_cloakedfighter`. Пока механика Kushan + параметры перехватчика.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_cloakedfighter",
+    "category_ru": "Истребители"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Light Corvette",
+    "ru": "Лёгкий корвет",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Корветы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_lightcorvette`. Против истребителей. Уточнение Дмитрия: 600RU, 4 аппарата; дефолтный ромб1+2+1.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_lightcorvette",
+    "category_ru": "Корветы"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Heavy Corvette",
+    "ru": "Тяжёлый корвет",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Корветы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_heavycorvette`. Против корветов.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_heavycorvette",
+    "category_ru": "Корветы"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Multi-Gun Corvette",
+    "ru": "Многопушечный корвет",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Корветы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_multiguncorvette`. Специализированное усиленное ПВО против истребителей.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_multiguncorvette",
+    "category_ru": "Корветы"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Minelayer Corvette",
+    "ru": "Минный корвет",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Корветы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_minelayercorvette`. Против фрегатов, одиночный аппарат.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_minelayercorvette",
+    "category_ru": "Корветы"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Support Frigate",
+    "ru": "Фрегат поддержки",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Фрегаты. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_supportfrigate`. Штатная кушанская поддержка/ремонт; не VR CUT SupportFrigate.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_supportfrigate",
+    "category_ru": "Фрегаты"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Assault Frigate",
+    "ru": "Штурмовой фрегат",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Фрегаты. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_assaultfrigate`. Корветы и фрегаты; общевойсковой корабль. Разговорные обозначения: Штурм-фрегат.",
+    "status": "proposed_for_review",
+    "scope": "novokushan",
+    "native_type": "kus_assaultfrigate",
+    "category_ru": "Фрегаты",
+    "colloquial_aliases": [
+      "Штурм-фрегат"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Ion Cannon Frigate",
+    "ru": "Ионный фрегат",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Фрегаты. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_ioncannonfrigate`. Специализированный огонь по крупным целям. Разговорные обозначения: Ион-фрегат.",
+    "status": "proposed_for_review",
+    "scope": "novokushan",
+    "native_type": "kus_ioncannonfrigate",
+    "category_ru": "Фрегаты",
+    "colloquial_aliases": [
+      "Ион-фрегат"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Drone Frigate",
+    "ru": "Дронный фрегат",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Фрегаты. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_dronefrigate`. Зональная защита от малых кораблей с зависимостью от носителя дронов. Разговорные обозначения: Дрон-фрегат.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_dronefrigate",
+    "category_ru": "Фрегаты",
+    "colloquial_aliases": [
+      "Дрон-фрегат"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Destroyer",
+    "ru": "Лёгкий эсминец",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Эсминцы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_destroyer`. Кушанская компоновка; промежуточный класс между фрегатами и эсминцем HW2. Принятая цена 1350 RU, как в HW1 Classic.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_destroyer",
+    "category_ru": "Эсминцы"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Missile Destroyer",
+    "ru": "Лёгкий ракетный эсминец",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Эсминцы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_missiledestroyer`. Специализация против ударных аппаратов. Принятая цена 1500 RU, как в HW1 Classic.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_missiledestroyer",
+    "category_ru": "Эсминцы"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Heavy Cruiser",
+    "ru": "Тяжёлый эсминец",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Эсминцы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_heavycruiser`. Верхний боевой корпус расы, по весу эсминец HW2. Принятая цена 2800 RU. Уточнение Дмитрия: 90000 здоровья, тип брони HeavyArmour как у линейных крейсеров HW2. Движковый класс эсминцаHW2: SmallCapitalShip/Capital; штатный Destroyer5. Лёгким эсминцам отдельный дополнительный пул10.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_heavycruiser",
+    "category_ru": "Эсминцы"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Carrier",
+    "ru": "Носитель",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Носители. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_carrier`. 4000 RU; последовательная стройка в классическом охвате. Сверхтяжи и пока контроллер — только у Материнского. Две военная/мирная линии пока только техническая разведка. Принадлежность к кушанам задаётся расой; в подписи UI — «Носитель».",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_carrier",
+    "category_ru": "Носители"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Mothership",
+    "ru": "Материнский корабль",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Материнский корабль. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_mothership`. Исходная кушанская основа.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_mothership",
+    "category_ru": "Материнский корабль"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Defender",
+    "ru": "Защитник",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Платформы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_defender`. Мобильное прикрытие, 4 аппарата в группе, максимум 4 группы. Пул Platform: до4 отрядов; у Новотаиидан общий с защитным истребителем. Строительная вкладка Platform общая с инженерными корветами, их лимиты раздельны. Текущий дефолт — Стена2x2, ТО Hexagon.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_defender",
+    "category_ru": "Платформы"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Research Ship",
+    "ru": "Исследовательский корабль",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Генераторы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_researchship`. Кольцо до шести инженерных секций с киитами: Наабал, Манаан, Собан, С’Джет, Сомтаау, Пакту. Одна общая очередь; секции открывают свои ветки и вместе ускоряют работу по HW2.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_researchship",
+    "category_ru": "Генераторы"
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Cloak Generator",
+    "ru": "Генератор маскировки",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Генераторы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_cloakgenerator`. Маскировка группы, тип ≤6. Разговорные обозначения: Стэлс-генератор.",
+    "status": "proposed_for_review",
+    "scope": "novokushan",
+    "native_type": "kus_cloakgenerator",
+    "category_ru": "Генераторы",
+    "colloquial_aliases": [
+      "Стэлс-генератор"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Gravwell Generator",
+    "ru": "Генератор гравитационного поля",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Генераторы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_gravwellgenerator`. Контроль ударных аппаратов, тип ≤6; параметры поля ещё настраиваются. Разговорные обозначения: Гравицапа.",
+    "status": "proposed_for_review",
+    "scope": "novokushan",
+    "native_type": "kus_gravwellgenerator",
+    "category_ru": "Генераторы",
+    "colloquial_aliases": [
+      "Гравицапа"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Salvage Corvette",
+    "ru": "Абордажный корвет",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Инженерные корабли. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_salvagecorvette`. Кушанский захват/буксировка; отдельный управляемый аппарат. Разговорные обозначения: Абордажник.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_salvagecorvette",
+    "category_ru": "Инженерные корабли",
+    "colloquial_aliases": [
+      "Абордажник"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Repair Corvette",
+    "ru": "Ремонтный корвет",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Инженерные корабли. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_repaircorvette`. Ремонт; отдельный управляемый аппарат. Разговорные обозначения: Ремонтник.",
+    "status": "proposed_for_review",
+    "scope": "novokushan",
+    "native_type": "kus_repaircorvette",
+    "category_ru": "Инженерные корабли",
+    "colloquial_aliases": [
+      "Ремонтник"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Resource Collector",
+    "ru": "Сборщик ресурсов",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Вспомогательные. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_resourcecollector`. Добыча; не выдавать ремонт автоматически лишь потому, что он есть у аналога HW2. Разговорные обозначения: Ресурсер.",
+    "status": "proposed_for_review",
+    "scope": "novokushan",
+    "native_type": "kus_resourcecollector",
+    "category_ru": "Вспомогательные",
+    "colloquial_aliases": [
+      "Ресурсер"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Resource Controller",
+    "ru": "Ресурсный контроллер",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Вспомогательные. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_resourcecontroller`. Кушанский ресурсный контроллер, приём ресурсов. Разговорные обозначения: Переработчик.",
+    "status": "proposed_for_review",
+    "scope": "novokushan",
+    "native_type": "kus_resourcecontroller",
+    "category_ru": "Вспомогательные",
+    "colloquial_aliases": [
+      "Переработчик"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Probe",
+    "ru": "Разведывательный зонд",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Вспомогательные. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_probe`. Разведывательный зонд. Разговорные обозначения: Пробка.",
+    "status": "proposed_for_review",
+    "scope": "novokushan",
+    "native_type": "kus_probe",
+    "category_ru": "Вспомогательные",
+    "colloquial_aliases": [
+      "Пробка"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Proximity Sensor",
+    "ru": "Датчик приближения",
+    "note": "Категория принята Дмитрием 20 октября 2026; разговорное сокращение не считается утверждённой подписью UI. Категория: Вспомогательные. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_proximitysensor`. Обнаружение маскировки; не ECM-глушение. Разговорные обозначения: Анти-стэлс.",
+    "status": "proposed_for_review",
+    "scope": "novokushan",
+    "native_type": "kus_proximitysensor",
+    "category_ru": "Вспомогательные",
+    "colloquial_aliases": [
+      "Анти-стэлс"
+    ],
+    "display_name_review": "Expanded for UI after Dmitry clarified that his roster used slang, 2026-10-20."
+  },
+  {
+    "section": "Названия Новокушан",
+    "en": "Sensors Array",
+    "ru": "Сенсорная батарея",
+    "note": "RU и категория приняты Дмитрием 20 октября 2026. Категория: Генераторы. EN — исходное название кушанского прототипа, не новая утверждённая английская подпись. `kus_sensorarray`. Тип ≤6; большой пассивный обзор сразу, пинг и анти-стэлс после исследований.",
+    "status": "confirmed_by_user",
+    "scope": "novokushan",
+    "native_type": "kus_sensorarray",
+    "category_ru": "Генераторы"
+  },
+  {
+    "section": "Народы и имена",
+    "en": "Neo-Taiidan / Neo-Taiidani",
+    "ru": "новотаиидане; новотаииданский",
+    "note": "Новая проектируемая раса по решению Дмитрия 20 октября 2026. Двойное «ии». RU принят; EN пока рабочее имя. Общая балансная основа с Новокушанами, классовая наука.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review"
+  },
+  {
+    "section": "Кииты и научные направления",
+    "en": "Naabal",
+    "ru": "Наабал",
+    "note": "Киит. В авторской научной схеме Новокушан: шасси. Назначение принято Дмитрием 20 октября 2026; оно не объявляется канонической специализацией киита.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Кииты и научные направления",
+    "en": "Manaan",
+    "ru": "Манаан",
+    "note": "Киит. В авторской научной схеме Новокушан: двигатели. Назначение принято Дмитрием 20 октября 2026; оно не объявляется канонической специализацией киита.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Кииты и научные направления",
+    "en": "Soban",
+    "ru": "Собан",
+    "note": "Киит. В авторской научной схеме Новокушан: орудия. Назначение принято Дмитрием 20 октября 2026; оно не объявляется канонической специализацией киита.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Кииты и научные направления",
+    "en": "S’jet",
+    "ru": "С’Джет",
+    "note": "Киит. В авторской научной схеме Новокушан: спецтехнологии, включая гиперпространство. Назначение принято Дмитрием 20 октября 2026; оно не объявляется канонической специализацией киита.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Кииты и научные направления",
+    "en": "Somtaaw",
+    "ru": "Сомтаау",
+    "note": "Киит. В авторской научной схеме Новокушан: ИИ. Назначение принято Дмитрием 20 октября 2026; оно не объявляется канонической специализацией киита.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Кииты и научные направления",
+    "en": "Paktu",
+    "ru": "Пакту",
+    "note": "Киит. В авторской научной схеме Новокушан: сенсоры. Назначение принято Дмитрием 20 октября 2026; оно не объявляется канонической специализацией киита.",
+    "status": "confirmed_by_user"
+  },
+  {
+    "section": "Научные модули Новокушан",
+    "en": "Chassis Research Module",
+    "ru": "Модуль шасси",
+    "note": "Новокушане. Наабал. Направление и киит приняты Дмитрием; EN — рабочий перевод. Одна общая очередь, модуль открывает свою ветку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "novokushan",
+    "kind": "research_module",
+    "research_branch": "chassis",
+    "kiith": "Naabal"
+  },
+  {
+    "section": "Научные модули Новокушан",
+    "en": "Engine Research Module",
+    "ru": "Модуль двигателей",
+    "note": "Новокушане. Манаан. Направление и киит приняты Дмитрием; EN — рабочий перевод. Одна общая очередь, модуль открывает свою ветку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "novokushan",
+    "kind": "research_module",
+    "research_branch": "engines",
+    "kiith": "Manaan"
+  },
+  {
+    "section": "Научные модули Новокушан",
+    "en": "Weapons Research Module",
+    "ru": "Модуль орудий",
+    "note": "Новокушане. Собан. Направление и киит приняты Дмитрием; EN — рабочий перевод. Одна общая очередь, модуль открывает свою ветку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "novokushan",
+    "kind": "research_module",
+    "research_branch": "weapons",
+    "kiith": "Soban"
+  },
+  {
+    "section": "Научные модули Новокушан",
+    "en": "Special Technologies Research Module",
+    "ru": "Модуль спецтехнологий",
+    "note": "Новокушане. С’Джет. Направление и киит приняты Дмитрием; EN — рабочий перевод. Одна общая очередь, модуль открывает свою ветку. Гиперпространственные технологии входят сюда.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "novokushan",
+    "kind": "research_module",
+    "research_branch": "special",
+    "kiith": "S’jet"
+  },
+  {
+    "section": "Научные модули Новокушан",
+    "en": "AI Research Module",
+    "ru": "Модуль ИИ",
+    "note": "Новокушане. Сомтаау. Направление и киит приняты Дмитрием; EN — рабочий перевод. Одна общая очередь, модуль открывает свою ветку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "novokushan",
+    "kind": "research_module",
+    "research_branch": "ai",
+    "kiith": "Somtaaw"
+  },
+  {
+    "section": "Научные модули Новокушан",
+    "en": "Sensors Research Module",
+    "ru": "Модуль сенсоров",
+    "note": "Новокушане. Пакту. Направление и киит приняты Дмитрием; EN — рабочий перевод. Одна общая очередь, модуль открывает свою ветку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "novokushan",
+    "kind": "research_module",
+    "research_branch": "sensors",
+    "kiith": "Paktu"
+  },
+  {
+    "section": "Научные модули Новотаиидан",
+    "en": "General Research Module",
+    "ru": "Общий исследовательский модуль",
+    "note": "Новотаиидане. Направление принято Дмитрием; EN — рабочий перевод. Секция отдельной научной сборки, одна общая очередь. Дополнительная производственная станция не заменяет эту сборку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "neotaiidan",
+    "kind": "research_module",
+    "research_branch": "general"
+  },
+  {
+    "section": "Научные модули Новотаиидан",
+    "en": "Fighter Research Module",
+    "ru": "Истребительный модуль",
+    "note": "Новотаиидане. Направление принято Дмитрием; EN — рабочий перевод. Секция отдельной научной сборки, одна общая очередь. Дополнительная производственная станция не заменяет эту сборку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "neotaiidan",
+    "kind": "research_module",
+    "research_branch": "fighter"
+  },
+  {
+    "section": "Научные модули Новотаиидан",
+    "en": "Corvette Research Module",
+    "ru": "Корветный модуль",
+    "note": "Новотаиидане. Направление принято Дмитрием; EN — рабочий перевод. Секция отдельной научной сборки, одна общая очередь. Дополнительная производственная станция не заменяет эту сборку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "neotaiidan",
+    "kind": "research_module",
+    "research_branch": "corvette"
+  },
+  {
+    "section": "Научные модули Новотаиидан",
+    "en": "Frigate Research Module",
+    "ru": "Фрегатный модуль",
+    "note": "Новотаиидане. Направление принято Дмитрием; EN — рабочий перевод. Секция отдельной научной сборки, одна общая очередь. Дополнительная производственная станция не заменяет эту сборку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "neotaiidan",
+    "kind": "research_module",
+    "research_branch": "frigate"
+  },
+  {
+    "section": "Научные модули Новотаиидан",
+    "en": "Super Capital Ship Research Module",
+    "ru": "Модуль сверхтяжёлых кораблей",
+    "note": "Новотаиидане. Направление принято Дмитрием; EN — рабочий перевод. Секция отдельной научной сборки, одна общая очередь. Дополнительная производственная станция не заменяет эту сборку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "neotaiidan",
+    "kind": "research_module",
+    "research_branch": "supercapital"
+  },
+  {
+    "section": "Научные модули Новотаиидан",
+    "en": "Platform Research Module",
+    "ru": "Платформенный модуль",
+    "note": "Новотаиидане. Направление принято Дмитрием; EN — рабочий перевод. Секция отдельной научной сборки, одна общая очередь. Дополнительная производственная станция не заменяет эту сборку.",
+    "status": "confirmed_by_user",
+    "en_status": "proposed_for_review",
+    "scope": "neotaiidan",
+    "kind": "research_module",
+    "research_branch": "platform"
+  },
+  {
+    "section": "Названия Новотаиидан",
+    "en": "Research Station",
+    "ru": "Исследовательская станция",
+    "note": "Штатный прототип tai_researchstation. Принято: дополнительная вызываемая станция с производством до фрегатов включительно; научная сборка сохраняется отдельно. Дополнительные функции отложены. Возможности новой станции ещё не реализованы.",
+    "status": "confirmed_by_user",
+    "scope": "neotaiidan",
+    "native_type": "tai_researchstation",
+    "kind": "ship"
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_FighterChassis",
+    "en": "Fighter Chassis",
+    "ru": "Шасси истребителей",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Fighter Chassis.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_AdvancedFighterChassis",
+    "en": "Advanced Fighter Chassis",
+    "ru": "Усовершенствованное шасси истребителей",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Advanced Fighter Chassis.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_CorvetteChassis",
+    "en": "Corvette Chassis",
+    "ru": "Шасси корветов",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Corvette Chassis.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_AdvancedCorvetteChassis",
+    "en": "Advanced Corvette Chassis",
+    "ru": "Усовершенствованное шасси корветов",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Advanced Corvette Chassis.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_FrigateChassis",
+    "en": "Frigate Chassis",
+    "ru": "Шасси фрегатов",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Frigate Chassis.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_AdvancedFrigateChassis",
+    "en": "Advanced Frigate Chassis",
+    "ru": "Усовершенствованное шасси фрегатов",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Advanced Frigate Chassis.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_DestroyerChassis",
+    "en": "Destroyer Chassis",
+    "ru": "Шасси эсминцев",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Destroyer Chassis.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_AdvancedDestroyerChassis",
+    "en": "Advanced Destroyer Chassis",
+    "ru": "Усовершенствованное шасси эсминцев",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Advanced Destroyer Chassis.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_HeavyCorvetteArmor",
+    "en": "Heavy Corvette Armor",
+    "ru": "Броня тяжёлого корвета",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Heavy Corvette Armor.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_MultigunCorvetteArmor",
+    "en": "Multigun Corvette Armor",
+    "ru": "Броня многопушечного корвета",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Multigun Corvette Armor.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_AssaultFrigateArmor",
+    "en": "Assault Frigate Armor",
+    "ru": "Броня штурмового фрегата",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Assault Frigate Armor.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_IonFrigateArmor",
+    "en": "Ion Cannon Frigate Armor",
+    "ru": "Броня ионного фрегата",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Ion Cannon Frigate Armor.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_LightDestroyerArmor",
+    "en": "Light Destroyer Armor",
+    "ru": "Броня лёгкого эсминца",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Light Destroyer Chassis.",
+    "aliases": [
+      "Light Destroyer Chassis"
+    ]
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_MissileDestroyerArmor",
+    "en": "Light Missile Destroyer Armor",
+    "ru": "Броня лёгкого ракетного эсминца",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Light Missile Destroyer Chassis.",
+    "aliases": [
+      "Light Missile Destroyer Chassis"
+    ]
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_CarrierArmor",
+    "en": "Carrier Armor",
+    "ru": "Броня носителя",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Carrier Chassis.",
+    "aliases": [
+      "Carrier Chassis"
+    ]
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_HeavyDestroyerArmor",
+    "en": "Heavy Destroyer Armor",
+    "ru": "Броня тяжёлого эсминца",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Наабал. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Heavy Destroyer Chassis.",
+    "aliases": [
+      "Heavy Destroyer Chassis"
+    ]
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_FighterDrive",
+    "en": "Fighter Drive",
+    "ru": "Двигатели истребителей",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Fighter Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_AdvancedFighterDrive",
+    "en": "Advanced Fighter Drive",
+    "ru": "Усовершенствованные двигатели истребителей",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Advanced Fighter Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_CorvetteDrive",
+    "en": "Corvette Drive",
+    "ru": "Двигатели корветов",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Corvette Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_AdvancedCorvetteDrive",
+    "en": "Advanced Corvette Drive",
+    "ru": "Усовершенствованные двигатели корветов",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Advanced Corvette Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_FrigateDrive",
+    "en": "Frigate Drive",
+    "ru": "Двигатели фрегатов",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Frigate Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_AdvancedFrigateDrive",
+    "en": "Advanced Frigate Drive",
+    "ru": "Усовершенствованные двигатели фрегатов",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Advanced Frigate Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_DestroyerDrive",
+    "en": "Destroyer Drive",
+    "ru": "Двигатели эсминцев",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Destroyer Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_AdvancedDestroyerDrive",
+    "en": "Advanced Destroyer Drive",
+    "ru": "Усовершенствованные двигатели эсминцев",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Advanced Destroyer Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_LightFighterSpeed",
+    "en": "Light Fighter Drive",
+    "ru": "Скорость лёгкого истребителя",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: light interceptor drive.",
+    "aliases": [
+      "light interceptor drive"
+    ]
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_InterceptorSpeed",
+    "en": "Interceptor Drive",
+    "ru": "Скорость перехватчика",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: heavy interceptor drive.",
+    "aliases": [
+      "heavy interceptor drive"
+    ]
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_BomberSpeed",
+    "en": "Attack Bomber Drive",
+    "ru": "Скорость штурмового бомбардировщика",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Attack Bomber Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_LightCorvetteSpeed",
+    "en": "Light Corvette Drive",
+    "ru": "Скорость лёгкого корвета",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Light Corvette Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_MultigunCorvetteSpeed",
+    "en": "Multigun Corvette Drive",
+    "ru": "Скорость многопушечного корвета",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: heavy Corvette drive.",
+    "aliases": [
+      "heavy Corvette drive"
+    ]
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_SupportFrigateSpeed",
+    "en": "Support Frigate Drive",
+    "ru": "Скорость фрегата поддержки",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Support Frigate Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_AssaultFrigateSpeed",
+    "en": "Assault Frigate Drive",
+    "ru": "Скорость штурмового фрегата",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Assault Frigate Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_IonFrigateSpeed",
+    "en": "Ion Cannon Frigate Drive",
+    "ru": "Скорость ионного фрегата",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Ion Cannon Frigate Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_LightDestroyerSpeed",
+    "en": "Light Destroyer Drive",
+    "ru": "Скорость лёгкого эсминца",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Light Destroyer Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_MissileDestroyerSpeed",
+    "en": "Light Missile Destroyer Drive",
+    "ru": "Скорость лёгкого ракетного эсминца",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Light Missile Destroyer Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_CarrierSpeed",
+    "en": "Carrier Drive",
+    "ru": "Скорость носителя",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Carrier Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_HeavyDestroyerSpeed",
+    "en": "Heavy Destroyer Drive",
+    "ru": "Скорость тяжёлого эсминца",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Heavy Destroyer Drive.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_LightFighterBurn",
+    "en": "Light Fighter Acceleration",
+    "ru": "Ускорение лёгкого истребителя",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Манаан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: light interceptor burn.",
+    "aliases": [
+      "light interceptor burn"
+    ]
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_PlasmaBombs",
+    "en": "Improved Plasma Bombs",
+    "ru": "Улучшенные плазменные бомбы",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Собан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Improved Plasma Bombs.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_IonCannons",
+    "en": "Ion Cannons",
+    "ru": "Ионные орудия",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Собан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Ion Cannons.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_GuidedMissiles",
+    "en": "Guided Missiles",
+    "ru": "Управляемые ракеты",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Собан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Guided Missiles.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_Minelaying",
+    "en": "Minelaying Technology",
+    "ru": "Минные системы",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Собан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Minelaying Technology.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_HeavyGuns",
+    "en": "Heavy Guns",
+    "ru": "Тяжёлые орудия",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Собан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Heavy Guns.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_SalvageSystems",
+    "en": "Salvage Systems",
+    "ru": "Системы захвата",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Собан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Salvage Systems.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_ProximityDetector",
+    "en": "Proximity Detector",
+    "ru": "Стэлс-детектор",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Пакту. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Proximity Detector.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_SensorArray",
+    "en": "Sensor Array",
+    "ru": "Сенсорная батарея",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Пакту. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Sensor Array.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_EnhancedScanning",
+    "en": "Enhanced Scanning",
+    "ru": "Улучшенное сканирование",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Пакту. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Enhanced Scanning.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_HyperspaceSensors",
+    "en": "Hyperspace Sensors",
+    "ru": "Сенсоры гиперпространства",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Пакту. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Hyperspace Sensors.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_FastTrackingTurrets",
+    "en": "Fast-Tracking Turrets",
+    "ru": "Скоронаводящиеся орудия",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Сомтаау. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Fast-Tracking Turrets.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_DefenderSubsystems",
+    "en": "Defender Subsystems",
+    "ru": "Подсистемы Защитника",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Сомтаау. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Defender Subsystems.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_DroneTechnology",
+    "en": "Drone Technology",
+    "ru": "Беспилотные технологии",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Сомтаау. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Drone Technology.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_ImprovedManufacturing",
+    "en": "Improved Manufacturing",
+    "ru": "Улучшенное производство",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Сомтаау. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Improved Manufacturing.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_RepairSystems",
+    "en": "Repair Systems",
+    "ru": "Системы ремонта",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Сомтаау. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Repair Systems.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_DefenseField",
+    "en": "Defense Field Generator",
+    "ru": "Генератор защитного поля",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр С’Джет. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Defense Field Generator.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_GravityGenerator",
+    "en": "Gravity Generator",
+    "ru": "Генератор гравитационного поля",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр С’Джет. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Gravity Generator.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_CloakGenerator",
+    "en": "Cloak Generator",
+    "ru": "Генератор маскировки",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр С’Джет. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Cloak Generator.",
+    "aliases": []
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_HyperspaceGenerator",
+    "en": "Hyperspace Generator",
+    "ru": "Генератор гиперпространства",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр С’Джет. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Hyperspace Generator.",
+    "aliases": []
+  },
+  {
+    "section": "Исследовательские корабли Новокушан",
+    "research_module": "naabal",
+    "en": "Naabal Research Module",
+    "ru": "Исследовательский модуль Наабал — Шасси",
+    "status": "confirmed_by_user",
+    "native_reference": "kus_researchship",
+    "note": "Профиль и имя корабля согласованы21 октября2026. В схеме исследований также «Исследовательский центр Наабал». EN — рабочий перевод; штатный прототип Research Ship остаётся отдельным исходным именем."
+  },
+  {
+    "section": "Исследовательские корабли Новокушан",
+    "research_module": "manaan",
+    "en": "Manaan Research Module",
+    "ru": "Исследовательский модуль Манаан — Двигатели",
+    "status": "confirmed_by_user",
+    "native_reference": "kus_researchship_1",
+    "note": "Профиль и имя корабля согласованы21 октября2026. В схеме исследований также «Исследовательский центр Манаан». EN — рабочий перевод; штатный прототип Research Ship остаётся отдельным исходным именем."
+  },
+  {
+    "section": "Исследовательские корабли Новокушан",
+    "research_module": "soban",
+    "en": "Soban Research Module",
+    "ru": "Исследовательский модуль Собан — Орудия",
+    "status": "confirmed_by_user",
+    "native_reference": "kus_researchship_2",
+    "note": "Профиль и имя корабля согласованы21 октября2026. В схеме исследований также «Исследовательский центр Собан». EN — рабочий перевод; штатный прототип Research Ship остаётся отдельным исходным именем."
+  },
+  {
+    "section": "Исследовательские корабли Новокушан",
+    "research_module": "sjet",
+    "en": "S’jet Research Module",
+    "ru": "Исследовательский модуль С’Джет — Спецтехнологии",
+    "status": "confirmed_by_user",
+    "native_reference": "kus_researchship_3",
+    "note": "Профиль и имя корабля согласованы21 октября2026. В схеме исследований также «Исследовательский центр С’Джет». EN — рабочий перевод; штатный прототип Research Ship остаётся отдельным исходным именем."
+  },
+  {
+    "section": "Исследовательские корабли Новокушан",
+    "research_module": "somtaaw",
+    "en": "Somtaaw Research Module",
+    "ru": "Исследовательский модуль Сомтаау — ИИ-системы",
+    "status": "confirmed_by_user",
+    "native_reference": "kus_researchship_4",
+    "note": "Профиль и имя корабля согласованы21 октября2026. В схеме исследований также «Исследовательский центр Сомтаау». EN — рабочий перевод; штатный прототип Research Ship остаётся отдельным исходным именем."
+  },
+  {
+    "section": "Исследовательские корабли Новокушан",
+    "research_module": "paktu",
+    "en": "Paktu Research Module",
+    "ru": "Исследовательский модуль Пакту — Сенсоры",
+    "status": "confirmed_by_user",
+    "native_reference": "kus_researchship_5",
+    "note": "Профиль и имя корабля согласованы21 октября2026. В схеме исследований также «Исследовательский центр Пакту». EN — рабочий перевод; штатный прототип Research Ship остаётся отдельным исходным именем."
+  },
+  {
+    "section": "Корабли Новокушан",
+    "en": "Defense Field Frigate",
+    "ru": "Фрегат защитного поля",
+    "novokushan_project": "defense_field_frigate",
+    "native_reference": "nku_barricadefrigate",
+    "status": "confirmed_by_user",
+    "note": "Роль задана Дмитрием21 октября2026; подготовленный VR-корпус Barricade Frigate, механика штатного Hgn. Не объединяет исходные определения Ship_Hgn_BarricadeFrigate и CUT_Ship_Kus_SupportFrigate."
+  },
+  {
+    "section": "Исследования Новокушан",
+    "research_id": "NKR_PlasmaWeapons",
+    "en": "Plasma Weapons",
+    "ru": "Плазменные орудия",
+    "status": "confirmed_by_user",
+    "note": "Исследовательский центр Собан. Основа — схема Дмитрия21 октября2026; цены/время отдельно как пробная настройка. Исходный EN: Plasma Weapons.",
+    "aliases": []
+  }
+]
