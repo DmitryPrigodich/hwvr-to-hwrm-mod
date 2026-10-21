@@ -36,8 +36,10 @@ class Engine:
             'CPU_Enable':self.noop,'SetAlliance':self.noop,'SobGroup_Despawn':self.despawn,'SobGroup_Spawn':self.spawn,
             'Player_RestrictBuildOption':self.noop,'Player_UnrestrictBuildOption':self.noop,
             'Player_RestrictResearchOption':self.noop,'Player_GrantResearchOption':self.noop,
+            'Player_UnrestrictResearchOption':self.noop,
             'SobGroup_AbilityActivate':self.noop,'UI_BindKeyEvent':self.noop,'Camera_Interpolate':self.noop,
             'Rule_AddInterval':self.noop,'Rule_Remove':self.noop,'Subtitle_Message':self.noop,
+            'Sound_SpeechSubtitlePath':self.noop,'Subtitle_Add':self.subtitle_add,'Subtitle_IsDone':self.subtitle_done,
             'Objective_Add':self.objective,'Objective_SetState':self.objective_state,
             'Ping_Remove':self.noop,'Ping_AddPoint':lambda *a:1,'Ping_AddSobGroup':lambda *a:1,
             'SobGroup_Count':lambda n:len(self.members(n)), 'FOW_RevealGroup':self.noop,
@@ -60,6 +62,18 @@ class Engine:
         self.g.OnInit()
 
     def noop(self,*args):pass
+    def await_completion(self):
+        # Native speech can legitimately exceed the former fixed 20s window.
+        for _ in range(180):
+            if self.results:return
+            self.tick()
+        raise AssertionError('Mission never completed after its final speech')
+    def subtitle_add(self,actor,text,duration):
+        if not hasattr(self,'subtitle_until'):self.subtitle_until={}
+        self.subtitle_until[actor]=self.g.VRC_Time+duration
+        return duration
+    def subtitle_done(self,actor):
+        return int(self.g.VRC_Time>=getattr(self,'subtitle_until',{}).get(actor,0))
     def order(self,*args):self.orders.append(args)
     def load(self,path):
         path=path.removeprefix('data:')
@@ -148,7 +162,7 @@ def tests():
     e.tick(5);e.assert_stage(3)
     e.add_player('kus_interceptor');e.tick();e.assert_stage(4)
     for group in ['VRC_TrainingB','VRC_TrainingC','VRC_Platform']:e.kill(group)
-    e.tick(20);assert e.results==[1],e.results
+    e.tick(20);e.await_completion();assert e.results==[1],e.results
     passed.append('T1 requires movement, first kill, actual additional build and final kills; wins once.')
     e=Engine('M01_ProvingGrounds')
     e.tick();e.assert_stage(1)
@@ -162,7 +176,7 @@ def tests():
     e.tick();e.assert_stage(7)
     e.kill('VRC_Breach3');e.tick();e.assert_stage(8)
     e.tick(19);e.assert_stage(8)
-    e.tick(20);assert e.results==[1]
+    e.tick(20);e.await_completion();assert e.results==[1]
     passed.append('M1 gates RU/scout/recon, all three patrols and three breach frigates; timed escape ignores final fleet kills.')
 
     def m4_attach():
@@ -178,10 +192,10 @@ def tests():
 
     e=m4_attach();e.tick(16);assert e.g.VRC_PursuitWave==1
     for n in e.groups['VRC_Destroyer']:e.ships[n]['pos']=[0,0,0]
-    e.tick(20);assert e.results==[1]
+    e.tick(20);e.await_completion();assert e.results==[1]
     assert e.objectives[e.g.VRC_Optional]['state']=='active'
     passed.append('M4 requires THREE nearby engineers for 10 s, switches owner, issues tow order, spawns pursuit and wins by delivery with gate alive.')
-    e=m4_attach();e.kill('VRC_Gate');e.tick(20);assert e.results==[1]
+    e=m4_attach();e.kill('VRC_Gate');e.tick(20);e.await_completion();assert e.results==[1]
     assert e.g.VRC_PursuitWave==0
     assert e.objectives[e.g.VRC_Optional]['state']=='OS_Complete'
     passed.append('M4 alternate gate kill wins without delivery and prevents further pursuit spawns.')

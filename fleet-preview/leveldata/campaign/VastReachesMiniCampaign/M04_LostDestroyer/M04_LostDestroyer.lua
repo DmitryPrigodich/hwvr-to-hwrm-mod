@@ -8,7 +8,7 @@ function OnInit()
     SobGroup_AbilityActivate("VRC_Destroyer",AB_Move,0)
     SobGroup_AbilityActivate("VRC_Destroyer",AB_Attack,0)
     SobGroup_SetHealth("VRC_Destroyer",0.65)
-    VRC_Lines({"prototype","M04_010_010_A_FI","M04_010_020_A_TS","M04_010_030_A_FI","M04_010_040_A_TS","M04_010_050_A_KS","M04_010_060_A_TS","M04_010_070_A_KS","M04_010_080_A_TS","M04_020_010_KS","M04_020_040_KS"})
+    VRC_Lines({"M04_020_010_KS","M04_020_040_KS"})
     VRC_NewObjective("M04_Objective_01","VRC_SearchPoint_Camera")
 end
 

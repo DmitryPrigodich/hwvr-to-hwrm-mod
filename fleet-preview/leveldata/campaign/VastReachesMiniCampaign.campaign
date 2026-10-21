@@ -9,6 +9,6 @@ contentSort=0.4
 contentRules="SinglePlayer"
 ExtFilter="campaign_vast_reaches,campaign_gbx"
 Mission={}
-Mission[1]={postload=function() end,directory="T01_Training",level="T01_Training.level",postlevel=function() postLevelComplete() end,displayName="$9950163",description="$9950164"}
+Mission[1]={postload=function() playAnimatic("locale:VRE_Prologue.lua",0,0) end,directory="T01_Training",level="T01_Training.level",postlevel=function() postLevelComplete() end,displayName="$9950163",description="$9950164"}
 Mission[2]={postload=function() end,directory="M01_ProvingGrounds",level="M01_ProvingGrounds.level",postlevel=function() postLevelComplete() end,displayName="$9950154",description="$9950155"}
-Mission[3]={postload=function() end,directory="M04_LostDestroyer",level="M04_LostDestroyer.level",postlevel=function() postLevelComplete() end,displayName="$9950148",description="$9950149"}
+Mission[3]={postload=function() playAnimatic("locale:VRE_M4_intro.lua",0,0) end,directory="M04_LostDestroyer",level="M04_LostDestroyer.level",postlevel=function() postLevelComplete() end,displayName="$9950148",description="$9950149"}

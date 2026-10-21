@@ -85,6 +85,9 @@ def package(fleet_preview=False, research=False, cinematics=None):
         readme.write_text(text,encoding='utf8')
     if cinematics:
         movies=PROJECT/'local/cinematic-update/release-movies'
+        speech=PROJECT/'local/campaign-speech/integration.json'
+        if speech.exists() and json.loads(speech.read_text(encoding='utf8')).get('enabled') is True:
+            movies=PROJECT/'local/campaign-speech/release-movies'
         assert (movies/'vre-movies-id.txt').read_text().strip()=='VRC-rendered-campaign-movies-v1'
         shutil.copytree(movies,PACKAGE/'Movies',dirs_exist_ok=True)
         readme=PACKAGE/'README.txt'
@@ -99,6 +102,13 @@ def package(fleet_preview=False, research=False, cinematics=None):
 Movies содержит готовые игровые WebM. Установщик помещает их также в отдельную
 собственную папку HomeworldRM/Data/Animatics/VastReaches — штатный путь видео.
 Рабочих PNG/WEM/WAV и материалов подготовки в релизе нет.
+
+'''+readme.read_text(encoding='utf8'),encoding='utf8')
+        if speech.exists() and json.loads(speech.read_text(encoding='utf8')).get('enabled') is True:
+            readme.write_text('''Штатная речь HWRM: отдельные PCM WAV и описания внутри BIG.
+В роликах голос вызывается AddSpeechEvent, в миссиях — Subtitle_Add с портретом.
+WebM содержит изображение, музыку и окружение. Новая привязка требует проверки
+в движке; начинайте обучение заново.
 
 '''+readme.read_text(encoding='utf8'),encoding='utf8')
     expected={'package-id.txt','VastReachesMiniCampaign.big','English.big','Russian.big','start_campaign.ps1','Vast Reaches Campaign Demo.cmd','README.txt','SHA256SUMS.txt'}

@@ -8,6 +8,8 @@ function VRC_Init(allowed)
     VRC_Ended = 0
     VRC_Queue = {}
     VRC_QueueIndex = 1
+    VRC_ActiveActor = nil
+    Sound_SpeechSubtitlePath("data:sound/speech/missions/VRC/")
     VRC_NextLine = 0
     VRC_Objective = -1
     VRC_Optional = -1
@@ -109,10 +111,7 @@ function VRC_Win(key)
     if VRC_Objective ~= -1 then Objective_SetState(VRC_Objective,OS_Complete) end
     VRC_State = 99
     VRC_EndTime = VRC_Time+14
-    VRC_Queue = {}
-    VRC_QueueIndex = 1
-    VRC_NextLine = VRC_Time
-    VRC_Line(key)
+    VRC_KeepDialogueAndFinish(key)
     print("VRC_MINI: victory pending "..key)
 end
 
@@ -129,7 +128,7 @@ function VRC_Tick()
     VRC_Time = VRC_Time+1
     if not VRC_Alive("VRC_Mothership") then VRC_Fail("loss") return end
     if VRC_State == 99 then
-        if VRC_Time >= VRC_EndTime then
+        if VRC_Time >= VRC_EndTime and VRC_QueueDone() ~= 0 then
             VRC_Ended = 1
             Rule_Remove("VRC_Tick")
             setMissionComplete(1)
@@ -137,10 +136,10 @@ function VRC_Tick()
     else
         VRC_Update()
     end
-    if VRC_Ended == 0 and VRC_Time >= VRC_NextLine and VRC_QueueIndex <= getn(VRC_Queue) then
+    if VRC_Ended == 0 and VRC_LineReady() ~= 0 and VRC_QueueIndex <= getn(VRC_Queue) then
         local key=VRC_Queue[VRC_QueueIndex]
         local duration=VRC_Duration[key]
-        Subtitle_Message(VRC_Text[key],duration)
+        duration=VRC_PlayLine(key,duration)
         VRC_QueueIndex = VRC_QueueIndex+1
         VRC_NextLine = VRC_Time+duration
     end
@@ -151,7 +150,13 @@ function NKR_GrantCampaignUnlocks(allowed)
     for i=1,getn(allowed) do
         local requirements=NKR_CampaignUnlocks[allowed[i]]
         if requirements then
-            for j=1,getn(requirements) do Player_GrantResearchOption(0,requirements[j]) end
+            for j=1,getn(requirements) do
+                Player_UnrestrictResearchOption(0,requirements[j])
+                Player_GrantResearchOption(0,requirements[j])
+                Player_RestrictResearchOption(0,requirements[j])
+            end
         end
     end
 end
+
+dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/VRC_Speech.lua")

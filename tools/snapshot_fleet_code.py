@@ -15,8 +15,13 @@ TEXT_EXTENSIONS={'.lua','.ship','.wepn','.subs','.events','.level','.campaign','
 
 
 def snapshot():
-    files={p.relative_to(SOURCE).as_posix():p for p in SOURCE.rglob('*') if p.is_file() and p.suffix.lower() in TEXT_EXTENSIONS}
-    assert files and (SOURCE/'preview-id.txt').read_text().strip()=='VRC-two-faction-no-research-preview-v1'
+    source=SOURCE
+    speech=PROJECT/'local/campaign-speech/integration.json'
+    if speech.exists() and json.loads(speech.read_text(encoding='utf8')).get('enabled') is True:
+        source=(PROJECT/'local/campaign-speech/source').resolve()
+    assert source.resolve().is_relative_to((PROJECT/'local').resolve())
+    files={p.relative_to(source).as_posix():p for p in source.rglob('*') if p.is_file() and p.suffix.lower() in TEXT_EXTENSIONS}
+    assert files and (source/'preview-id.txt').read_text().strip()=='VRC-two-faction-no-research-preview-v1'
     manifest=TARGET/'snapshot.json'
     previous=json.loads(manifest.read_text(encoding='utf8')) if manifest.exists() else None
     if previous:
@@ -33,7 +38,7 @@ def snapshot():
         if source.suffix=='.ucs':shutil.copy2(source,destination)
         else:destination.write_text(text,encoding='ascii',newline='\n')
         hashes[name]=hashlib.sha256(destination.read_bytes()).hexdigest()
-    manifest.write_text(json.dumps({'identity':'VRC-fleet-code-snapshot-v1','source':'local/fleet-preview/source','files':hashes},indent=2)+'\n',encoding='utf8')
+    manifest.write_text(json.dumps({'identity':'VRC-fleet-code-snapshot-v1','source':source.relative_to(PROJECT).as_posix(),'files':hashes},indent=2)+'\n',encoding='utf8')
     print(json.dumps({'snapshot':str(TARGET),'text_files':len(hashes),'game_assets_copied':0}))
 
 

@@ -36,6 +36,10 @@ def build():
     apply_research()
     verify_research()
     build_minicampaign.ROOT = ROOT
+    speech=PROJECT/'local/campaign-speech/integration.json'
+    if speech.exists() and json.loads(speech.read_text(encoding='utf8')).get('enabled') is True:
+        import campaign_speech
+        build_minicampaign.ROOT=campaign_speech.prepare(seed=ROOT,convert_movies=False)
     build_minicampaign.build()
     package(fleet_preview=True, research=True)
 

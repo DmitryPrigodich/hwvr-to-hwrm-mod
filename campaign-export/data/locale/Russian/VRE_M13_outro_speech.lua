@@ -1,0 +1,5 @@
+SetSpeechFolder("data:sound/speech/animatic/VRC/VRE_M13_outro")
+AddSpeechEvent(2.033333333,"M14_010_010_A_HA")
+AddSpeechEvent(19.033333333,"M14_010_020_A_HA")
+AddSpeechEvent(28.583333333,"M14_010_030_A_HA")
+AddSpeechEvent(38.766666667,"M14_010_040_A_HA")

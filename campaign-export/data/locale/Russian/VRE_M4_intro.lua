@@ -1,10 +1,11 @@
--- Experimental flat adaptation of the original VR scene; audio is embedded.
+-- Experimental flat adaptation of the original VR scene.
 MovieScreen = {
     displayName = "$9950146",
     helpTip = "$9950146",
     Layout = {size_WH = {w=1,h=1,wr="scr",hr="scr"}},
     stylesheet = "HW2StyleSheet",
     RootElementSettings = {backgroundColor={0,0,0,255}},
+    speechFilename="locale:VRE_M4_intro_speech.lua",
     [1] = {
         type="Movie", name="MyMovie",
         filenameV="data:animatics/VastReaches/Russian/VRE_M4_intro.webm",

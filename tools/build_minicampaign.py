@@ -53,7 +53,7 @@ def locale_toc(language, name, short):
 
 def build():
     short=short_path(ROOT)
-    files=[p for p in sorted(ROOT.rglob('*')) if p.is_file() and p.name!='cinematic-update-id.txt' and not (p.relative_to(ROOT).parts[0]=='locale' and len(p.relative_to(ROOT).parts)>2)]
+    files=[p for p in sorted(ROOT.rglob('*')) if p.is_file() and p.name not in ('cinematic-update-id.txt','campaign-speech-id.txt') and not (p.relative_to(ROOT).parts[0]=='locale' and len(p.relative_to(ROOT).parts)>2)]
     lines=['Archive name="Vast Reaches mini campaign"','TOCStart name="VRCMiniData" alias="data" relativeroot=""','FileSettingsStart defcompression="2"','FileSettingsEnd']
     lines += [short+'\\'+str(p.relative_to(ROOT)) for p in files]
     lines += ['TOCEnd']

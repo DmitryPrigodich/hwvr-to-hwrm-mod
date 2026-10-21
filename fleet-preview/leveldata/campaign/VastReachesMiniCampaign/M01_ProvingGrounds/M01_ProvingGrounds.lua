@@ -4,7 +4,7 @@ dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/VRC_Common.lua")
 function OnInit()
     VRC_Init({"Kus_Interceptor","Kus_AttackBomber","Kus_ResourceCollector"})
     -- The shared story prologue now belongs to T1, before the first campaign mission.
-    VRC_Lines({"prototype","M01_020_010_FI","M01_020_035_FI"})
+    VRC_Lines({"M01_020_010_FI","M01_020_035_FI"})
     VRC_NewObjective("M01_Objective_00","VRC_HomeCamera")
 end
 

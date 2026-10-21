@@ -232,7 +232,11 @@ function NKR_GrantCampaignUnlocks(allowed)
     for i=1,getn(allowed) do
         local requirements=NKR_CampaignUnlocks[allowed[i]]
         if requirements then
-            for j=1,getn(requirements) do Player_GrantResearchOption(0,requirements[j]) end
+            for j=1,getn(requirements) do
+                Player_UnrestrictResearchOption(0,requirements[j])
+                Player_GrantResearchOption(0,requirements[j])
+                Player_RestrictResearchOption(0,requirements[j])
+            end
         end
     end
 end

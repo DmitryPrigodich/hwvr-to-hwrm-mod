@@ -4,14 +4,14 @@ dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/VRC_Common.lua")
 function OnInit()
     VRC_Init({"Kus_Interceptor"})
     VRC_IntroLock = 1
-    VRC_Lines({"prototype","M01_010_010_A_HA","M01_010_020_A_HA","M01_010_030_A_HA","M01_010_040_A_HA","M01_010_050_A_HA","M01_010_060_A_HA","M01_010_070_A_HA","M01_010_080_A_HA","T01_010_010_TS","T01_010_020_KS","T01_010_030_TS","T01_010_040_KS"})
+    VRC_Lines({"T01_010_010_TS","T01_010_020_KS","T01_010_030_TS","T01_010_040_KS"})
     VRC_NewObjective("t_move","VRC_MovePoint_Camera")
 end
 
 function VRC_Update()
     -- Let the prologue and first connection finish before exercise progression.
     if VRC_IntroLock == 1 then
-        if VRC_QueueIndex <= getn(VRC_Queue) or VRC_Time < VRC_NextLine then return end
+        if VRC_QueueDone() == 0 then return end
         VRC_IntroLock = 0
     end
     if VRC_State == 1 then
