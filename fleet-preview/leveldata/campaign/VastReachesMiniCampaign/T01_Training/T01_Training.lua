@@ -5,19 +5,34 @@ dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/T01_Training/VRC_Tra
 function OnInit()
     VRC_Init({"Kus_Scout"})
     VRC_IntroLock = 1
+    VRC_TrainingPhase = 1
+    VRC_SensorsSeen = 0
     VRC_TrainingIntroductionStarted = 0
     VRC_Lines({"T01_010_010_TS","T01_010_020_KS","T01_010_030_TS","T01_010_040_KS"})
-    VRC_NewObjective("t_move","VRC_MovePoint_Camera")
 end
 
 function VRC_Update()
     -- Let the prologue and first connection finish before exercise progression.
     if VRC_IntroLock == 1 then
         if VRC_TrainingIntroductionStarted == 0 then VRC_TrainingBegin() end
-        VRC_TrainingOrbitUpdate()
-        if VRC_QueueDone() == 0 then return end
-        VRC_IntroLock = 0
-        VRC_TrainingEnd()
+        if VRC_TrainingPhase == 1 then
+            VRC_TrainingOrbitUpdate()
+            if VRC_QueueDone() == 0 then return end
+            VRC_TrainingEnd()
+            VRC_Lines({"T01_020_010_FI","T01_020_020_FI"})
+            VRC_TrainingPhase = 2
+        elseif VRC_TrainingPhase == 2 then
+            if Sensors_ManagerIsActive() ~= 0 then VRC_SensorsSeen = 1 end
+            if VRC_QueueDone() == 0 or VRC_SensorsSeen == 0 then return end
+            VRC_Lines({"T01_020_030_FI","T01_020_040_FI","T01_020_050_TS","T01_020_060_KS"})
+            VRC_TrainingPhase = 3
+        elseif VRC_TrainingPhase == 3 then
+            if VRC_QueueDone() == 0 then return end
+            VRC_IntroLock = 0
+            VRC_TrainingPhase = 4
+            VRC_NewObjective("t_move","VRC_MovePoint_Camera")
+        end
+        return
     end
     if VRC_State == 1 then
         Player_FillShipsByType("VRC_Temp",0,"Kus_Scout")

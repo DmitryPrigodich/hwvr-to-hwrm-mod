@@ -26,6 +26,12 @@ class Engine:
         self.orders=[]
         self.camera_orders=[]
         self.music_orders=[]
+        self.speech_calls=[]
+        self.sensors_active=0
+        self.letterbox=0
+        self.camera_control=1
+        self.player_orders=1
+        self.sensors_toggle=1
         self.ru=0
         self.lua.execute('getn=table.getn')
         for name in ['AB_Move','AB_Attack','ONEKEY','TWOKEY','OffensiveROE','AggressiveStance','OT_Primary','OT_Secondary','OS_Complete','OS_Failed','MUS_Ambient']:
@@ -43,6 +49,12 @@ class Engine:
             'Rule_AddInterval':self.noop,'Rule_Remove':self.noop,'Subtitle_Message':self.noop,
             'Sound_SpeechSubtitlePath':self.noop,'Subtitle_Add':self.subtitle_add,'Subtitle_IsDone':self.subtitle_done,
             'Sound_MusicPlayType':lambda *a:self.music_orders.append(a),'fogSetActive':self.noop,'setGlareIntensity':self.noop,'setLevelShadowColour':self.noop,
+            'Camera_SetLetterboxStateNoUI':lambda state,seconds:setattr(self,'letterbox',state),
+            'Camera_AllowControl':lambda state:setattr(self,'camera_control',state),
+            'Universe_AllowPlayerOrders':lambda state:setattr(self,'player_orders',state),
+            'Sensors_EnableToggle':lambda state:setattr(self,'sensors_toggle',state),
+            'Sensors_EnableCameraZoom':self.noop,'Universe_EnableSkip':self.noop,
+            'Sensors_ManagerIsActive':lambda:self.sensors_active,
             'Objective_Add':self.objective,'Objective_SetState':self.objective_state,
             'Ping_Remove':self.noop,'Ping_AddPoint':lambda *a:1,'Ping_AddSobGroup':lambda *a:1,
             'SobGroup_Count':lambda n:len(self.members(n)), 'FOW_RevealGroup':self.noop,
@@ -72,6 +84,7 @@ class Engine:
             self.tick()
         raise AssertionError('Mission never completed after its final speech')
     def subtitle_add(self,actor,text,duration):
+        self.speech_calls.append((actor,text,duration))
         if not hasattr(self,'subtitle_until'):self.subtitle_until={}
         self.subtitle_until[actor]=self.g.VRC_Time+duration
         return duration
@@ -161,13 +174,21 @@ def tests():
     starting_fighters=[v for v in e.ships.values() if v['owner']==0 and v['type']=='kus_scout']
     assert len(starting_fighters)==3 and all(v['spawn_size']==0 for v in starting_fighters),'M0 must request three full native batches'
     assert not any(v['owner']==0 and v['type']=='kus_interceptor' for v in e.ships.values())
-    e.tick(10);e.assert_stage(1)
+    e.tick(10);e.assert_stage(0)
     assert e.g.VRC_IntroLock==1 and len(e.music_orders)==1
-    assert e.music_orders[0][0]=='data:sound/music/nis/N01_R1Opening'
-    e.tick(600);e.assert_stage(1)
-    assert e.g.VRC_IntroLock==0 and e.camera_orders[-1][1]=='VRC_HomeCamera'
+    assert e.music_orders[0][0]=='data:sound/music/battle/A01_mission1and16'
+    assert e.letterbox==1 and e.camera_control==0
+    e.tick(600);e.assert_stage(0)
+    assert e.g.VRC_TrainingPhase==2 and e.g.VRC_IntroLock==1
+    assert e.letterbox==0 and e.camera_control==1 and e.player_orders==1 and e.sensors_toggle==1
+    assert len([call for call in e.speech_calls if call[0]==29])==2,'FI must introduce sensors before waiting for the player'
+    assert not e.objectives,'Movement marker must wait for the actual sensors lesson'
     camera_count=len(e.camera_orders);e.tick(12)
     assert len(e.camera_orders)==camera_count,'Camera must be released after opening dialogue'
+    e.sensors_active=1;e.tick(240);e.assert_stage(1)
+    assert e.g.VRC_IntroLock==0
+    expected=['T01_010_010_TS','T01_010_020_KS','T01_010_030_TS','T01_010_040_KS','T01_020_010_FI','T01_020_020_FI','T01_020_030_FI','T01_020_040_FI','T01_020_050_TS','T01_020_060_KS']
+    assert [call[1] for call in e.speech_calls]==[e.g.VRC_Text[key] for key in expected]
     e.move_type('kus_scout','VRC_MovePoint',1);e.tick();e.assert_stage(2)
     e.kill('VRC_TrainingA');e.tick();e.assert_stage(3)
     e.tick(5);e.assert_stage(3)
@@ -175,7 +196,7 @@ def tests():
     e.add_player('kus_scout');e.tick();e.assert_stage(4)
     for group in ['VRC_TrainingB','VRC_TrainingC','VRC_Platform']:e.kill(group)
     e.tick(20);e.await_completion();assert e.results==[1],e.results
-    passed.append('T1 requires movement, first kill, actual additional build and final kills; wins once.')
+    passed.append('M0 restores HUD/controls after four opening lines, plays all T01_020 in order and waits for sensors before movement/build/combat; wins once.')
     e=Engine('M01_ProvingGrounds')
     e.tick();e.assert_stage(1)
     e.ru=200;e.tick();e.assert_stage(2)

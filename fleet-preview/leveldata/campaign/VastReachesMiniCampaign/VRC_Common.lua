@@ -15,6 +15,7 @@ function VRC_Init(allowed)
     VRC_Optional = -1
     VRC_Focus = "VRC_HomeCamera"
     VRC_StageTime = 0
+    VRC_PostMovieReady = 0
     VRC_Ping = -1
     CPU_Enable(1,0)
     CPU_Enable(2,0)
@@ -44,6 +45,16 @@ function VRC_Init(allowed)
     Camera_Interpolate("here","VRC_HomeCamera",0)
     Rule_AddInterval("VRC_Tick",1)
     print("VRC_MINI: init "..VRC_Mission)
+end
+
+-- Stock HW2 M02 explicitly restores this after an NIS/movie.
+function VRC_RestoreGameplay()
+    Camera_SetLetterboxStateNoUI(0,0)
+    Camera_AllowControl(1)
+    Universe_AllowPlayerOrders(1)
+    Sensors_EnableToggle(1)
+    Sensors_EnableCameraZoom(1)
+    Universe_EnableSkip(0)
 end
 
 function VRC_ViewHome()
@@ -125,6 +136,10 @@ end
 
 function VRC_Tick()
     if VRC_Ended == 1 then return end
+    if VRC_PostMovieReady == 0 then
+        VRC_RestoreGameplay()
+        VRC_PostMovieReady = 1
+    end
     VRC_Time = VRC_Time+1
     if not VRC_Alive("VRC_Mothership") then VRC_Fail("loss") return end
     if VRC_State == 99 then

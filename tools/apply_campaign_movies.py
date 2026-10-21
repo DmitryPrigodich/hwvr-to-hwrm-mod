@@ -27,7 +27,7 @@ def movie_name(package):
     return 'VRE_'+('Prologue' if package=='prologue' else package.removeprefix('Mission_'))
 
 
-def wrapper(name,language,native_speech=False):
+def wrapper(name,language,native_speech=False,movie_audio=False):
     result='''-- Experimental flat adaptation of the original VR scene.
 MovieScreen = {
     displayName = "$9950146",
@@ -49,7 +49,9 @@ MovieScreen = {
     },
 }
 '''
-    if native_speech:
+    if movie_audio:
+        result=result.replace('        filenameV=', '        filenameA="data:sound/music/animatic/VRC/'+name+'",\n        filenameV=',1)
+    elif native_speech:
         result=result.replace('    [1] = {','    speechFilename="locale:'+name+'_speech.lua",\n    [1] = {',1)
     return result
 
@@ -62,7 +64,8 @@ def add_wrappers(target,index):
             # language BIG, using the native "locale" alias.
             path=target/f'locale/{language}/{name}.lua'
             path.parent.mkdir(parents=True,exist_ok=True)
-            path.write_text(wrapper(name,language,(path.parent/(name+'_speech.lua')).exists()),encoding='ascii')
+            audio=(target/'sound/music/animatic/VRC'/(name+'.wav')).exists()
+            path.write_text(wrapper(name,language,(path.parent/(name+'_speech.lua')).exists(),audio),encoding='ascii')
 
 
 def bind_mini(target):

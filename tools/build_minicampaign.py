@@ -39,8 +39,17 @@ def archive(manifest, output):
     native_aliases(output)
 
 
+def runtime_file(path, root):
+    relative=path.relative_to(root).as_posix().lower()
+    if (root/'sound/music/animatic/VRC').is_dir():
+        # Legacy per-cue narration stays in project preparation, not the release.
+        if relative.startswith('sound/speech/animatic/vrc/'):return False
+        if relative.startswith('locale/') and path.name.startswith('VRE_') and path.name.endswith('_speech.lua'):return False
+    return True
+
+
 def localized_files(language):
-    return sorted(p for p in (ROOT/f'locale/{language}').rglob('*') if p.is_file() and not (p.parent.name.lower()=='animatics' and p.name.lower().startswith('vre_')))
+    return sorted(p for p in (ROOT/f'locale/{language}').rglob('*') if p.is_file() and runtime_file(p,ROOT) and not (p.parent.name.lower()=='animatics' and p.name.lower().startswith('vre_')))
 
 
 def locale_toc(language, name, short):
@@ -53,7 +62,7 @@ def locale_toc(language, name, short):
 
 def build():
     short=short_path(ROOT)
-    files=[p for p in sorted(ROOT.rglob('*')) if p.is_file() and p.name not in ('cinematic-update-id.txt','campaign-speech-id.txt') and not (p.relative_to(ROOT).parts[0]=='locale' and len(p.relative_to(ROOT).parts)>2)]
+    files=[p for p in sorted(ROOT.rglob('*')) if p.is_file() and runtime_file(p,ROOT) and p.name not in ('cinematic-update-id.txt','campaign-speech-id.txt') and not (p.relative_to(ROOT).parts[0]=='locale' and len(p.relative_to(ROOT).parts)>2)]
     lines=['Archive name="Vast Reaches mini campaign"','TOCStart name="VRCMiniData" alias="data" relativeroot=""','FileSettingsStart defcompression="2"','FileSettingsEnd']
     lines += [short+'\\'+str(p.relative_to(ROOT)) for p in files]
     lines += ['TOCEnd']

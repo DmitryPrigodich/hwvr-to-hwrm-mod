@@ -106,9 +106,10 @@ Movies содержит готовые игровые WebM. Установщик
 '''+readme.read_text(encoding='utf8'),encoding='utf8')
         if speech.exists() and json.loads(speech.read_text(encoding='utf8')).get('enabled') is True:
             readme.write_text('''Штатная речь HWRM: отдельные PCM WAV и описания внутри BIG.
-В роликах голос вызывается AddSpeechEvent, в миссиях — Subtitle_Add с портретом.
-WebM содержит изображение, музыку и окружение. Новая привязка требует проверки
-в движке; начинайте обучение заново.
+В роликах голос — отдельная дорожка Movie.filenameA, в миссиях — Subtitle_Add с портретом.
+Прежние отдельные AddSpeechEvent не загружаются; WebM содержит музыку и окружение.
+M0: The Beginning, возврат интерфейса после первого разговора, T01_020 и проверка сенсоров.
+Остановка голоса при пропуске ещё требует проверки в движке; начинайте обучение заново.
 
 '''+readme.read_text(encoding='utf8'),encoding='utf8')
     expected={'package-id.txt','VastReachesMiniCampaign.big','English.big','Russian.big','start_campaign.ps1','Vast Reaches Campaign Demo.cmd','README.txt','SHA256SUMS.txt'}

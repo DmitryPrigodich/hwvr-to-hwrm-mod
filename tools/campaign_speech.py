@@ -176,13 +176,16 @@ def prepare(seed=None,convert_movies=True):
         target=RESOURCES/f'ui/speechicons/VRC_{short}0.tga';target.parent.mkdir(parents=True,exist_ok=True);canvas.save(target)
     (RESOURCES/'ui/subtitle.lua').write_text(themes,encoding='ascii')
     index=json.loads((ROOT/'campaign-export/cinematics/index.json').read_text(encoding='utf8'))['scenes']
-    cues=[]
+    cues=[];movie_audio=[]
     for entry in index:
         package=ROOT/'campaign-export/cinematics'/entry['directory'];manifest=json.loads((package/'manifest.json').read_text(encoding='utf8'))
         name=movie_name(entry['directory']);script=[f'SetSpeechFolder("data:sound/speech/animatic/VRC/{name}")']
+        voice=package/('audio/prologue_voice_timeline.wav' if entry['directory']=='prologue' else manifest['voice_reference']['reference'])
+        track=RESOURCES/f'sound/music/animatic/VRC/{name}.wav'
+        duration=pcm(voice,track)
+        movie_audio.append({'movie':name,'path':track.relative_to(RESOURCES).as_posix(),'duration':duration,'sha256':sha(track)})
         for cue in manifest['dialogue_cues']:
             if cue.get('effectively_muted'):continue
-            pcm(package/cue['audio'],RESOURCES/f'sound/speech/animatic/VRC/{name}/{cue["key"]}.wav')
             script.append(f'AddSpeechEvent({cue["start"]:.9f},"{cue["key"]}")')
             cues.append({'movie':name,'key':cue['key'],'start':cue['start']})
         for target in (SOURCE,ROOT/'minicampaign',ROOT/'campaign-export/data'):
@@ -200,7 +203,7 @@ def prepare(seed=None,convert_movies=True):
     if convert_movies:
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:videos=[v for result in pool.map(movie_bed,index) for v in result]
     else:videos=json.loads((WORK/'integration.json').read_text(encoding='utf8'))['movies']
-    integration={'enabled':True,'source':str(SOURCE),'mission_lines':report,'animatic_cues':cues,'movies':videos,'native_tested':False,'previous_movie_loop_cause':'not established; narration moved to native speech events','stock_actors_untouched':True,'game_launched':False}
+    integration={'enabled':True,'source':str(SOURCE),'mission_lines':report,'animatic_cues':cues,'animatic_audio_mode':'movie_owned','movie_audio':movie_audio,'movies':videos,'native_tested':False,'previous_movie_loop_cause':'not established; narration moved outside WebM; separate speech events survived skip, now use Movie.filenameA','stock_actors_untouched':True,'game_launched':False}
     save(WORK/'integration.json',integration)
     print(json.dumps({'source':str(SOURCE),'mission_lines':len(report),'animatic_cues':len(cues),'music_only_videos':len(videos),'native_tested':False}))
     return SOURCE

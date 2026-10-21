@@ -31,17 +31,21 @@ def verify(scripts_only=False):
     for actor in range(27,32):
         name=themes[actor][5].replace('#','0')
         assert Image.open(source/'ui/speechicons'/name).size==(384,192)
-    movie_cues=0
-    for path in (source/'locale/English').glob('VRE_*_speech.lua'):
-        vm=LuaRuntime();folder=[];events=[]
-        vm.globals().SetSpeechFolder=folder.append
-        vm.globals().AddSpeechEvent=lambda *args:events.append(args)
-        vm.execute(path.read_text(encoding='ascii'))
-        assert len(folder)==1
-        for time,key in events:
-            assert (source/folder[0].removeprefix('data:')/(key+'.wav')).is_file()
-        movie_cues+=len(events)
-    assert movie_cues==len(report['animatic_cues'])
+    movie_cues=len(report['animatic_cues'])
+    assert report['animatic_audio_mode']=='movie_owned'
+    for row in report['movie_audio']:
+        path=source/row['path'];assert speech.sha(path)==row['sha256']
+        with wave.open(str(path)) as w:
+            assert (w.getnchannels(),w.getframerate(),w.getsampwidth())==(1,44100,2)
+            assert abs(w.getnframes()/44100-row['duration'])<.001
+        for language in ('English','Russian'):
+            vm=LuaRuntime();vm.execute((source/f'locale/{language}/{row["movie"]}.lua').read_text())
+            screen=vm.globals().MovieScreen
+            assert screen.speechFilename is None,'Movie must not create narration events that survive skipping'
+            assert screen[1].filenameA=='data:'+row['path'].removesuffix('.wav')
+    from build_minicampaign import runtime_file
+    assert not runtime_file(source/'sound/speech/animatic/VRC/VRE_Prologue/legacy.wav',source)
+    assert not runtime_file(source/'locale/English/VRE_Prologue_speech.lua',source)
     mini.ROOT=source;mini.BASE=source/'leveldata/campaign/VastReachesMiniCampaign';mini.tests()
     e=mini.Engine('T01_Training')
     for _ in range(180):
@@ -59,7 +63,7 @@ def verify(scripts_only=False):
         if not scripts_only:
             run=subprocess.run([str(speech.FFMPEG),'-v','error','-threads','1','-i',str(path),'-f','null','-'],capture_output=True,text=True)
             assert run.returncode==0 and not run.stderr,(path,run.stderr)
-    result={'status':'passed','mission_lines':len(report['mission_lines']),'animatic_cues':movie_cues,'music_only_movies_decoded':0 if scripts_only else len(report['movies']),'movie_hashes_verified':len(report['movies']),'native_busy_queue_test':'passed','stock_actor_themes_preserved':27,'engine_tested':False}
+    result={'status':'passed','mission_lines':len(report['mission_lines']),'source_animatic_cues':movie_cues,'movie_owned_narration_tracks':len(report['movie_audio']),'music_only_movies_decoded':0 if scripts_only else len(report['movies']),'movie_hashes_verified':len(report['movies']),'native_busy_queue_test':'passed','stock_actor_themes_preserved':27,'engine_tested':False,'skip_stops_external_audio_native_test':'pending'}
     speech.save(speech.WORK/('verification-scripts.json' if scripts_only else 'verification.json'),result);print(json.dumps(result))
 
 

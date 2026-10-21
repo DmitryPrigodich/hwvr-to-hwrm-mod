@@ -7,6 +7,7 @@ import hashlib
 import json
 import shutil
 from pathlib import Path
+from build_minicampaign import runtime_file
 
 PROJECT=Path(__file__).resolve().parents[1]
 SOURCE=PROJECT/'local/fleet-preview/source'
@@ -20,7 +21,8 @@ def snapshot():
     if speech.exists() and json.loads(speech.read_text(encoding='utf8')).get('enabled') is True:
         source=(PROJECT/'local/campaign-speech/source').resolve()
     assert source.resolve().is_relative_to((PROJECT/'local').resolve())
-    files={p.relative_to(source).as_posix():p for p in source.rglob('*') if p.is_file() and p.suffix.lower() in TEXT_EXTENSIONS}
+    source_root=source
+    files={p.relative_to(source).as_posix():p for p in source.rglob('*') if p.is_file() and runtime_file(p,source) and p.suffix.lower() in TEXT_EXTENSIONS}
     assert files and (source/'preview-id.txt').read_text().strip()=='VRC-two-faction-no-research-preview-v1'
     manifest=TARGET/'snapshot.json'
     previous=json.loads(manifest.read_text(encoding='utf8')) if manifest.exists() else None
@@ -38,7 +40,7 @@ def snapshot():
         if source.suffix=='.ucs':shutil.copy2(source,destination)
         else:destination.write_text(text,encoding='ascii',newline='\n')
         hashes[name]=hashlib.sha256(destination.read_bytes()).hexdigest()
-    manifest.write_text(json.dumps({'identity':'VRC-fleet-code-snapshot-v1','source':source.relative_to(PROJECT).as_posix(),'files':hashes},indent=2)+'\n',encoding='utf8')
+    manifest.write_text(json.dumps({'identity':'VRC-fleet-code-snapshot-v1','source':source_root.relative_to(PROJECT).as_posix(),'files':hashes},indent=2)+'\n',encoding='utf8')
     print(json.dumps({'snapshot':str(TARGET),'text_files':len(hashes),'game_assets_copied':0}))
 
 

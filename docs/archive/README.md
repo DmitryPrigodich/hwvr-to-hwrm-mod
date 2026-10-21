@@ -10,6 +10,8 @@
 - [Игровая основа от18октября](2026-10-21/MINICAMPAIGN_18OCT.md).
 - [Этап встроенного голоса и подключения роликов](2026-10-21/CAMPAIGN_MOVIES_INTEGRATION.md). Текущая реализация речи описана [отдельно](../CAMPAIGN_SPEECH.md).
 
+- [Прежняя очередь рассказчика через AddSpeechEvent](2026-10-21/CAMPAIGN_SPEECH_NATIVE_EVENTS.md).
+
 ## Буквальная исходная локализация
 
 - [Steam-демка: EN и старый RU](source-localization/DEMO_SCENARIOS_RAW.md).

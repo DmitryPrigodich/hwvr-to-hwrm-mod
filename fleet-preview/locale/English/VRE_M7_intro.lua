@@ -5,9 +5,9 @@ MovieScreen = {
     Layout = {size_WH = {w=1,h=1,wr="scr",hr="scr"}},
     stylesheet = "HW2StyleSheet",
     RootElementSettings = {backgroundColor={0,0,0,255}},
-    speechFilename="locale:VRE_M7_intro_speech.lua",
     [1] = {
         type="Movie", name="MyMovie",
+        filenameA="data:sound/music/animatic/VRC/VRE_M7_intro",
         filenameV="data:animatics/VastReaches/English/VRE_M7_intro.webm",
         Layout = {
             pos_XY={x=0.5,y=0.5,xr="par",yr="par"}, pivot_XY={0.5,0.5},

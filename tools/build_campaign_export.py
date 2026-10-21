@@ -15,7 +15,7 @@ TOOL=Path(r'C:\Program Files (x86)\Steam\steamapps\common\Homeworld 347380\GBXTo
 def main():
     assert (DATA/'leveldata/campaign/VastReachesFull.campaign').is_file()
     short=short_path(DATA)
-    files=[p for p in sorted(DATA.rglob('*')) if p.is_file() and not (p.relative_to(DATA).parts[0]=='locale' and len(p.relative_to(DATA).parts)>2)]
+    files=[p for p in sorted(DATA.rglob('*')) if p.is_file() and archives.runtime_file(p,DATA) and not (p.relative_to(DATA).parts[0]=='locale' and len(p.relative_to(DATA).parts)>2)]
     toc=['Archive name="Vast Reaches Campaign Preparation"','TOCStart name="VREPrepData" alias="data" relativeroot=""','FileSettingsStart defcompression="2"','FileSettingsEnd']
     toc += [short+'\\'+str(p.relative_to(DATA)) for p in files]
     toc += ['TOCEnd']
