@@ -179,7 +179,7 @@ class Renderer:
         return image.convert('RGB')
 
 
-def render_scene(graph,scene,package,encode=True):
+def render_scene(graph,scene,package,encode=True,languages=('ru','en')):
     name=package.name;directory=WORK/name;directory.mkdir(parents=True,exist_ok=True)
     manifest=json.loads((package/'manifest.json').read_text(encoding='utf8'))
     cues=[c for c in manifest['dialogue_cues'] if not c.get('effectively_muted')]
@@ -194,7 +194,7 @@ def render_scene(graph,scene,package,encode=True):
     boundaries=sorted(boundaries)
     OUTPUT.mkdir(parents=True,exist_ok=True)
     videos=[]
-    for lang in ('ru','en'):
+    for lang in languages:
         pages=[]
         for index,(a,b) in enumerate(zip(boundaries,boundaries[1:])):
             t=(a+b)/(2*FPS);path=directory/f'{lang}_{index:04d}.png'
@@ -231,14 +231,14 @@ def render_scene(graph,scene,package,encode=True):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--scenes',nargs='*');parser.add_argument('--frames-only',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--scenes',nargs='*');parser.add_argument('--frames-only',action='store_true');parser.add_argument('--languages',nargs='+',choices=('ru','en'),default=['ru','en']);args=parser.parse_args()
     graph,scenes=scan_scenes();index=json.loads((ROOT/'campaign-export/cinematics/index.json').read_text(encoding='utf8'))['scenes']
     reports=[]
     for scene,entry in zip(scenes,index,strict=True):
         assert scene['mission']==entry['mission'] and scene['field']==entry['field']
         if args.scenes and entry['directory'] not in args.scenes:continue
         print('Rendering '+entry['directory'],flush=True)
-        reports.append(render_scene(graph,scene,ROOT/'campaign-export/cinematics'/entry['directory'],not args.frames_only))
+        reports.append(render_scene(graph,scene,ROOT/'campaign-export/cinematics'/entry['directory'],not args.frames_only,args.languages))
     save_json(WORK/'latest-render.json',reports)
 
 

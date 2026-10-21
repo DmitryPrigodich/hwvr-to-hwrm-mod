@@ -332,7 +332,7 @@ flowchart TD
 
 **EN:** Greetings, Hiigaran Command, this is Radaa Admiral Giitan. Our Commander Amma relays her wishes for our long and fruitful partnership with the Hiigaran people.
 
-**RU, новый:** Приветствую хиигарское командование. Говорит адмирал Гиитан Радаа. Наша командующая Амма передаёт свои пожелания долгого и плодотворного сотрудничества с народом Хиигары.
+**RU, новый:** Приветствую хиигарское командование. Говорит адмирал Гиитан Радаа. Наша Коммандер Амма передаёт свои пожелания долгого и плодотворного сотрудничества с народом Хиигары.
 
 <details><summary>Старый русский перевод для сравнения</summary>
 

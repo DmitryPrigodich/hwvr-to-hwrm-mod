@@ -22,16 +22,16 @@ MAP = {
 CUSTOM = {
     "campaign": ("Vast Reaches Campaign Demo", "Vast Reaches Campaign Demo"),
     "choose": ("Choose chapter", "Выбрать главу"),
-    "training": ("T1: Fleet controls", "T1: Управление флотом"),
+    "training": ("M0. Tutorial", "M0. Обучение"),
     "proving": ("M1: Hiigara Proving Grounds", "M1: Испытательный полигон Хиигары"),
     "destroyer": ("M4: The Lost Destroyer", "M4: Потерянный эсминец"),
     "training_desc": ("Campaign prologue, first connection and fleet controls.", "Пролог кампании, первое подключение и управление флотом."),
     "proving_desc": ("Harvest, scout, three live-fire patrols, betrayal and escape.", "Добыча, разведка, три учебных боя, предательство и отход."),
     "destroyer_desc": ("Find the destroyer. Bring three salvage corvettes. Return it OR destroy the gate.", "Найдите эсминец. Подведите три абордажных корвета. Доставьте эсминец ИЛИ уничтожьте врата."),
     "prototype": ("Vast Reaches Campaign Demo. 1: Mothership; 2: current objective.", "Vast Reaches Campaign Demo. 1: Материнский корабль; 2: текущая цель."),
-    "t_move": ("Move the interceptor group into the marked area (camera 2).", "Переместите группу перехватчиков в отмеченную область (камера 2)."),
+    "t_move": ("Move a light fighter squadron into the marked area (camera 2).", "Переместите отряд лёгких истребителей в отмеченную область (камера 2)."),
     "t_attack": ("Destroy the first target group.", "Уничтожьте первую группу целей."),
-    "t_build": ("Build one additional interceptor at the Mothership.", "Постройте ещё один перехватчик на материнском корабле."),
+    "t_build": ("Build one additional light fighter squadron at the Mothership.", "Постройте ещё один отряд лёгких истребителей на Материнском корабле."),
     "t_final": ("Destroy the remaining training enemies.", "Уничтожьте оставшиеся учебные цели."),
     "t_done": ("Fleet controls exercise complete. Proceed to the proving grounds.", "Обучение управлению флотом завершено. Переходим к полигону."),
     "scan": ("Send a Scout to the marked patrol search area.", "Отправьте разведчик к отметке патруля."),
@@ -102,19 +102,21 @@ def prepare():
         record = {"scene": scene,"directory":directory,"origin":origin,"groups":[],"resources":[]}
         positions = []
 
-        def spawn(name, source_ship, pos, owner, collective=None, source_id=None):
+        def spawn(name, source_ship, pos, owner, collective=None, source_id=None, full_batch=False):
             hull=MAP[source_ship]
             pt=convert(pos,origin)
             positions.append(pt)
-            lev.extend([f'    addSquadron("{name}","{hull}",{vector(pt)},{owner},{{0,0,0}},1,0)', f'    createSOBGroup("{name}")', f'    addToSOBGroup("{name}","{name}")'])
+            # Zero uses the native buildBatch, rather than forcing one hull.
+            size=0 if full_batch else 1
+            lev.extend([f'    addSquadron("{name}","{hull}",{vector(pt)},{owner},{{0,0,0}},{size},0)', f'    createSOBGroup("{name}")', f'    addToSOBGroup("{name}","{name}")'])
             if collective:
                 lev.append(f'    addToSOBGroup("{name}","{collective}")')
-            record['groups'].append({"group":name,"collection":collective,"source_ship":source_ship,"hull":hull,"position":pt,"owner":owner,"source_path_id":source_id})
+            record['groups'].append({"group":name,"collection":collective,"source_ship":source_ship,"hull":hull,"position":pt,"owner":owner,"source_path_id":source_id,"full_batch":full_batch})
 
         spawn("VRC_Mothership","Ship_Hgn_Mothership",origin,0,source_id=mother['path_id'])
         lev.append('    addSphere("VRC_Return",{0,0,0},1800)')
         for index,(ship,pos) in enumerate(fleet):
-            spawn(f"VRC_Player_{index+1}",ship,pos,0)
+            spawn(f"VRC_Player_{index+1}",ship,pos,0,full_batch=directory=='T01_Training')
         hidden=[]
         for name,pid,owner,hidden_flag in groups:
             src=next(x for x in data['placements'] if x['path_id']==pid)
@@ -144,8 +146,14 @@ def prepare():
             positions.append(pt)
             record['resources'].append({"source_path_id":x['path_id'],"source_ru":d.get('ContainedRu'),"native_ru_multiplier":multiplier,"position":pt})
         lev += ['    addCamera("VRC_HomeCamera",{0,0,0},{3500,1800,-4000})']
+        if directory=='T01_Training':
+            # Eight gentle arcs keep the origin-centred Mothership in view.
+            for i,eye in enumerate(((3500,1000,-3500),(4950,1000,0),(3500,1000,3500),(0,1000,4950),(-3500,1000,3500),(-4950,1000,0),(-3500,1000,-3500),(0,1000,-4950)),1):
+                lev.append(f'    addCamera("VRC_IntroOrbit_{i}",{{0,0,0}},{vector(eye)})')
         half=[max(abs(p[j]) for p in positions)+5000 for j in range(3)]
-        lev += [f'    setWorldBoundsInner({{0,0,0}},{vector(half)})','end','function NonDetermChunk()','    loadBackground("m01")','    setSensorsManagerCameraDistances(100,70000)','end',f'levelDesc="${ids[title]}"','maxPlayers=3','player={}',f'player[0]={{id=0,name="",resources={ru_amount},raceName="Kushan",startPos=0}}','player[1]={id=1,name="",resources=0,raceName="Vaygr",startPos=0}','player[2]={id=2,name="",resources=0,raceName="Vaygr",startPos=0}']
+        background='ez16' if directory=='T01_Training' else 'm01'
+        environment=['    fogSetActive(0)','    setGlareIntensity(0.0)','    setLevelShadowColour(0,0,0,1)'] if directory=='T01_Training' else []
+        lev += [f'    setWorldBoundsInner({{0,0,0}},{vector(half)})','end','function NonDetermChunk()',*environment,f'    loadBackground("{background}")','    setSensorsManagerCameraDistances(100,70000)','end',f'levelDesc="${ids[title]}"','maxPlayers=3','player={}',f'player[0]={{id=0,name="",resources={ru_amount},raceName="Kushan",startPos=0}}','player[1]={id=1,name="",resources=0,raceName="Vaygr",startPos=0}','player[2]={id=2,name="",resources=0,raceName="Vaygr",startPos=0}']
         (folder/(directory+'.level')).write_text('\n'.join(lev)+'\n',encoding='ascii')
         previews={'T01_Training':'Mission_T1','M01_ProvingGrounds':'Mission_M1','M04_LostDestroyer':'Mission_M4'}
         source=PROJECT/'campaign-export/assets/loading'/(previews[directory]+'.png')
@@ -166,7 +174,7 @@ def prepare():
 
     make('level1','T01_Training','training',[
         ('VRC_TrainingA',271,1,1),('VRC_TrainingB',257,1,1),('VRC_TrainingC',318,1,1),('VRC_Platform',260,1,1)],
-        [('Ship_Kus_Interceptor',[.02+i*1.5,0,-18.33]) for i in range(3)],
+        [('Ship_Kus_Scout',[.02+i*4.5,0,-18.33]) for i in range(3)],
         [('VRC_MovePoint',[4.52,-10.4,42.88],1400),('VRC_TargetPoint',[-11.3,2.9,11.4],2000)],5000)
     # Actual LoadoutSpawner transforms (not the prefab's zero-position defaults).
     starts=[[-102.42908,-33.09749,-24.03379],[-116.33143,-33.09749,-26.27154],[-130.23378,-33.09749,-28.50929]]

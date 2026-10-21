@@ -165,13 +165,16 @@ def verify():
         else: assert not granted
         if chapter == 'Research_Kushan': assert not any('researchship' in s for s in spawned)
     # Campaign story unlocks remain free and bounded to the allowed ship projects.
-    vm = LuaRuntime(); grants = []
+    vm = LuaRuntime(); grants = []; unlock_events = []
     vm.globals().dofilepath = lambda *args: None
     vm.globals().getn = len
-    vm.globals().Player_GrantResearchOption = lambda player, name: grants.append(name)
+    vm.globals().Player_UnrestrictResearchOption = lambda player, name: unlock_events.append(('unrestrict',name))
+    vm.globals().Player_GrantResearchOption = lambda player, name: (grants.append(name),unlock_events.append(('grant',name)))
+    vm.globals().Player_RestrictResearchOption = lambda player, name: unlock_events.append(('restrict',name))
     vm.execute((ROOT / "leveldata/campaign/VastReachesMiniCampaign/VRC_Common.lua").read_text())
     vm.globals().NKR_GrantCampaignUnlocks(vm.table_from(["Kus_Interceptor", "Kus_HeavyCorvette"]))
     assert set(grants) == {"NKR_FighterDrive", "NKR_FighterChassis", "NKR_CorvetteDrive", "NKR_CorvetteChassis"}
+    assert unlock_events==[event for name in grants for event in [('unrestrict',name),('grant',name),('restrict',name)]], 'Story grants must temporarily unrestrict and restore each paid option'
     assert path_cost(design, design["requirements"]["kus_scout"])["cost"] == 450
     assert path_cost(design, design["requirements"]["kus_assaultfrigate"])["cost"] == 3100
     assert path_cost(design, design["requirements"]["kus_attackbomber"])["cost"] == 1550

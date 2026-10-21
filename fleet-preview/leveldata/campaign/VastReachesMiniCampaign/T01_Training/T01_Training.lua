@@ -1,9 +1,11 @@
 dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/T01_Training/VRC_Setup.lua")
 dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/VRC_Common.lua")
+dofilepath("data:leveldata/campaign/VastReachesMiniCampaign/T01_Training/VRC_TrainingPresentation.lua")
 
 function OnInit()
-    VRC_Init({"Kus_Interceptor"})
+    VRC_Init({"Kus_Scout"})
     VRC_IntroLock = 1
+    VRC_TrainingIntroductionStarted = 0
     VRC_Lines({"T01_010_010_TS","T01_010_020_KS","T01_010_030_TS","T01_010_040_KS"})
     VRC_NewObjective("t_move","VRC_MovePoint_Camera")
 end
@@ -11,22 +13,25 @@ end
 function VRC_Update()
     -- Let the prologue and first connection finish before exercise progression.
     if VRC_IntroLock == 1 then
+        if VRC_TrainingIntroductionStarted == 0 then VRC_TrainingBegin() end
+        VRC_TrainingOrbitUpdate()
         if VRC_QueueDone() == 0 then return end
         VRC_IntroLock = 0
+        VRC_TrainingEnd()
     end
     if VRC_State == 1 then
-        Player_FillShipsByType("VRC_Temp",0,"Kus_Interceptor")
+        Player_FillShipsByType("VRC_Temp",0,"Kus_Scout")
         if VRC_AtVolume("VRC_Temp","VRC_MovePoint") then
             VRC_Show("VRC_TrainingA")
             VRC_NewObjective("t_attack","VRC_TargetPoint_Camera")
         end
     elseif VRC_State == 2 then
         if not VRC_Alive("VRC_TrainingA") then
-            VRC_Baseline = Player_GetNumberOfSquadronsOfTypeAwakeOrSleeping(0,"Kus_Interceptor")
+            VRC_Baseline = Player_GetNumberOfSquadronsOfTypeAwakeOrSleeping(0,"Kus_Scout")
             VRC_NewObjective("t_build","VRC_HomeCamera")
         end
     elseif VRC_State == 3 then
-        if Player_GetNumberOfSquadronsOfTypeAwakeOrSleeping(0,"Kus_Interceptor")>VRC_Baseline then
+        if Player_GetNumberOfSquadronsOfTypeAwakeOrSleeping(0,"Kus_Scout")>VRC_Baseline then
             VRC_Show("VRC_TrainingB")
             VRC_Show("VRC_TrainingC")
             VRC_Show("VRC_Platform")

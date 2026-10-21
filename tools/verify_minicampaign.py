@@ -24,9 +24,11 @@ class Engine:
         self.objectives={}
         self.results=[]
         self.orders=[]
+        self.camera_orders=[]
+        self.music_orders=[]
         self.ru=0
         self.lua.execute('getn=table.getn')
-        for name in ['AB_Move','AB_Attack','ONEKEY','TWOKEY','OffensiveROE','AggressiveStance','OT_Primary','OT_Secondary','OS_Complete','OS_Failed']:
+        for name in ['AB_Move','AB_Attack','ONEKEY','TWOKEY','OffensiveROE','AggressiveStance','OT_Primary','OT_Secondary','OS_Complete','OS_Failed','MUS_Ambient']:
             self.g[name]=name
         functions={
             'dofilepath':self.load,'print':lambda *a:None,'addSquadron':self.add,
@@ -37,9 +39,10 @@ class Engine:
             'Player_RestrictBuildOption':self.noop,'Player_UnrestrictBuildOption':self.noop,
             'Player_RestrictResearchOption':self.noop,'Player_GrantResearchOption':self.noop,
             'Player_UnrestrictResearchOption':self.noop,
-            'SobGroup_AbilityActivate':self.noop,'UI_BindKeyEvent':self.noop,'Camera_Interpolate':self.noop,
+            'SobGroup_AbilityActivate':self.noop,'UI_BindKeyEvent':self.noop,'Camera_Interpolate':lambda *a:self.camera_orders.append(a),
             'Rule_AddInterval':self.noop,'Rule_Remove':self.noop,'Subtitle_Message':self.noop,
             'Sound_SpeechSubtitlePath':self.noop,'Subtitle_Add':self.subtitle_add,'Subtitle_IsDone':self.subtitle_done,
+            'Sound_MusicPlayType':lambda *a:self.music_orders.append(a),'fogSetActive':self.noop,'setGlareIntensity':self.noop,'setLevelShadowColour':self.noop,
             'Objective_Add':self.objective,'Objective_SetState':self.objective_state,
             'Ping_Remove':self.noop,'Ping_AddPoint':lambda *a:1,'Ping_AddSobGroup':lambda *a:1,
             'SobGroup_Count':lambda n:len(self.members(n)), 'FOW_RevealGroup':self.noop,
@@ -83,7 +86,7 @@ class Engine:
         self.lua.execute(target.read_text())
     def create(self,name):self.groups.setdefault(name,set())
     def add(self,name,hull,pos,owner,rotation,size,hyper):
-        self.ships[name]={'type':hull.lower(),'pos':list(pos.values()),'owner':owner,'active':True,'health':1}
+        self.ships[name]={'type':hull.lower(),'pos':list(pos.values()),'owner':owner,'active':True,'health':1,'spawn_size':size}
     def add_group(self,name,group):
         assert name in self.ships, ('Unknown squadron in addToSOBGroup',name)
         assert group in self.groups, ('Missing SOB group',group)
@@ -155,12 +158,21 @@ def tests():
             LuaRuntime().execute('assert(loadstring(...))',p.read_text(encoding='ascii'))
     passed.append('All Lua/level/campaign files parse in Lua 5.1; source uses Lua 4-compatible subset.')
     e=Engine('T01_Training')
+    starting_fighters=[v for v in e.ships.values() if v['owner']==0 and v['type']=='kus_scout']
+    assert len(starting_fighters)==3 and all(v['spawn_size']==0 for v in starting_fighters),'M0 must request three full native batches'
+    assert not any(v['owner']==0 and v['type']=='kus_interceptor' for v in e.ships.values())
     e.tick(10);e.assert_stage(1)
+    assert e.g.VRC_IntroLock==1 and len(e.music_orders)==1
+    assert e.music_orders[0][0]=='data:sound/music/nis/N01_R1Opening'
     e.tick(600);e.assert_stage(1)
-    e.move_type('kus_interceptor','VRC_MovePoint',1);e.tick();e.assert_stage(2)
+    assert e.g.VRC_IntroLock==0 and e.camera_orders[-1][1]=='VRC_HomeCamera'
+    camera_count=len(e.camera_orders);e.tick(12)
+    assert len(e.camera_orders)==camera_count,'Camera must be released after opening dialogue'
+    e.move_type('kus_scout','VRC_MovePoint',1);e.tick();e.assert_stage(2)
     e.kill('VRC_TrainingA');e.tick();e.assert_stage(3)
     e.tick(5);e.assert_stage(3)
-    e.add_player('kus_interceptor');e.tick();e.assert_stage(4)
+    e.add_player('kus_interceptor');e.tick();e.assert_stage(3)
+    e.add_player('kus_scout');e.tick();e.assert_stage(4)
     for group in ['VRC_TrainingB','VRC_TrainingC','VRC_Platform']:e.kill(group)
     e.tick(20);e.await_completion();assert e.results==[1],e.results
     passed.append('T1 requires movement, first kill, actual additional build and final kills; wins once.')

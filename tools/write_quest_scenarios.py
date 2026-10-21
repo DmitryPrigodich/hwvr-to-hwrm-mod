@@ -120,7 +120,8 @@ def main():
         definition=definitions[m['id']]['data']
         title=strings['ru'].get(definition['_missionNameKey'],m['title']['ru'])
         label='Обучение' if code=='T1' else str(m['order'])
-        lines += [f'## {label}. {code}: {title} / {m["title"]["en"]}','',
+        heading='M0. Обучение / Tutorial' if code=='T1' and not literal else f'{label}. {code}: {title} / {m["title"]["en"]}'
+        lines += [f'## {heading}','',
                   f'Определение `{m["source"]}:{m["path_id"]}`, карта `{m["scene_file"]}`. Подробные составы и открытия — в [QUEST_PROGRESSION.md](QUEST_PROGRESSION.md).','']
         for label,scene in [('Вступление',m['intro_scene']),('Финальная постановочная сцена',definitions[m['id']]['data'].get('_outroScene',{}).get('_path'))]:
             if scene and scene in seen_scenes:
