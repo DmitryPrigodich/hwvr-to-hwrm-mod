@@ -19,3 +19,5 @@ Python и рабочие/резервные каталоги `local/`, `exports/
 ```powershell
 .\.venv\Scripts\python.exe -X utf8 tools/snapshot_fleet_code.py
 ```
+
+Ветка: `codex/homeworld-vast-reaches`, первый коммит `51371ed`. В активном Git только достижимая история кода. Старые неиспользуемые бинарные данные прежней пустой .git сохранены отдельно в `local/git-history-backups`; в активную историю не входят.

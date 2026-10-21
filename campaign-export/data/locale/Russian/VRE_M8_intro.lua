@@ -5,7 +5,7 @@ MovieScreen = {
     Layout = {size_WH = {w=1,h=1,wr="scr",hr="scr"}},
     stylesheet = "HW2StyleSheet",
     RootElementSettings = {backgroundColor={0,0,0,255}},
-    {
+    [1] = {
         type="Movie", name="MyMovie",
         filenameV="data:animatics/VastReaches/Russian/VRE_M8_intro.webm",
         Layout = {

@@ -27,11 +27,12 @@ def snapshot():
             if name not in files and path.exists():path.unlink()
     hashes={}
     for name,source in sorted(files.items()):
-        source.read_text(encoding='utf-16' if source.suffix=='.ucs' else 'ascii')
+        text=source.read_text(encoding='utf-16' if source.suffix=='.ucs' else 'ascii')
         destination=TARGET/name
         destination.parent.mkdir(parents=True,exist_ok=True)
-        shutil.copy2(source,destination)
-        hashes[name]=hashlib.sha256(source.read_bytes()).hexdigest()
+        if source.suffix=='.ucs':shutil.copy2(source,destination)
+        else:destination.write_text(text,encoding='ascii',newline='\n')
+        hashes[name]=hashlib.sha256(destination.read_bytes()).hexdigest()
     manifest.write_text(json.dumps({'identity':'VRC-fleet-code-snapshot-v1','source':'local/fleet-preview/source','files':hashes},indent=2)+'\n',encoding='utf8')
     print(json.dumps({'snapshot':str(TARGET),'text_files':len(hashes),'game_assets_copied':0}))
 

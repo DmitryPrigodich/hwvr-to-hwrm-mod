@@ -1,4 +1,8 @@
-"""Check experimental movies, language routing and campaign hooks without HWRM."""
+"""Check movies and Lua 5.1 hook semantics without HWRM.
+
+This is not a native Lua 4 parser. MovieScreen uses explicit [1] record fields
+to avoid Lua 4's different separator grammar for mixed record/list tables.
+"""
 import concurrent.futures
 import hashlib
 import json
@@ -33,10 +37,16 @@ def video_check(row):
     return {'file':row['path'],'duration':duration,'video':'VP8/yuv420p/1280x720/30fps','audio':'Vorbis/stereo/44100Hz','mean_db':mean,'max_db':maximum,'full_decode':'passed'}
 
 
-def verify():
+def verify(scripts_only=False):
     integration=json.loads((WORK/'integration.json').read_text(encoding='utf8'))
-    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-        videos=list(pool.map(video_check,integration['movies']))
+    if scripts_only:
+        videos=[]
+        for row in integration['movies']:
+            assert sha(MOVIES/row['path'])==row['sha256']
+            videos.append({'file':row['path'],'sha256':row['sha256'],'unchanged_video':'hash_verified'})
+    else:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+            videos=list(pool.map(video_check,integration['movies']))
     index=json.loads((ROOT/'campaign-export/cinematics/index.json').read_text(encoding='utf8'))['scenes']
     assert len(videos)==24
     for target in (SOURCE,ROOT/'campaign-export/data'):
@@ -83,8 +93,13 @@ def verify():
     assert parsed.returncode==0,parsed.stderr
     assert '-nomovies' not in (ROOT/'start_campaign.ps1').read_text(encoding='utf8')
     report={'status':'passed','videos':videos,'postload_hooks':hooks,'no_duplicate_intro_lines':True,'full_final_success_only':True,'baseline_files_unchanged_except_three_campaign_files':True,'campaign_mock_regression':'passed','powershell_parse':'passed','engine_tested':False,'game_launched':False}
-    save_json(WORK/'verification.json',report)
-    print(json.dumps({'status':'passed','videos_fully_decoded':len(videos),'postload_hooks':len(hooks),'engine_tested':False}))
+    report['video_decode_repeated']=not scripts_only
+    save_json(WORK/('verification-scripts.json' if scripts_only else 'verification.json'),report)
+    print(json.dumps({'status':'passed','videos_fully_decoded':0 if scripts_only else len(videos),'video_hashes_verified':len(videos),'postload_hooks':len(hooks),'engine_tested':False}))
 
 
-if __name__=='__main__':verify()
+if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--scripts-only',action='store_true')
+    verify(scripts_only=parser.parse_args().scripts_only)
