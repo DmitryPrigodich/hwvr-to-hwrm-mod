@@ -13,8 +13,8 @@
 | Часть | Извлечено / подготовлено | Что остаётся |
 |---|---|---|
 | Загрузка | [Исходная картинка](<C:/Users/Dmitry/Documents/ChatGPT/Homeworld Vast Reaches/campaign-export/assets/loading/Mission_M1.png>), DDS рядом с `.level` | Проверить отображение движком |
-| Говорящие головы | Исходные PNG и варианты TGA; связь по Character | Привязать собственных speech actors |
-| Звуки и диалоги | EN, новый RU, старый RU; исходные WEM и WAV | Родной WAV/Speech-путь и очередь воспроизведения в движке |
+| Говорящие головы | Исходные PNG, TGA и speech actors подключены | Проверить в M1; небольшое растяжение замечено в T1 |
+| Звуки и диалоги | EN, новый RU, старый RU; PCM/Speech и 19 реплик подключены | Проверить очередь M1 в движке |
 | Камеры и действия | Timeline-клипы и узлы графа, ID и связи | Постановка HWRM/NIS, замена VR-управления |
 | Карта | [Подготовленная .level](<C:/Users/Dmitry/Documents/ChatGPT/Homeworld Vast Reaches/campaign-export/data/leveldata/campaign/VastReachesFull/M01_ProvingGrounds/M01_ProvingGrounds.level>), области и маршруты | Выбрать и адаптировать орбитальную сцену Хиигары HWRM |
 | Наш флот и стройка | Составы, RU, whitelist, исходные открытия | Эскадрильи, зависимости HWRM и правила переноса флота |
