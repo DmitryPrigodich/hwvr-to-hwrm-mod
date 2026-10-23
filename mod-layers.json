@@ -16,7 +16,8 @@
       "release_manifest": "dependencies/hw1-races/dependencies/mp-patch/local/hwmp-patch-2.4/release.json",
       "standalone_package_prepared": true,
       "repository": "https://github.com/DmitryPrigodich/hwrm-mp-patch",
-      "commit": "a3973a76432b187178fe229a1d4d17d9f15bfab2"
+      "commit": "a3973a76432b187178fe229a1d4d17d9f15bfab2",
+      "visibility": "public"
     },
     "hw1-races": {
       "name": "HW1 Races Reimogined",
@@ -28,7 +29,8 @@
       "repository": "https://github.com/DmitryPrigodich/hwrm-hw1-races-reimogined",
       "source_directory": "dependencies/hw1-races",
       "commit": "642903fd239455ddf84c00ec9c4409209aea320f",
-      "release_manifest": "dependencies/hw1-races/local/release.json"
+      "release_manifest": "dependencies/hw1-races/local/release.json",
+      "visibility": "public"
     },
     "vast-reaches": {
       "name": "Vast Reaches Mod",
@@ -41,7 +43,8 @@
       "repository": "https://github.com/DmitryPrigodich/hwvr-to-hwrm-mod",
       "source_directory": ".",
       "candidate_release_manifest": "local/mod-layers/release.json",
-      "candidate_installed": false
+      "candidate_installed": false,
+      "visibility": "public"
     }
   },
   "integration_policy": {

@@ -1,5 +1,7 @@
 # Репозитории кода
 
+С 23 октября 2026 все три репозитория публичные по прямому запросу Дмитрия. Доступ без авторизации проверен.
+
 Разделение от 23 октября 2026: **hwrm-mp-patch → hwrm-hw1-races-reimogined → hwvr-to-hwrm-mod**. [Ответственность и сборка](MOD_LAYERS.md), машинные границы — `mod-layers.json`.
 
 - [hwrm-mp-patch](https://github.com/DmitryPrigodich/hwrm-mp-patch): общие исправления и оригинальные расы; ветка `codex/hwrm-mp-patch`.

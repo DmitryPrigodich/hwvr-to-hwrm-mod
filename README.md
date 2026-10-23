@@ -15,6 +15,6 @@
 
 Запуск: **Vast Reaches Campaign Demo.cmd → Extra Missions → Vast Reaches Campaign Demo**. Подробности — [запуск мода](docs/LAUNCHER_MOD.md). Перенос флота между главами ещё не реализован; полный экспорт не является готовой кампанией.
 
-Код: [закрытый GitHub-репозиторий](https://github.com/DmitryPrigodich/hwvr-to-hwrm-mod). Игровые модели, текстуры, звук, видео и BIG в Git не включаются.
+Код: [публичный GitHub-репозиторий](https://github.com/DmitryPrigodich/hwvr-to-hwrm-mod). Игровые модели, текстуры, звук, видео и BIG в Git не включаются.
 
 Ранний импорт моделей, сравнения флотов, прежние инструкции и буквальные старые переводы доступны в [архиве и справочных материалах](docs/archive/README.md). Они не описывают текущее состояние кампании.
