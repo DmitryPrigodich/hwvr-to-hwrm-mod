@@ -3,6 +3,7 @@ import contextlib
 import io
 import json
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -74,6 +75,8 @@ def prepare():
         assert (source/'vrc-layered-id.txt').read_text().strip()==IDENTITY
         shutil.rmtree(source)
     shutil.copytree(Path(upstream['source']),source)
+    # The campaign adds its dictionary without losing inherited registrations.
+    inherited_registry=(source/'locale/localedat.lua').read_text(encoding='ascii')
     import build_minicampaign as old_builder
     mini=PROJECT/'minicampaign'
     own={}
@@ -81,12 +84,19 @@ def prepare():
         if not campaign_name(name) or not old_builder.runtime_file(path,mini):continue
         if path.parent.name.lower()=='animatics' and path.name.lower().startswith('vre_'):continue
         target=source/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(path,target);own[name]=common.sha(path)
+    registry=source/'locale/localedat.lua'
+    own_registry=registry.read_text(encoding='ascii')
+    inherited_names=re.findall(r'name\s*=\s*"([^"]+)"',inherited_registry)
+    additions=[name for name in re.findall(r'name\s*=\s*"([^"]+)"',own_registry) if name not in inherited_names]
+    end=inherited_registry.rfind('}')
+    assert end>=0,'Invalid inherited dictionary registry'
+    registry.write_text(inherited_registry[:end]+''.join('    {name="'+name+'"},\n' for name in additions)+'}\n',encoding='ascii',newline='\n')
     # Race strings come from the race dependency; story strings stay canonical here.
     for language in ('Russian','English'):
         path=source/f'locale/{language}/vrcampaign.ucs'
         rows=path.read_text(encoding='utf16').splitlines()
         rows=[line for line in rows if not line.split('\t',1)[0].isdigit() or not 9960000<=int(line.split('\t',1)[0])<=9960253]
-        path.write_text('\n'.join(rows)+'\n',encoding='utf16')
+        path.write_text('\n'.join(rows)+'\n',encoding='utf16',newline='\r\n')
     attach_research(source)
     for path in (source/'leveldata/campaign/VastReachesMiniCampaign').rglob('*.lua'):
         text=path.read_text(encoding='ascii')
@@ -109,6 +119,14 @@ def verify():
     common=configure_sdk()
     report=json.loads((WORK/'source.json').read_text(encoding='utf8'));source=Path(report['source'])
     assert report['files']=={n:common.sha(p) for n,p in common.index(source).items()}
+    registry=(source/'locale/localedat.lua').read_text(encoding='ascii')
+    dictionaries=re.findall(r'name\s*=\s*"([^"]+)"',registry)
+    assert dictionaries.count('hw1_races.dat')==dictionaries.count('vrcampaign.dat')==1
+    for path in source.rglob('*.ucs'):
+        assert path.stem+'.dat' in dictionaries,('Unregistered dictionary',path)
+        raw=path.read_bytes();assert raw.startswith(b'\xff\xfe')
+        text=raw.decode('utf16')
+        assert text.count('\r\n')==text.count('\n')>0,('Native UCS requires CRLF records',path)
     import verify_campaign_speech
     log=io.StringIO()
     with contextlib.redirect_stdout(log):
