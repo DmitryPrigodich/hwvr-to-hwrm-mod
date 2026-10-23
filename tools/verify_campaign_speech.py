@@ -12,9 +12,14 @@ import campaign_speech as speech
 import verify_minicampaign as mini
 
 
-def verify(scripts_only=False):
+def verify(scripts_only=False, source_override=None, parse_files=None):
     report=json.loads((speech.WORK/'integration.json').read_text(encoding='utf8'))
-    source=Path(report['source'])
+    layered_manifest=speech.ROOT/'local/mod-layers/source.json'
+    if source_override is None and layered_manifest.exists():
+        layered=json.loads(layered_manifest.read_text(encoding='utf8'))
+        source_override=layered['source']
+        parse_files=set(layered['campaign_files'])|{'scripts/hwmp24/effects.lua'}
+    source=Path(source_override or report['source'])
     training={row['key'] for row in report['mission_lines'] if row['key'].startswith('T01_')}
     omitted={'T01_030_020_FI','T01_040_030_FI','T01_050_010_FI','T01_050_020_FI'}
     assert len(training)==34 and 'T01_070_060_TS' in training and not training & omitted
@@ -59,7 +64,7 @@ def verify(scripts_only=False):
     from build_minicampaign import runtime_file
     assert not runtime_file(source/'sound/speech/animatic/VRC/VRE_Prologue/legacy.wav',source)
     assert not runtime_file(source/'locale/English/VRE_Prologue_speech.lua',source)
-    mini.ROOT=source;mini.BASE=source/'leveldata/campaign/VastReachesMiniCampaign';mini.tests()
+    mini.ROOT=source;mini.BASE=source/'leveldata/campaign/VastReachesMiniCampaign';mini.tests(parse_files=parse_files)
     e=mini.Engine('T01_Training')
     for _ in range(180):
         e.g.VRC_Tick()

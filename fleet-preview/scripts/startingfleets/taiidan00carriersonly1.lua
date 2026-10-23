@@ -1,1 +1,0 @@
-PersistantData={["Squadrons"]={[1]={["number"]=2,["type"]="Tai_Carrier",["name"]="",["subsystems"]={},["shiphold"]={},["size"]=1},[2]={["number"]=6,["type"]="Tai_ResourceCollector",["name"]="",["subsystems"]={},["shiphold"]={},["size"]=1}},["StrikeGroups"]={},["Research"]={}}

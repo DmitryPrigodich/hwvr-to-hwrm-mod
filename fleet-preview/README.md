@@ -1,14 +1,5 @@
-# Исходный код текущей пробы флота
+# Source ownership moved
 
-Здесь сохранены текстовые определения двух рас, кораблей, исследований, оружия,
-построений, карт и RU/EN-словарей. Снимок сделан из рабочего
-`local/fleet-preview/source` либо текущего `local/campaign-speech/source`
-инструментом `tools/snapshot_fleet_code.py`;
-контрольные суммы снимка — в `snapshot.json`. Переводы строк скриптов приведены
-к LF для Git; содержимое и исходная кодировка UCS сохранены.
+The current source belongs to [dependencies/hw1-races/data](../dependencies/hw1-races/data).
 
-Источник конкретного снимка указан в `snapshot.json`.
-После её изменения обновлять этот снимок перед коммитом. Модели, текстуры,
-звук и архивы в Git не входят. UCS — исходные словари UTF-16, их кодировка
-сохранена для игры. Для HOD и других ресурсов нужны собственные локальные
-файлы игры и подготовка инструментами проекта.
+The previous combined preparation is retained locally in local/repository-split/legacy-project/fleet-preview/ and in the pre-split backup. This directory is a pointer, not a build input. See docs/MOD_LAYERS.md.

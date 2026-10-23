@@ -187,7 +187,7 @@ class Engine:
     def assert_stage(self,value):assert self.g.VRC_State==value,(self.g.VRC_Mission,self.g.VRC_State,value)
 
 
-def tests():
+def tests(parse_files=None):
     passed=[]
     menu=LuaRuntime()
     menu.execute((ROOT/'leveldata/campaign/VastReachesMiniCampaign.campaign').read_text())
@@ -200,8 +200,9 @@ def tests():
     passed.append('Extra Missions entry declares ordered chapters, custom filters and all three thumbnails.')
     for p in ROOT.rglob('*'):
         if p.suffix in ['.lua','.level','.campaign']:
+            if parse_files is not None and p.relative_to(ROOT).as_posix().lower() not in parse_files:continue
             LuaRuntime().execute('assert(loadstring(...))',p.read_text(encoding='ascii'))
-    passed.append('All Lua/level/campaign files parse in Lua 5.1; source uses Lua 4-compatible subset.')
+    passed.append('Owned campaign Lua/level/campaign files parse in Lua 5.1; this is not native Lua 4 validation.' if parse_files is not None else 'All Lua/level/campaign files parse in Lua 5.1; source uses Lua 4-compatible subset.')
     e=Engine('T01_Training')
     starting_fighters=[v for v in e.ships.values() if v['owner']==0 and v['type']=='kus_scout']
     assert len(starting_fighters)==1 and starting_fighters[0]['spawn_size']==0,'M0 must request one full native batch'

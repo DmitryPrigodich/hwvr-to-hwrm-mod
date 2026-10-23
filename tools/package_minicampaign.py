@@ -112,6 +112,23 @@ M0: The Beginning, возврат интерфейса после первого
 Остановка голоса при пропуске ещё требует проверки в движке; начинайте обучение заново.
 
 '''+readme.read_text(encoding='utf8'),encoding='utf8')
+    patch_config=PROJECT/'players-patch/integration.json'
+    if patch_config.exists() and json.loads(patch_config.read_text(encoding='utf8')).get('enabled') is True:
+        readme=PACKAGE/'README.txt'
+        readme.write_text('''Основа Players Patch 2.3Test build 21, интеграция 23 октября 2026
+Включён полный игровой состав 2.3Test. Общая основа — мультиплеерные параметры;
+их подмены в одиночной игре нейтрализованы, используются MP-исследования.
+Новокушане/Новотаиидане сохраняют свои отряды, стройку, науку и баланс эсминцев.
+Их корабельные определения объединены с техническими изменениями патча.
+Статическая проверка и CRC не заменяют проверку HWRM; новый нативный тест нужен.
+
+Авторы основы: Players Patch team; 2.3Test — Fear/Novaras и участники проекта.
+Карты сохраняют собственные авторские сведения.
+https://steamcommunity.com/sharedfiles/filedetails/?id=1190476337
+https://steamcommunity.com/sharedfiles/filedetails/?id=1413859511
+https://github.com/Novaras/2.3-Test
+
+'''+readme.read_text(encoding='utf8'),encoding='utf8')
     expected={'package-id.txt','VastReachesMiniCampaign.big','English.big','Russian.big','start_campaign.ps1','Vast Reaches Campaign Demo.cmd','README.txt','SHA256SUMS.txt'}
     if cinematics:expected.add('Movies')
     assert {p.name for p in PACKAGE.iterdir()}<=expected,'Unexpected files in release'
@@ -125,4 +142,6 @@ M0: The Beginning, возврат интерфейса после первого
     print(json.dumps({'folder':str(PACKAGE),'zip':str(archive),'files':sum(p.is_file() for p in PACKAGE.rglob('*')),'movies':sum(p.suffix=='.webm' for p in PACKAGE.rglob('*')),'zip_bytes':archive.stat().st_size},ensure_ascii=False))
 
 
-if __name__=='__main__':package()
+if __name__=='__main__':
+    from build_mod_layers import package as package_layers
+    package_layers()

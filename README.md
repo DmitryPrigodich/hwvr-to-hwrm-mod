@@ -9,7 +9,9 @@
 - [Уже внесённые правки перевода](docs/TRANSLATION_REVIEW.md) и [глоссарий](localization/GLOSSARY.md).
 - [HTML-сценарий с портретами и исходной озвучкой](campaign-export/index.html#chapter0).
 
-На 21 октября 2026 установлена и запущена в окне1600×900 **b31c4cbe…**: The Beginning, возврат интерфейса и блок T01_020 Разведки с проверкой открытия сенсоров. Рассказчик теперь привязан к звуку самого ролика; его остановку при пропуске ещё проверяем в игре. Предыдущая be49dca3… с замечаниями сохранена в backup23; более ранняя edc5b391… с подтверждёнными прологом/портретами — в backup22.
+На23октября установлена без запуска **e67bd447…**: M0 без строительства, W-маршрут через A/B, безопасный сброс попытки и усиление Тирры. Точный текущий статус — [NEXT_SESSION.md](NEXT_SESSION.md).
+
+Реализована [трёхуровневая зависимость](docs/MOD_LAYERS.md): **[hwrm-mp-patch](https://github.com/DmitryPrigodich/hwrm-mp-patch) → [hwrm-hw1-races-reimogined](https://github.com/DmitryPrigodich/hwrm-hw1-races-reimogined) → [hwvr-to-hwrm-mod](https://github.com/DmitryPrigodich/hwvr-to-hwrm-mod)**. Основа исправлений, затем новые расы/баланс, затем кампания. Зависимости закреплены submodules и lock-файлами. Отдельный кандидат — `local/VastReachesLayered-release`; основной release и установленная игра не заменены.
 
 Запуск: **Vast Reaches Campaign Demo.cmd → Extra Missions → Vast Reaches Campaign Demo**. Подробности — [запуск мода](docs/LAUNCHER_MOD.md). Перенос флота между главами ещё не реализован; полный экспорт не является готовой кампанией.
 

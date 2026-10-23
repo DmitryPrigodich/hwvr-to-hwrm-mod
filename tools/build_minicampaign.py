@@ -87,4 +87,5 @@ def build():
 
 
 if __name__=='__main__':
-    build()
+    from build_mod_layers import package
+    package()

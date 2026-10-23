@@ -1,0 +1,3 @@
+[submodule "dependencies/hw1-races"]
+	path = dependencies/hw1-races
+	url = https://github.com/DmitryPrigodich/hwrm-hw1-races-reimogined.git

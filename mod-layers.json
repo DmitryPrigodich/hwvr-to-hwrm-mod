@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-10-23",
+  "dependency_order": [
+    "hwmp24",
+    "hw1-races",
+    "vast-reaches"
+  ],
+  "layers": {
+    "hwmp24": {
+      "name": "HWMP Patch 2.4",
+      "depends_on": [],
+      "scope": "General technical fixes, gameplay improvements and the original HWRM races on the pinned Test21 base.",
+      "source_directory": "dependencies/hw1-races/dependencies/mp-patch",
+      "revision_manifest": "dependencies/hw1-races/dependencies/mp-patch/hwmp-patch-2.4/fixes.json",
+      "release_manifest": "dependencies/hw1-races/dependencies/mp-patch/local/hwmp-patch-2.4/release.json",
+      "standalone_package_prepared": true,
+      "repository": "https://github.com/DmitryPrigodich/hwrm-mp-patch",
+      "commit": "a3973a76432b187178fe229a1d4d17d9f15bfab2"
+    },
+    "hw1-races": {
+      "name": "HW1 Races Reimogined",
+      "depends_on": [
+        "hwmp24"
+      ],
+      "scope": "Novokushan and Novotaiidan design, coefficients, production, research and balance against the HWMP24 Hiigaran/Vaygr baseline.",
+      "standalone_package_prepared": true,
+      "repository": "https://github.com/DmitryPrigodich/hwrm-hw1-races-reimogined",
+      "source_directory": "dependencies/hw1-races",
+      "commit": "642903fd239455ddf84c00ec9c4409209aea320f",
+      "release_manifest": "dependencies/hw1-races/local/release.json"
+    },
+    "vast-reaches": {
+      "name": "Vast Reaches Mod",
+      "depends_on": [
+        "hw1-races"
+      ],
+      "scope": "Campaign, missions, story, staging, speech, movies and scenario progression on the inherited race/balance layers.",
+      "current_release_manifest": "local/m0-route-review/installation.json",
+      "three_layer_build_migrated": true,
+      "repository": "https://github.com/DmitryPrigodich/hwvr-to-hwrm-mod",
+      "source_directory": ".",
+      "candidate_release_manifest": "local/mod-layers/release.json",
+      "candidate_installed": false
+    }
+  },
+  "integration_policy": {
+    "consumer_pins_reviewed_upstream_revision": true,
+    "generic_fixes_belong_in_hwmp24": true,
+    "race_specific_tuning_belongs_in_hw1_races": true,
+    "campaign_conditions_belong_in_vast_reaches": true,
+    "auto_prepare_downstream_from_base_package": false,
+    "packaging": "Source composition with recorded revisions; arbitrary simultaneous BIG loading is not assumed or engine-validated."
+  }
+}
